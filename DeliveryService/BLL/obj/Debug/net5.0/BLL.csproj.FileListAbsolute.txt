@@ -1,0 +1,15 @@
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.AssemblyInfoInputs.cache
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.AssemblyInfo.cs
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\BLL.deps.json
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\BLL.dll
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\ref\BLL.dll
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\BLL.pdb
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\DAL.dll
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\bin\Debug\net5.0\DAL.pdb
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.csprojAssemblyReference.cache
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.csproj.CopyComplete
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.dll
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\ref\BLL.dll
+C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\BLL\obj\Debug\net5.0\BLL.pdb
