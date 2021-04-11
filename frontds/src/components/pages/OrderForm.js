@@ -116,7 +116,6 @@ class OrderForm extends Component {
             })
         }
         fetch(url, ordJSN);
-        document.location.href = "/";
     }
 
     EditOrder(orderO) {
@@ -141,7 +140,6 @@ class OrderForm extends Component {
             })
         }
         fetch(url, ordJSN);
-        document.location.href = "/";
     }
 
     SentOrder(e) {
@@ -179,7 +177,7 @@ class OrderForm extends Component {
             this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK, customer_ID_FK: orderCustomer_ID_FK, status_ID_FK: orderStatus_ID_FK, courier_ID_FK: orderCourier_ID_FK });
         else
             this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK, customer_ID_FK: orderCustomer_ID_FK, status_ID_FK: orderStatus_ID_FK, courier_ID_FK: orderCourier_ID_FK });
-        //document.location.href = "/";
+        document.location.href = "/";
     }
 
     render() {

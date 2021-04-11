@@ -63,29 +63,28 @@ export default function CourseCard(props) {
 {
   orderContent.addNote!=null
   ?
-  <React.Component>
+  <React.Fragment>
      <ListItem >
           <ListItemText primary={"Примечание: "+orderContent.addNote} />
       </ListItem>
       <Divider />
-  </React.Component>
+  </React.Fragment>
       :
 
-      <React.Component/>
+      <div></div>
 }
 
 {
   orderContent.delivery_ID_FK!=null
   ?
-  <React.Component>
+  <React.Fragment>
           <ListItem >
             <ListItemText primary={"Код доставки: "+orderContent.delivery_ID_FK} />
         </ListItem>
         <Divider />
-  </React.Component>
+  </React.Fragment>
       :
-
-      <React.Component/>
+  <div></div>
 }
 
 

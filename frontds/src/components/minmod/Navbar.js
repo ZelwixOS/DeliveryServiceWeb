@@ -9,8 +9,8 @@ import Slide from '@material-ui/core/Slide';
 import AddIcon from '@material-ui/icons/Add';
 import { Box, Button, IconButton } from '@material-ui/core/';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ForwardIcon from '@material-ui/icons/Forward';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LogInForm from '../elements/LogInForm'
 
 const useStyles = makeStyles((theme = useTheme()) => ({
 	typoClass:
@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme = useTheme()) => ({
 	}
 
 }));
-
-
-
 
 
 function HideOnScroll(props) {
@@ -73,9 +70,8 @@ export default function Navbar(props) {
 								  				</Button>
 											</Box>
 											:
-											<Button variant="contained" className={classes.button} startIcon={<ForwardIcon />}>
-												Войти
-								  			</Button>
+											  <LogInForm/>
+
 									}
 
 								</Box>

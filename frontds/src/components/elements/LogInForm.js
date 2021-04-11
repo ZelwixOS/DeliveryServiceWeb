@@ -1,35 +1,46 @@
 import React, { Component } from 'react'
-import { Grid, TextField } from '@material-ui/core'
+import { Grid,  Button, TextField, Link } from '@material-ui/core'
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ForwardIcon from '@material-ui/icons/Forward';
+import Divider from '@material-ui/core/Divider';
 
 class LogInForm extends Component {
+
 
     constructor(props) {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            open: false
         };
 
         this.SentItem = this.SentItem.bind(this);
         this.Authorize = this.Authorize.bind(this);
 
 
-        this.componentDidMount = this.componentDidMount.bind(this);
-
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
 
+        this.handleClickOpen = this.handleClickOpen.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
 
     onEmailChange(e) { this.setState({ email: e.target.value }); }
     onPasswordChange(e) { this.setState({ password: e.target.value }); }
 
+    handleClickOpen()  {
+        this.setState({open: true})
+    }
+
+    handleClose(){
+        this.setState({open: false})
+    }
 
     Authorize(userInfo) {
         const url = "https://localhost:5001/api/OrderItems/";// no idea yet
@@ -45,6 +56,7 @@ class LogInForm extends Component {
             })
         }
         fetch(url, ordJSN);
+        // редирект 
     }
 
     SentItem(e) {
@@ -60,12 +72,14 @@ class LogInForm extends Component {
     }
 
     render() {
-
         return (
-            <React.Component>
-
-                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">   {/* передай handleClose и open */}
+            <React.Fragment>
+               <Button variant="contained" startIcon={<ForwardIcon />} onClick={this.handleClickOpen}>
+					Войти
+				</Button>
+                <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">   {/* передай handleClose и open */}
                     <DialogTitle id="form-dialog-title">Вход</DialogTitle>
+                    <Divider />
                     <DialogContent>
 
                         <Grid item xs={12}>
@@ -87,17 +101,17 @@ class LogInForm extends Component {
                         </Grid>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} color="primary">
+                        <Button onClick={this.handleClose} color="primary">
                             Закрыть
                         </Button>
                         <Button onClick={this.SentItem} color="primary">
-                            <NavigateNextRoundedIcon style={{ fontSize: 35, color: "#3B14AF" }} /> Войти
+                             Войти <NavigateNextRoundedIcon style={{ fontSize: 35, color: "#3B14AF" }} />
                         </Button>
                     </DialogActions>
+                    <Divider />
+                    <Link href="/registration" style={{textAlign: "center"}}>Ещё не зарегистрированы?</Link>
                 </Dialog>
-
-                <Link href="#">Ещё не зарегистрированы?</Link>
-            </React.Component>
+            </React.Fragment>
         )
     }
 }
