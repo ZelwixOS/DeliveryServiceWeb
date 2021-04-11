@@ -26,7 +26,7 @@ namespace DAL.Repositories
             if (item != null)
             {
                 item.Status = db.Status.Find(item.Status_ID_FK);
-                item.OrderItem = db.OrderItem.Where(i => i.Order_ID_FK == id).ToList();
+                item.OrderItems = db.OrderItem.Where(i => i.Order_ID_FK == id).ToList();
             }
             return item;
         }

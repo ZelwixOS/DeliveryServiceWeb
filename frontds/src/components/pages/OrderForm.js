@@ -164,12 +164,12 @@ class OrderForm extends Component {
         else
             orderDelivery_ID_FK = null;
 
-        var orderCustomer_ID_FK = parseInt(this.state.customer_ID_FK);
+        var orderCustomer_ID_FK = this.state.customer_ID_FK;
         var orderStatus_ID_FK = parseInt(this.state.status_ID_FK);
-        var orderCourier_ID_FK = parseInt(this.state.courier_ID_FK);
+        var orderCourier_ID_FK = this.state.courier_ID_FK;
 
 
-        if (!orderAdressOrigin || !orderDeadline || !orderAdressDestination || !orderReceiverName || orderCustomer_ID_FK <= 0 || orderStatus_ID_FK <= 0 || orderCourier_ID_FK <= 0) {
+        if (!orderAdressOrigin || !orderDeadline || !orderAdressDestination || !orderReceiverName || !orderCustomer_ID_FK || orderStatus_ID_FK <= 0 || !orderCourier_ID_FK) {
             return;
         }
         var formDeadline = new Date(orderDeadline);
@@ -192,9 +192,9 @@ class OrderForm extends Component {
             adressDestination = this.state.order.adressDestination;
             receiverName = this.state.order.receiverName;
             addNote = this.state.order.addNote;
-            customer_ID_FK = this.state.order.customer_ID_FK.toString();
+            customer_ID_FK = this.state.order.customer_ID_FK;
             status_ID_FK = this.state.order.status_ID_FK.toString();
-            courier_ID_FK = this.state.order.courier_ID_FK.toString();
+            courier_ID_FK = this.state.order.courier_ID_FK;
             if (this.state.order.delivery_ID_FK !== null)
                 delivery_ID_FK = this.state.order.delivery_ID_FK.toString()
             else

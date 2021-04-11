@@ -7,7 +7,7 @@ namespace BLL.Models
     {
         public string CourierName { get; set; }
         public string PhoneNumber { get; set; }
-        public CourierModel(Courier c)
+        public CourierModel(User c)
         {
             ID = c.Id;
             Email = c.Email;

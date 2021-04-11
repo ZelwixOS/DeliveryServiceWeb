@@ -28,3 +28,18 @@ C:\Projects\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.csproj.C
 C:\Projects\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\ref\BLL.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.pdb
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\BLL.deps.json
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\BLL.dll
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\ref\BLL.dll
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\BLL.pdb
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\DAL.dll
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\bin\Debug\net5.0\DAL.pdb
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.csprojAssemblyReference.cache
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.AssemblyInfoInputs.cache
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.AssemblyInfo.cs
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.csproj.CoreCompileInputs.cache
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.csproj.CopyComplete
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.dll
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\ref\BLL.dll
+G:\WEB Proj\DeliveryServiceWeb\DeliveryService\BLL\obj\Debug\net5.0\BLL.pdb

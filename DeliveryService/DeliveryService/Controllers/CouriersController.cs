@@ -31,7 +31,7 @@ namespace DeliveryService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCourier([FromRoute] int id)
+        public async Task<IActionResult> GetCourier([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace DeliveryService.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {

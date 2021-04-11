@@ -9,7 +9,7 @@ namespace DAL
     {
         public TypeOfCargo()
         {
-            OrderItem = new HashSet<OrderItem>();
+            OrderItems = new HashSet<OrderItem>();
         }
 
         public int ID { get; set; }
@@ -20,6 +20,6 @@ namespace DAL
 
         public double Coefficient { get; set; }
 
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

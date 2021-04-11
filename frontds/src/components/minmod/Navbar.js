@@ -7,9 +7,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AddIcon from '@material-ui/icons/Add';
-import { Box, Button, IconButton } from '@material-ui/core/';
+import { Box,  IconButton } from '@material-ui/core/';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LogInForm from '../elements/LogInForm'
 
 const useStyles = makeStyles((theme = useTheme()) => ({
@@ -37,12 +36,15 @@ function HideOnScroll(props) {
 	);
 }
 
+
 HideOnScroll.propTypes = {
 	children: PropTypes.element.isRequired,
 };
 
 export default function Navbar(props) {
 	const classes = useStyles();
+
+
 	return (
 		<React.Fragment>
 			<CssBaseline />
@@ -60,19 +62,8 @@ export default function Navbar(props) {
 									</IconButton>
 						
 
-									{
-										props.isLogIn
-											?
-											<Box >
-												<Typography className={classes.typoClass} variant="h6" >{props.login}</Typography>
-												<Button variant="contained" color="secondary" className={classes.button} startIcon={<ExitToAppIcon />}>
-													Выйти
-								  				</Button>
-											</Box>
-											:
 											  <LogInForm/>
 
-									}
 
 								</Box>
 								:

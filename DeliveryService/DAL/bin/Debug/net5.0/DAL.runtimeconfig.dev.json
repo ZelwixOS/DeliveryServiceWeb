@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Zelwix\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Zelwix\\.nuget\\packages"
+      "C:\\Users\\vafin\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\vafin\\.nuget\\packages"
     ]
   }
 }

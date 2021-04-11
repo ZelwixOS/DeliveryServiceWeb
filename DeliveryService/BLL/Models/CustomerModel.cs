@@ -7,13 +7,14 @@ namespace BLL.Models
     {
         public double Discount { get; set; }
 
-        public CustomerModel(Customer c)
+        public CustomerModel(User c)
         {
             ID = c.Id;
             Email = c.Email;
             Password = c.PasswordHash;
             UserName = c.UserName;
-            Discount = c.Discount;
+            if (c.Discount != null)
+                Discount = (double)c.Discount;
         }
 
         public CustomerModel()

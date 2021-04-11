@@ -9,7 +9,7 @@ namespace DAL
     {
         public Delivery()
         {
-            Order = new HashSet<Order>();
+            Orders = new HashSet<Order>();
         }
 
         public int ID { get; set; }
@@ -22,8 +22,8 @@ namespace DAL
 
         public DateTime Date { get; set; }
 
-        public virtual Courier Courier { get; set; }
+        public virtual User Courier { get; set; }
 
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

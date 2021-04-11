@@ -6,8 +6,6 @@ namespace DAL.Repositories
     public class dbReposSQL : IdbOperations
     {
         private DSdb db;
-        private CourierRepository courierRepository;
-        private CustomerRepository customerRepository;
         private DeliveryRepository deliveryRepository;
         private OrderRepository orderRepository;
         private StatusRepository statusRepository;
@@ -21,24 +19,6 @@ namespace DAL.Repositories
         }
 
 
-        public IUsersRepository<Courier> Couriers
-        {
-            get
-            {
-                if (courierRepository == null)
-                    courierRepository = new CourierRepository(db);
-                return courierRepository;
-            }
-        }
-        public IUsersRepository<Customer> Customers
-        {
-            get
-            {
-                if (customerRepository == null)
-                    customerRepository = new CustomerRepository(db);
-                return customerRepository;
-            }
-        }
         public IRepository<Delivery> Deliveries
         {
             get

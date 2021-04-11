@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Services;
 using DAL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,7 @@ namespace BLL
         {
             services.RegisterRepositories(configuration);
             services.AddScoped<IDbCrud, dbOperations>();
-
+            services.AddScoped<IAccountService, AccountService>();
 
             return services;
         }

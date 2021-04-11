@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DSdb))]
-    [Migration("20210411101155_UniDB Schema")]
-    partial class UniDBSchema
+    [Migration("20210411135643_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,9 +186,8 @@ namespace DAL.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double?>("Discount")
+                        .HasColumnType("float");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -241,8 +240,6 @@ namespace DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -376,27 +373,10 @@ namespace DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DAL.Courier", b =>
-                {
-                    b.HasBaseType("DAL.User");
-
-                    b.HasDiscriminator().HasValue("Courier");
-                });
-
-            modelBuilder.Entity("DAL.Customer", b =>
-                {
-                    b.HasBaseType("DAL.User");
-
-                    b.Property<double>("Discount")
-                        .HasColumnType("float");
-
-                    b.HasDiscriminator().HasValue("Customer");
-                });
-
             modelBuilder.Entity("DAL.Delivery", b =>
                 {
-                    b.HasOne("DAL.Courier", "Courier")
-                        .WithMany("Delivery")
+                    b.HasOne("DAL.User", "Courier")
+                        .WithMany("Deliveries")
                         .HasForeignKey("Courier_ID_FK");
 
                     b.Navigation("Courier");
@@ -404,20 +384,20 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Order", b =>
                 {
-                    b.HasOne("DAL.Courier", "Courier")
-                        .WithMany("Order")
+                    b.HasOne("DAL.User", "Courier")
+                        .WithMany("OrdersToDeliver")
                         .HasForeignKey("Courier_ID_FK");
 
-                    b.HasOne("DAL.Customer", "Customer")
-                        .WithMany("Order")
+                    b.HasOne("DAL.User", "Customer")
+                        .WithMany("MyOrders")
                         .HasForeignKey("Customer_ID_FK");
 
                     b.HasOne("DAL.Delivery", "Delivery")
-                        .WithMany("Order")
+                        .WithMany("Orders")
                         .HasForeignKey("Delivery_ID_FK");
 
                     b.HasOne("DAL.Status", "Status")
-                        .WithMany("Order")
+                        .WithMany("Orders")
                         .HasForeignKey("Status_ID_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -434,13 +414,13 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.OrderItem", b =>
                 {
                     b.HasOne("DAL.Order", "Order")
-                        .WithMany("OrderItem")
+                        .WithMany("OrderItems")
                         .HasForeignKey("Order_ID_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DAL.TypeOfCargo", "TypeOfCargo")
-                        .WithMany("OrderItem")
+                        .WithMany("OrderItems")
                         .HasForeignKey("TypeOfCargo_ID_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -503,34 +483,31 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Delivery", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("DAL.Order", b =>
                 {
-                    b.Navigation("OrderItem");
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("DAL.Status", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("DAL.TypeOfCargo", b =>
                 {
-                    b.Navigation("OrderItem");
+                    b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("DAL.Courier", b =>
+            modelBuilder.Entity("DAL.User", b =>
                 {
-                    b.Navigation("Delivery");
+                    b.Navigation("Deliveries");
 
-                    b.Navigation("Order");
-                });
+                    b.Navigation("MyOrders");
 
-            modelBuilder.Entity("DAL.Customer", b =>
-                {
-                    b.Navigation("Order");
+                    b.Navigation("OrdersToDeliver");
                 });
 #pragma warning restore 612, 618
         }

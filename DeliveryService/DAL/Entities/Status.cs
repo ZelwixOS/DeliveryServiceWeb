@@ -8,7 +8,7 @@ namespace DAL
     {
         public Status()
         {
-            Order = new HashSet<Order>();
+            Orders = new HashSet<Order>();
         }
 
         public int ID { get; set; }
@@ -17,6 +17,6 @@ namespace DAL
         [StringLength(30)]
         public string StatusName { get; set; }
 
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

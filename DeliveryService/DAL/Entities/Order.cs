@@ -10,7 +10,7 @@ namespace DAL
 
         public Order()
         {
-            OrderItem = new HashSet<OrderItem>();
+            OrderItems = new HashSet<OrderItem>();
         }
 
         public int ID { get; set; }
@@ -44,14 +44,14 @@ namespace DAL
 
         public string? Courier_ID_FK { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public virtual User Customer { get; set; }
 
         public virtual Delivery Delivery { get; set; }
 
         public virtual Status Status { get; set; }
 
-        public virtual Courier Courier { get; set; }
+        public virtual User Courier { get; set; }
 
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

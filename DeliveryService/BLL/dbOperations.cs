@@ -7,6 +7,7 @@ using BLL.Interfaces;
 using DAL;
 using DAL.Interfaces;
 using BLL.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace BLL
 {
@@ -115,37 +116,37 @@ namespace BLL
         #region Customer
         public List<CustomerModel> GetAllCustomers()
         {
-            return db.Customers.GetList().Select(i => new CustomerModel(i)).ToList();
+            return db.Users.GetList().Select(i => new CustomerModel(i)).ToList();
         }
 
         public CustomerModel GetClient(string id)
         {
-            CustomerModel cl = new CustomerModel(db.Customers.GetItem(id));
+            CustomerModel cl = new CustomerModel(db.Users.GetItem(id));
             return cl;
         }
 
         public void CreateCustomer(CustomerModel c)
         {
-            db.Customers.Create(new Customer() { Email = c.Email, PasswordHash=c.Password, UserName=c.UserName, Discount=c.Discount});
+            db.Users.Create(new User() { Email = c.Email, PasswordHash=c.Password, UserName=c.UserName, Discount=c.Discount});
             Save();
         }
 
         public void UpdateCustomer(CustomerModel c)
         {
-            Customer cl = db.Customers.GetItem(c.ID);
+            User cl = db.Users.GetItem(c.ID);
             cl.Discount = c.Discount;
             cl.Email = c.Email;
             cl.PasswordHash = c.Password;
             cl.UserName = c.UserName;
-            db.Customers.Update(cl);
+            db.Users.Update(cl);
             Save();
         }
         public void DeleteCustomer(string id)
         {
-            Customer cl = db.Customers.GetItem(id);
+            User cl = db.Users.GetItem(id);
             if (cl != null)
             {
-                db.Customers.Delete(cl.Id);
+                db.Users.Delete(cl.Id);
                 Save();
             }
         }
@@ -240,38 +241,38 @@ namespace BLL
 
         public List<CourierModel> GetAllCouriers()
         {
-            return db.Couriers.GetList().Select(i => new CourierModel(i)).ToList();
+            return db.Users.GetList().Select(i => new CourierModel(i)).ToList();
         }
 
         public void CreateCourier(CourierModel c)
         {
-            db.Couriers.Create(new Courier() {  Email=c.Email, PasswordHash=c.Password, UserName=c.UserName, PhoneNumber = c.PhoneNumber });
+            db.Users.Create(new User() {  Email=c.Email, PasswordHash=c.Password, UserName=c.UserName, PhoneNumber = c.PhoneNumber });
             Save();
         }
 
         public void UpdateCourier(CourierModel c)
         {
-            Courier cr = db.Couriers.GetItem(c.ID);
+            User cr = db.Users.GetItem(c.ID);
             cr.Email = c.Email;
             cr.PasswordHash = c.Password;
             cr.UserName = c.UserName;
             cr.PhoneNumber = c.PhoneNumber;
-            db.Couriers.Update(cr);
+            db.Users.Update(cr);
             Save();
         }
         public void DeleteCourier(string id)
         {
-            Courier cr = db.Couriers.GetItem(id);
+            User cr = db.Users.GetItem(id);
             if (cr != null)
             {
-                db.Couriers.Delete(cr.Id);
+                db.Users.Delete(cr.Id);
                 Save();
             }
         }
 
         public CourierModel GetCourier(string id)
         {
-            CourierModel dv = new CourierModel(db.Couriers.GetItem(id));
+            CourierModel dv = new CourierModel(db.Users.GetItem(id));
             return dv;
         }
         #endregion
@@ -294,10 +295,13 @@ namespace BLL
             var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
             if (ord!=null)
             {
-                var cust = db.Customers.GetItem(ord.Customer_ID_FK);
+                var cust = db.Users.GetItem(ord.Customer_ID_FK);
                 if (toc !=null && cust!=null)
                 {
-                    ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - cust.Discount) / 100.0;
+                    double dsc = 0;
+                    if (cust.Discount != null)
+                        dsc = (double)cust.Discount;
+                    ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - dsc) / 100.0;
                     db.Orders.Update(ord);
                     Save();
                 }
@@ -320,10 +324,13 @@ namespace BLL
                 var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
                 if (ord != null)
                 {
-                    var cust = db.Customers.GetItem(ord.Customer_ID_FK);
+                    var cust = db.Users.GetItem(ord.Customer_ID_FK);
                     if (toc != null && cust != null)
                     {
-                        ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - cust.Discount);
+                        double dsc = 0;
+                        if (cust.Discount != null)
+                            dsc = (double)cust.Discount;
+                        ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - dsc);
                     }
                 }
                 Save();
@@ -340,10 +347,13 @@ namespace BLL
                 var toc = db.TypesOfCargo.GetItem(cr.TypeOfCargo_ID_FK);
                 if (ord != null)
                 {
-                    var cust = db.Customers.GetItem(ord.Customer_ID_FK);
+                    var cust = db.Users.GetItem(ord.Customer_ID_FK);
                     if (toc != null && cust != null)
                     {
-                        ord.Cost = ord.Cost - cr.Price * toc.Coefficient / 100.0 * (100 - cust.Discount);
+                        double dsc = 0;
+                        if (cust.Discount != null)
+                            dsc = (double)cust.Discount;
+                        ord.Cost = ord.Cost - cr.Price * toc.Coefficient / 100.0 * (100 - dsc);
                     }
                 }
                 db.OrderItems.Delete(cr.ID);
@@ -396,6 +406,8 @@ namespace BLL
         }
         #endregion
 
+
+
         public int Save()
         {
             int SaveCh = 0;
@@ -403,7 +415,7 @@ namespace BLL
             {
                 SaveCh = db.Save();
             }
-            catch (Exception e)
+            catch
             {
                 return 2;
             }

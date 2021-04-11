@@ -53,7 +53,7 @@ namespace BLL.Models
                 CourierS = o.Courier.UserName;
             }
             OrderItem = new HashSet<OrderItemModel>();
-            foreach (var oi in o.OrderItem)
+            foreach (var oi in o.OrderItems)
                 OrderItem.Add(new OrderItemModel(oi));
             Status = new StatusModel(o.Status);
         }

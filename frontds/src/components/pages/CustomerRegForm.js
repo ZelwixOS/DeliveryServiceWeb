@@ -40,7 +40,7 @@ class CustomerRegForm extends Component {
 
         this.CreateCustomer = this.CreateCustomer.bind(this);
         this.SentCustomer = this.SentCustomer.bind(this);
-
+        this.ErrorNotifier = this.ErrorNotifier.bind(this);
 
 
         this.onEmailChange = this.onEmailChange.bind(this);
@@ -56,34 +56,63 @@ class CustomerRegForm extends Component {
     onConfPasswordChange(e) { this.setState({ confPassword: e.target.value }); }
 
     CreateCustomer(cust) {
-        const url = "https://localhost:5001/api/orders/"; // don't know yet
+        const url = "https://localhost:5001/api/Account/Register";
         var ordJSN = {
             method: 'POST',
+            credentials: "same-origin",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Accept': 'application/json; charset=UTF-8',
+                'Content-Type': 'application/json; charset=UTF-8'
             },
             body: JSON.stringify({
+                userName: cust.userName,
                 email: cust.email,
                 password: cust.password,
-                confPassord: cust.confPassord,
-                userName: cust.userName,
+                passwordConfirm: cust.passwordConfirm,
             })
         }
-        fetch(url, ordJSN);
+        fetch(url, ordJSN)
+            .then(response => response.json())
+            .then((data) => this.ErrorNotifier(data));
     }
+
+    ErrorNotifier(response) {
+        document.querySelector("#response").innerHTML = "";
+        var formError = document.querySelector("#formError");
+        while (formError.firstChild) {
+            formError.removeChild(formError.firstChild);
+        }
+
+        document.querySelector("#response").innerHTML = response.message;
+
+        var failed = false;
+        if (response.error.length > 0) failed = true;
+        if (response.error.length > 0) {
+            for (var i = 0; i < response.error.length; i++) {
+                let ul = document.querySelector("ul");
+                let li = document.createElement("li");
+                li.appendChild(document.createTextNode(response.error[i]));
+                ul.appendChild(li);
+            }
+        }
+        if (failed)
+            return;
+        else
+            document.location.href = "/";
+    }
+
 
     SentCustomer(e) {
         e.preventDefault();
         var custEmail = this.state.email.trim();
         var custPassword = this.state.password.trim();
         var custUserName = this.state.userName.trim();
-        var custConfPassord = this.state.confPassord.trim();
-        if (!custEmail || !custPassword || !custUserName || !custConfPassord) {
+        var custConfPassword = this.state.confPassword.trim();
+        if (!custEmail || !custPassword || !custUserName || !custConfPassword) {
             return;
         }
-        this.CreateOrder({ email: custEmail, password: custPassword, confPassord: custConfPassord, userName: custUserName });
-        document.location.href = "/";
+        this.CreateCustomer({ email: custEmail, password: custPassword, passwordConfirm: custConfPassword, userName: custUserName });
+
     }
 
     render() {
@@ -98,64 +127,70 @@ class CustomerRegForm extends Component {
                         <Grid>
 
 
-                                    <Card>
-                                        <CardContent>
+                            <Card>
+                                <CardContent>
 
-                                            <Grid container spacing={3}>
+                                    <Grid container spacing={3}>
+                                        <Grid spacing={3} style={{color: "#F00"}}>
+                                            <div id="response" />
+                                            <ul id="formError"></ul>
+                                        </Grid>
 
-                                            <Grid item xs={12}>
-                                                    <TextField
-                                                        id="userName"
-                                                        required
-                                                        label="ФИО"
-                                                        fullWidth
-                                                        onChange={this.onUserNameChange}
-                                                    />
-                                                </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="Login"
+                                                required
+                                                label="Логин"
+                                                fullWidth
+                                                onChange={this.onUserNameChange}
+                                            />
+                                        </Grid>
 
-                                                <Grid item xs={12}>
-                                                    <TextField
-                                                        id="email"
-                                                        required
-                                                        label="e-mail"
-                                                        fullWidth
-                                                        onChange={this.onEmailChange}
-                                                    />
-                                                </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="email"
+                                                required
+                                                label="e-mail"
+                                                fullWidth
+                                                onChange={this.onEmailChange}
+                                            />
+                                        </Grid>
 
-                                                <Grid item xs={12}>
-                                                    <TextField
-                                                        id="password"
-                                                        required
-                                                        label="Пароль"
-                                                        fullWidth
-                                                        onChange={this.onPasswordChange}
-                                                    />
-                                                </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="password"
+                                                required
+                                                type="password"
+                                                label="Пароль"
+                                                fullWidth
+                                                onChange={this.onPasswordChange}
+                                            />
+                                        </Grid>
 
-                                                <Grid item xs={12}>
-                                                    <TextField
-                                                        id="confPassword"
-                                                        required
-                                                        label="Подтвердите пароль"
-                                                        fullWidth
-                                                        onChange={this.onConfPasswordChange}
-                                                    />
-                                                </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="confPassword"
+                                                required
+                                                type="password"
+                                                label="Подтвердите пароль"
+                                                fullWidth
+                                                onChange={this.onConfPasswordChange}
+                                            />
+                                        </Grid>
 
-                                                </Grid>
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                className={this.props.classes.button}
-                                                startIcon={<ForwardIcon />}
-                                                onClick={this.SentOrder}
-                                            >
-                                                Зарегестрироваться
+                                    </Grid>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        className={this.props.classes.button}
+                                        startIcon={<ForwardIcon />}
+                                        onClick={this.SentCustomer}
+                                    >
+                                        Зарегестрироваться
                                         </Button>
 
-                                        </CardContent>
-                                    </Card>
+                                </CardContent>
+                            </Card>
 
                         </Grid>
                     </Grid>
