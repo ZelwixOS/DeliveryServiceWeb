@@ -60,16 +60,35 @@ export default function CourseCard(props) {
               <ListItemText primary={"Имя получателя: "+orderContent.receiverName} />
           </ListItem>
           <Divider />
+{
+  orderContent.addNote!=null
+  ?
+  <React.Component>
+     <ListItem >
+          <ListItemText primary={"Примечание: "+orderContent.addNote} />
+      </ListItem>
+      <Divider />
+  </React.Component>
+      :
+
+      <React.Component/>
+}
+
+{
+  orderContent.delivery_ID_FK!=null
+  ?
+  <React.Component>
           <ListItem >
-            
-              <ListItemText primary={"Примечание: "+orderContent.addNote} />
-          </ListItem>
-          <Divider />
-          <ListItem >
-            
-              <ListItemText primary={"Код доставки: "+orderContent.delivery_ID_FK} />
-          </ListItem>
-          <Divider />
+            <ListItemText primary={"Код доставки: "+orderContent.delivery_ID_FK} />
+        </ListItem>
+        <Divider />
+  </React.Component>
+      :
+
+      <React.Component/>
+}
+
+
           <ListItem >
               <ListItemText primary={"Код получателя:"+orderContent.customer_ID_FK + ". " + orderContent.customerS} />
           </ListItem>

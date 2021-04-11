@@ -65,7 +65,9 @@ class OrderItemList extends Component {
                 typeOfCargo_ID_FK: orderI.typeOfCargo_ID_FK
             })
         }
-        fetch(url, ordJSN);
+        setTimeout(fetch(url, ordJSN) , 10)
+        
+        
         this.setState({
             items: null,
             loading: true
