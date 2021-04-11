@@ -6,9 +6,9 @@ namespace BLL.Models
     {
         public UserModel(User o)
         {
-            ID = o.ID;
-            Login = o.Login;
-            Password = o.Password;
+            ID = o.Id;
+            Email = o.Email;
+            Password = o.PasswordHash;
             UserName = o.UserName;
         }
         public UserModel()
@@ -16,8 +16,8 @@ namespace BLL.Models
 
         }
 
-        public int ID { get; set; }
-        public string Login { get; set; }
+        public string ID { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
 

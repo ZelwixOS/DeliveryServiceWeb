@@ -19,14 +19,14 @@ namespace BLL.Interfaces
         List<OrderItemModel> GetOrderItems(int id);
 
 
-        CustomerModel GetClient(int id);
+        CustomerModel GetClient(string id);
         TypeOfCargoModel GetTypeOfCargo(int id);
         OrderModel GetOrder(int id);
         StatusModel GetStatus(int id);
         DeliveryModel GetDelivery(int id);
-        CourierModel GetCourier(int id);
+        CourierModel GetCourier(string id);
         OrderItemModel GetOrderItem(int id);
-        UserModel GetUser(int id);
+        UserModel GetUser(string id);
 
         int CreateOrder(OrderModel o);
         void UpdateOrder(OrderModel o);
@@ -34,11 +34,11 @@ namespace BLL.Interfaces
 
         void CreateCustomer(CustomerModel c);
         void UpdateCustomer(CustomerModel c);
-        void DeleteCustomer(int id);
+        void DeleteCustomer(string id);
 
         void CreateCourier(CourierModel c);
         void UpdateCourier(CourierModel c);
-        void DeleteCourier(int id);
+        void DeleteCourier(string id);
 
         void CreateCargoType(TypeOfCargoModel t);
         void UpdateCargoType(TypeOfCargoModel t);
@@ -55,7 +55,7 @@ namespace BLL.Interfaces
 
         void CreateUser(UserModel c);
         void UpdateUser(UserModel c);
-        void DeleteUser(int id);
+        void DeleteUser(string id);
 
         void CreateOrderItem(OrderItemModel c);
         void UpdateOrderItem(OrderItemModel c);

@@ -12,10 +12,6 @@ namespace DAL
             Delivery = new HashSet<Delivery>();
         }
 
-        [Required]
-        [StringLength(15)]
-        public string PhoneNumber { get; set; }
-
         public virtual ICollection<Order> Order { get; set; }
         public virtual ICollection<Delivery> Delivery { get; set; }
     }

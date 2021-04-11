@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL;
+using BLL.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryService
 {
@@ -34,7 +37,7 @@ namespace DeliveryService
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "DS API", Version = "v1" });
             });
-     
+
 
             services.AddCors(options =>
             {
@@ -68,6 +71,7 @@ namespace DeliveryService
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "DS API V1");
             });
 
+            app.UseAuthentication();
 
             //app.UseHttpsRedirection();
             app.UseStaticFiles();

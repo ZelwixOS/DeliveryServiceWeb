@@ -18,7 +18,7 @@ namespace DAL
 
         public double KmPrice { get; set; }
 
-        public int Courier_ID_FK { get; set; }
+        public string Courier_ID_FK { get; set; }
 
         public DateTime Date { get; set; }
 

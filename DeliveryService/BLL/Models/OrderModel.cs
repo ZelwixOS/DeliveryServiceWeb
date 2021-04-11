@@ -11,7 +11,7 @@ namespace BLL.Models
         public double Cost { get; set; }
         public string AdressOrigin { get; set; }
         public int? Delivery_ID_FK { get; set; }
-        public int Customer_ID_FK { get; set; }
+        public string Customer_ID_FK { get; set; }
         public string CustomerS { get; set; }
         public DateTime OrderDate { get; set; }
         public string OrderDateS { get; set; }
@@ -21,7 +21,7 @@ namespace BLL.Models
         public string ReceiverName { get; set; }
         public string AddNote { get; set; }
         public int Status_ID_FK { get; set; }
-        public int? Courier_ID_FK { get; set; }
+        public string? Courier_ID_FK { get; set; }
         public string CourierS { get; set; }
 
         public void UpdateDates()

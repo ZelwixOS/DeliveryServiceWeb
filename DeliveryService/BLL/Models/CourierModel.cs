@@ -9,9 +9,9 @@ namespace BLL.Models
         public string PhoneNumber { get; set; }
         public CourierModel(Courier c)
         {
-            ID = c.ID;
-            Login = c.Login;
-            Password = c.Password;
+            ID = c.Id;
+            Email = c.Email;
+            Password = c.PasswordHash;
             UserName = c.UserName;
             PhoneNumber = c.PhoneNumber;
         }

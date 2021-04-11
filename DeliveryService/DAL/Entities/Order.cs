@@ -23,7 +23,7 @@ namespace DAL
 
         public int? Delivery_ID_FK { get; set; }
 
-        public int Customer_ID_FK { get; set; }
+        public string Customer_ID_FK { get; set; }
 
         public DateTime OrderDate { get; set; }
 
@@ -42,7 +42,7 @@ namespace DAL
 
         public int Status_ID_FK { get; set; }
 
-        public int? Courier_ID_FK { get; set; }
+        public string? Courier_ID_FK { get; set; }
 
         public virtual Customer Customer { get; set; }
 

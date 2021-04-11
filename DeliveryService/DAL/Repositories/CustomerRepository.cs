@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class CustomerRepository : IRepository<Customer>
+    public class CustomerRepository : IUsersRepository<Customer>
     {
         private DSdb db;
 
@@ -19,7 +19,7 @@ namespace DAL.Repositories
             return db.Customer.ToList();
         }
 
-        public Customer GetItem(int id)
+        public Customer GetItem(string id)
         {
             return db.Customer.Find(id);
         }
@@ -34,7 +34,7 @@ namespace DAL.Repositories
             db.Entry(item).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             Customer item = db.Customer.Find(id);
             if (item != null)

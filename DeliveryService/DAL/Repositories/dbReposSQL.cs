@@ -21,7 +21,7 @@ namespace DAL.Repositories
         }
 
 
-        public IRepository<Courier> Couriers
+        public IUsersRepository<Courier> Couriers
         {
             get
             {
@@ -30,7 +30,7 @@ namespace DAL.Repositories
                 return courierRepository;
             }
         }
-        public IRepository<Customer> Customers
+        public IUsersRepository<Customer> Customers
         {
             get
             {
@@ -84,7 +84,7 @@ namespace DAL.Repositories
                 return orderItemRepository;
             }
         }
-        public IRepository<User> Users
+        public IUsersRepository<User> Users
         {
             get
             {

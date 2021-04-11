@@ -11,7 +11,7 @@ namespace BLL.Models
 
         public double KmPrice { get; set; }
 
-        public int Courier_ID_FK { get; set; }
+        public string Courier_ID_FK { get; set; }
 
         public int? Transport_ID_FK { get; set; }
 

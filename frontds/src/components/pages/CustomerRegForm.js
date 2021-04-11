@@ -34,6 +34,7 @@ class CustomerRegForm extends Component {
         this.state = {
             email: "",
             password: "",
+            confPassword: "",
             userName: ""
         };
 
@@ -45,12 +46,14 @@ class CustomerRegForm extends Component {
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
         this.onUserNameChange = this.onUserNameChange.bind(this);
+        this.onConfPasswordChange = this.onConfPasswordChange.bind(this);
     }
+
 
     onEmailChange(e) { this.setState({ email: e.target.value }); }
     onPasswordChange(e) { this.setState({ password: e.target.value }); }
     onUserNameChange(e) { this.setState({ userName: e.target.value }); }
-
+    onConfPasswordChange(e) { this.setState({ confPassword: e.target.value }); }
 
     CreateCustomer(cust) {
         const url = "https://localhost:5001/api/orders/"; // don't know yet
@@ -63,6 +66,7 @@ class CustomerRegForm extends Component {
             body: JSON.stringify({
                 email: cust.email,
                 password: cust.password,
+                confPassord: cust.confPassord,
                 userName: cust.userName,
             })
         }
@@ -73,12 +77,12 @@ class CustomerRegForm extends Component {
         e.preventDefault();
         var custEmail = this.state.email.trim();
         var custPassword = this.state.password.trim();
-        var custuserName = this.state.userName.trim();
-
-        if (!custEmail || !custPassword || !custuserName) {
+        var custUserName = this.state.userName.trim();
+        var custConfPassord = this.state.confPassord.trim();
+        if (!custEmail || !custPassword || !custUserName || !custConfPassord) {
             return;
         }
-        this.CreateOrder({ email: custEmail, password: custPassword, userName: custuserName });
+        this.CreateOrder({ email: custEmail, password: custPassword, confPassord: custConfPassord, userName: custUserName });
         document.location.href = "/";
     }
 
@@ -129,7 +133,15 @@ class CustomerRegForm extends Component {
                                                     />
                                                 </Grid>
 
-
+                                                <Grid item xs={12}>
+                                                    <TextField
+                                                        id="confPassword"
+                                                        required
+                                                        label="Подтвердите пароль"
+                                                        fullWidth
+                                                        onChange={this.onConfPasswordChange}
+                                                    />
+                                                </Grid>
 
                                                 </Grid>
                                             <Button

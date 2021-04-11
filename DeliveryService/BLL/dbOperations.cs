@@ -118,7 +118,7 @@ namespace BLL
             return db.Customers.GetList().Select(i => new CustomerModel(i)).ToList();
         }
 
-        public CustomerModel GetClient(int id)
+        public CustomerModel GetClient(string id)
         {
             CustomerModel cl = new CustomerModel(db.Customers.GetItem(id));
             return cl;
@@ -126,7 +126,7 @@ namespace BLL
 
         public void CreateCustomer(CustomerModel c)
         {
-            db.Customers.Create(new Customer() { Login=c.Login, Password=c.Password, UserName=c.UserName, Discount=c.Discount});
+            db.Customers.Create(new Customer() { Email = c.Email, PasswordHash=c.Password, UserName=c.UserName, Discount=c.Discount});
             Save();
         }
 
@@ -134,18 +134,18 @@ namespace BLL
         {
             Customer cl = db.Customers.GetItem(c.ID);
             cl.Discount = c.Discount;
-            cl.Login = c.Login;
-            cl.Password = c.Password;
+            cl.Email = c.Email;
+            cl.PasswordHash = c.Password;
             cl.UserName = c.UserName;
             db.Customers.Update(cl);
             Save();
         }
-        public void DeleteCustomer(int id)
+        public void DeleteCustomer(string id)
         {
             Customer cl = db.Customers.GetItem(id);
             if (cl != null)
             {
-                db.Customers.Delete(cl.ID);
+                db.Customers.Delete(cl.Id);
                 Save();
             }
         }
@@ -245,31 +245,31 @@ namespace BLL
 
         public void CreateCourier(CourierModel c)
         {
-            db.Couriers.Create(new Courier() {  Login=c.Login, Password=c.Password, UserName=c.UserName, PhoneNumber = c.PhoneNumber });
+            db.Couriers.Create(new Courier() {  Email=c.Email, PasswordHash=c.Password, UserName=c.UserName, PhoneNumber = c.PhoneNumber });
             Save();
         }
 
         public void UpdateCourier(CourierModel c)
         {
             Courier cr = db.Couriers.GetItem(c.ID);
-            cr.Login = c.Login;
-            cr.Password = c.Password;
+            cr.Email = c.Email;
+            cr.PasswordHash = c.Password;
             cr.UserName = c.UserName;
             cr.PhoneNumber = c.PhoneNumber;
             db.Couriers.Update(cr);
             Save();
         }
-        public void DeleteCourier(int id)
+        public void DeleteCourier(string id)
         {
             Courier cr = db.Couriers.GetItem(id);
             if (cr != null)
             {
-                db.Couriers.Delete(cr.ID);
+                db.Couriers.Delete(cr.Id);
                 Save();
             }
         }
 
-        public CourierModel GetCourier(int id)
+        public CourierModel GetCourier(string id)
         {
             CourierModel dv = new CourierModel(db.Couriers.GetItem(id));
             return dv;
@@ -366,30 +366,30 @@ namespace BLL
 
         public void CreateUser(UserModel c)
         {
-            db.Users.Create(new User() { Login=c.Login, Password=c.Password, UserName=c.UserName });
+            db.Users.Create(new User() { Email=c.Email, PasswordHash=c.Password, UserName=c.UserName });
             Save();
         }
 
         public void UpdateUser(UserModel c)
         {
             User us = db.Users.GetItem(c.ID);
-            us.Login = c.Login;
-            us.Password = c.Password;
+            us.Email = c.Email;
+            us.PasswordHash = c.Password;
             us.UserName = c.UserName;
             db.Users.Update(us);
             Save();
         }
-        public void DeleteUser(int id)
+        public void DeleteUser(string id)
         {
             User cr = db.Users.GetItem(id);
             if (cr != null)
             {
-                db.Users.Delete(cr.ID);
+                db.Users.Delete(cr.Id);
                 Save();
             }
         }
 
-        public UserModel GetUser(int id)
+        public UserModel GetUser(string id)
         {
             UserModel dv = new UserModel(db.Users.GetItem(id));
             return dv;

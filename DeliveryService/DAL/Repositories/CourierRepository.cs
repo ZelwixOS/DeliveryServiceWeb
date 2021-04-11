@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Repositories
 {
-    public class CourierRepository : IRepository<Courier>
+    public class CourierRepository : IUsersRepository<Courier>
     {
         private DSdb db;
 
@@ -19,7 +19,7 @@ namespace DAL.Repositories
             return db.Courier.ToList();
         }
 
-        public Courier GetItem(int id)
+        public Courier GetItem(string id)
         {
             return db.Courier.Find(id);
         }
@@ -34,7 +34,7 @@ namespace DAL.Repositories
             db.Entry(item).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             Courier item = db.Courier.Find(id);
             if (item != null)

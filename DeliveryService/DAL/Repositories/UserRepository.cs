@@ -8,7 +8,7 @@ using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUsersRepository<User>
     {
         private DSdb db;
 
@@ -22,7 +22,7 @@ namespace DAL.Repositories
             return db.User.ToList();
         }
 
-        public User GetItem(int id)
+        public User GetItem(string id)
         {
             return db.User.Find(id);
         }
@@ -37,7 +37,7 @@ namespace DAL.Repositories
             db.Entry(item).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             User item = db.User.Find(id);
             if (item != null)

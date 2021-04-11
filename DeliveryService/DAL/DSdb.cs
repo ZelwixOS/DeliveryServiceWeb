@@ -1,10 +1,9 @@
 namespace DAL
 {
-    using System;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    public partial class DSdb : DbContext
+
+    public partial class DSdb : IdentityDbContext<User>
     {
         public DSdb(DbContextOptions<DSdb> options) : base(options)
         { }
@@ -21,6 +20,8 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasOne(d => d.Customer).WithMany(p => p.Order).HasForeignKey(d => d.Customer_ID_FK);
