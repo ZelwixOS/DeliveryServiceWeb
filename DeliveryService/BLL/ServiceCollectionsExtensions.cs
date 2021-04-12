@@ -15,6 +15,7 @@ namespace BLL
             services.RegisterRepositories(configuration);
             services.AddScoped<IDbCrud, dbOperations>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IUserRoles, UserRoles>();
 
             return services;
         }

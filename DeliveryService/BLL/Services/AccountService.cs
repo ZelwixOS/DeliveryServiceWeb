@@ -56,6 +56,8 @@ namespace BLL.Services
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "customer");
+
                 await _signInManager.SignInAsync(user, false);
 
                 var msg = "Добавлен новый пользователь: " + user.UserName;
@@ -73,11 +75,14 @@ namespace BLL.Services
             }
         }
 
+        Task<User> GetCurrentUserAsync(HttpContext httpCont) => _userManager.GetUserAsync(httpCont.User);
+
+
         public async Task<string> LogisAuthenticatedOff(HttpContext httpCont)
         {
-            Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(httpCont.User);
+       
 
-            User usr = await GetCurrentUserAsync();
+            User usr = await GetCurrentUserAsync(httpCont);
 
             var message = usr == null ? "" : usr.UserName;
 

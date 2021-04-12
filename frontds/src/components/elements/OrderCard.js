@@ -12,8 +12,6 @@ import OrderItemList from "../elements/OrderItemList";
 
 const useStyles = makeStyles((theme = useTheme()) => ({
   root: {
-
-    //width: '60%',
     marginBottom: theme.spacing(2)
   },
 
@@ -24,9 +22,29 @@ export default function CourseCard(props) {
   const classes = useStyles();
   const orderContent = props.orderContent;
 
+  function DeleteOrder()
+  {
+    let response = fetch("https://localhost:5001/api/orders/" + orderContent.id, { method: 'DELETE' });
+
+    var msg = "";
+    if (response.status === 401) {
+    msg = "У вас не хватает прав для создания";
+    } else if (response.status === 201) {
+ 
+        document.location.href = "/";
+
+    } else {
+    msg = "Неизвестная ошибка";
+    }
+
+    document.querySelector("#actionMsg").innerHTML = msg;
+   
+  }
+
   return (
     <Card className={classes.root} variant="outlined" >
       <CardContent>
+        <div id="actionMsg" style={{color: "#F00"}}/>
         <Typography className={classes.title} gutterBottom>
           Заказ {orderContent.id}
         </Typography>
@@ -89,7 +107,7 @@ export default function CourseCard(props) {
 
 
           <ListItem >
-              <ListItemText primary={"Код получателя:"+orderContent.customer_ID_FK + ". " + orderContent.customerS} />
+              <ListItemText primary={"Получатель: " + orderContent.customerS} />
           </ListItem>
           <Divider />
           <ListItem >
@@ -99,7 +117,7 @@ export default function CourseCard(props) {
           <Divider />
           <ListItem >
 
-              <ListItemText primary={"Код курьера: "+orderContent.courier_ID_FK + ". " + orderContent.courierS} />
+              <ListItemText primary={"Курьер: " + orderContent.courierS} />
           </ListItem>
           <Divider />
 
@@ -111,10 +129,7 @@ export default function CourseCard(props) {
       </CardContent>
       <CardActions>
         <Button size="small" href={"/orderForm/" + orderContent.id}> Редактировать </Button>
-        <Button size="small" onClick={() => {
-          fetch("https://localhost:5001/api/orders/" + orderContent.id, { method: 'DELETE' }).then(response => response.json());
-          document.location.href = "/";
-        }}>
+        <Button size="small" onClick= { DeleteOrder} >
           Удалить </Button>
       </CardActions>
     </Card>

@@ -1,18 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BLL;
-using BLL.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System;
+using Microsoft.Extensions.Logging;
+using BLL.Interfaces;
 
 namespace DeliveryService
 {
@@ -50,10 +46,28 @@ namespace DeliveryService
             });
 
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "SimpleWebApp";
+                options.LoginPath = "/";
+                options.AccessDeniedPath = "/";
+                options.LogoutPath = "/";
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = 401;
+                    return Task.CompletedTask;
+                };
+                options.Events.OnRedirectToAccessDenied = context =>
+                {
+                    context.Response.StatusCode = 401;
+                return Task.CompletedTask;
+                };
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services, IUserRoles userRoles)
         {
             if (env.IsDevelopment())
             {
@@ -84,6 +98,9 @@ namespace DeliveryService
             {
                 endpoints.MapControllers();
             });
+
+
+            userRoles.CreateUserRoles(services).Wait();
         }
     }
 }
