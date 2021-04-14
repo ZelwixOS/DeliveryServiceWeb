@@ -33,7 +33,7 @@ class Orders extends Component {
 
 
     componentDidMount() {
-        fetch("https://localhost:5001/api/orders")
+        fetch("http://localhost:5000/api/orders")
             .then(response => response.json())
             .then(result =>
                 this.setState({ orders: result, loading: false }));

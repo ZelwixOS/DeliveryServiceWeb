@@ -64,24 +64,26 @@ class LogInForm extends Component {
 
 
     LogOut() {
-        const url = "https://localhost:5001/api/Account/LogOut/";
+        const url = "http://localhost:5000/api/Account/LogOut/";
         var ordJSN = {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'credentials' : 'include'
             }
         }
         fetch(url, ordJSN);
     };
 
     Authorize(userInfo) {
-        const url = "https://localhost:5001/api/Account/LogIn/";
+        const url = "http://localhost:5000/api/Account/LogIn/";
         var ordJSN = {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'credentials' : 'include'
             },
             body: JSON.stringify({
                 userName: userInfo.userName,
@@ -136,12 +138,13 @@ class LogInForm extends Component {
     }
 
     getCurrentUser() {
-        const url = "https://localhost:5001/api/Account/isAuthenticated/";
+        const url = "http://localhost:5000/api/Account/isAuthenticated/";
         var ordJSN = {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'credentials' : 'include'
             }
         }
         fetch(url, ordJSN).then(response => response.json())

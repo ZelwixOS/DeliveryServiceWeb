@@ -7092,11 +7092,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
+      "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
       "projectName": "DeliveryService",
-      "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
+      "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
       "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-      "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\obj\\",
+      "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7113,8 +7113,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
-              "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
+            "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
             }
           }
         }

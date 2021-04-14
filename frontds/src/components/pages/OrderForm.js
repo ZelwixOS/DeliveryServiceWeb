@@ -74,7 +74,7 @@ class OrderForm extends Component {
 
 
     componentDidMount() {
-        const url = "https://localhost:5001/api/orders/" + this.props.orderID;
+        const url = "http://localhost:5000/api/orders/" + this.props.orderID;
             fetch(url, { method: 'GET' })
                 .then(response => response.json())
                 .then(result =>
@@ -96,7 +96,7 @@ class OrderForm extends Component {
 
 
     CreateOrder(orderO) {
-        const url = "https://localhost:5001/api/orders/";
+        const url = "http://localhost:5000/api/orders/";
         var ordJSN = {
             method: 'POST',
             headers: {
@@ -119,7 +119,7 @@ class OrderForm extends Component {
     }
 
     EditOrder(orderO) {
-        const url = "https://localhost:5001/api/orders/" + orderO.id;
+        const url = "http://localhost:5000/api/orders/" + orderO.id;
         var ordJSN = {
             method: 'PUT',
             headers: {

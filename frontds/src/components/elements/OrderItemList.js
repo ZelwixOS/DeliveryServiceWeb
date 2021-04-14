@@ -39,7 +39,7 @@ class OrderItemList extends Component {
 
 
     componentDidMount() {
-        const url = "https://localhost:5001/api/OrderItems/order/" + this.props.orderID;
+        const url = "http://localhost:5000/api/OrderItems/order/" + this.props.orderID;
         fetch(url, { method: 'GET' })
             .then(response => response.json())
             .then(result =>
@@ -51,7 +51,7 @@ class OrderItemList extends Component {
 
 
     CreateItem(orderI) {
-        const url = "https://localhost:5001/api/OrderItems/";
+        const url = "http://localhost:5000/api/OrderItems/";
         var ordJSN = {
             method: 'POST',
             headers: {
@@ -76,7 +76,7 @@ class OrderItemList extends Component {
     }
 
     DeleteItem(id) {
-        fetch("https://localhost:5001/api/OrderItems/" + id, { method: 'DELETE' }).then(response => response.json());
+        fetch("http://localhost:5000/api/OrderItems/" + id, { method: 'DELETE' }).then(response => response.json());
     }
 
     SentItem(e) {

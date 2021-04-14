@@ -1,0 +1,15 @@
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\DAL.deps.json
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\DAL.runtimeconfig.json
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\DAL.runtimeconfig.dev.json
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\DAL.dll
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\ref\DAL.dll
+C:\DeliveryServiceWeb\DeliveryService\DAL\bin\Release\net5.0\DAL.pdb
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.csprojAssemblyReference.cache
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.AssemblyInfoInputs.cache
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.AssemblyInfo.cs
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.csproj.CoreCompileInputs.cache
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.dll
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\ref\DAL.dll
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.pdb
+C:\DeliveryServiceWeb\DeliveryService\DAL\obj\Release\net5.0\DAL.genruntimeconfig.cache

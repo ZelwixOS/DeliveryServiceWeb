@@ -6723,11 +6723,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-      "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
+      "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6744,8 +6744,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-              "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+            "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
             }
           }
         }

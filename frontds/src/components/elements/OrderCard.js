@@ -24,7 +24,7 @@ export default function CourseCard(props) {
 
   function DeleteOrder()
   {
-    let response = fetch("https://localhost:5001/api/orders/" + orderContent.id, { method: 'DELETE' });
+    let response = fetch("http://localhost:5000/api/orders/" + orderContent.id, { method: 'DELETE' });
 
     var msg = "";
     if (response.status === 401) {

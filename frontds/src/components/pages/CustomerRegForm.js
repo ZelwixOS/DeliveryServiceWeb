@@ -56,7 +56,7 @@ class CustomerRegForm extends Component {
     onConfPasswordChange(e) { this.setState({ confPassword: e.target.value }); }
 
     CreateCustomer(cust) {
-        const url = "https://localhost:5001/api/Account/Register";
+        const url = "http://localhost:5000/api/Account/Register";
         var ordJSN = {
             method: 'POST',
             credentials: "same-origin",
@@ -86,6 +86,8 @@ class CustomerRegForm extends Component {
         document.querySelector("#response").innerHTML = response.message;
 
         var failed = false;
+        if (response.error.length !== undefined)
+        {
         if (response.error.length > 0) failed = true;
         if (response.error.length > 0) {
             for (var i = 0; i < response.error.length; i++) {
@@ -93,6 +95,7 @@ class CustomerRegForm extends Component {
                 let li = document.createElement("li");
                 li.appendChild(document.createTextNode(response.error[i]));
                 ul.appendChild(li);
+                }
             }
         }
         if (failed)

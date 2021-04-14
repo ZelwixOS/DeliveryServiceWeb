@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>cb76822b-439f-4246-9857-5b4ab1d33fc1</UserSecretsId>
+    <SignAssembly>false</SignAssembly>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

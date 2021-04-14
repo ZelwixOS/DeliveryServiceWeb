@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.Extensions.Logging;
 using BLL.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace DeliveryService
 {
@@ -40,11 +41,12 @@ namespace DeliveryService
                 options.AddPolicy(name: "SUPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("*")
-                                .WithMethods("PUT", "DELETE", "GET", "POST").AllowAnyHeader();
+                        builder.WithOrigins("http://localhost:3000")
+                                .WithMethods("PUT", "DELETE", "GET", "POST").AllowAnyHeader().AllowCredentials();
                     });
             });
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -63,7 +65,6 @@ namespace DeliveryService
                 return Task.CompletedTask;
                 };
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,12 +93,14 @@ namespace DeliveryService
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
+
             app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
 
 
             userRoles.CreateUserRoles(services).Wait();
