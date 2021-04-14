@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ho3nbnuMFNSkuacINDcfDFyyNJhNBtrXDZ/uLeO7x3CG6lSJTSttqphCjWka+VgLQ+GH5t7dF/GGNiUtvIzopQ==",
+  "dgSpecHash": "po9bu6KPtvEdOOyH0P1nGWFAg8012ryicYfBweVUu0PbTo8wzR6WmXOMJj7tbTQlsc2VbeYOhmtXX9HebSfpGQ==",
   "success": true,
-  "projectFilePath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+  "projectFilePath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vafin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vafin\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

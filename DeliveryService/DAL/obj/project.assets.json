@@ -6620,11 +6620,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-      "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
+      "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",

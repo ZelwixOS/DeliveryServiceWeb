@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Button, TextField, Link, Typography } from '@material-ui/core'
+import { Grid, Button, TextField, Link } from '@material-ui/core'
 import NavigateNextRoundedIcon from '@material-ui/icons/NavigateNextRounded';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,20 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
-const styles = (theme) => ({
-    typoClass:
-    {
-        display: "inline",
-    },
-    buttonpos:
-    {
-        display: "flex",
-        justifyContent: "right"
-    }
-});
-
-
 
 
 class LogInForm extends Component {
@@ -166,9 +152,9 @@ class LogInForm extends Component {
                 {
                     this.state.isLogin
                         ?
-                        <React.Fragment>
-                            <Typography className={styles.typoClass} variant="h6" >{this.state.login}</Typography>
-                            <Button onClick={this.LogOut} variant="contained" color="secondary" className={styles.button} startIcon={<ExitToAppIcon />}>
+                        <React.Fragment >
+                            {this.state.login}
+                            <Button onClick={this.LogOut} variant="contained" color="secondary"  startIcon={<ExitToAppIcon />}>
                                 Выйти
                             </Button>
                         </React.Fragment>
@@ -183,7 +169,7 @@ class LogInForm extends Component {
                     <DialogTitle id="form-dialog-title">Вход</DialogTitle>
                     <Divider />
                     <DialogContent>
-                        <Grid spacing={3} style={{ color: "#F00" }}>
+                        <Grid container spacing={3} style={{ color: "#F00" }}>
                             <div id="response" />
                             <ul id="formError"></ul>
                         </Grid>

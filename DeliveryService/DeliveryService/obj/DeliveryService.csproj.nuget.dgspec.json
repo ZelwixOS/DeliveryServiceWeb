@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj": {}
+    "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj": {}
   },
   "projects": {
-    "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
+    "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+        "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+        "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-        "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
+        "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-                "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+              "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+                "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
               }
             }
           }
@@ -80,14 +80,14 @@
         }
       }
     },
-    "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+    "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+        "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+        "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-        "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
+        "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -166,14 +166,14 @@
         }
       }
     },
-    "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj": {
+    "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
+        "projectUniqueName": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
         "projectName": "DeliveryService",
-        "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
+        "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\DeliveryService.csproj",
         "packagesPath": "C:\\Users\\vafin\\.nuget\\packages\\",
-        "outputPath": "C:\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\obj\\",
+        "outputPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\DeliveryService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vafin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,8 +190,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
-                "projectPath": "C:\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
+              "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
+                "projectPath": "G:\\WEB Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
               }
             }
           }
