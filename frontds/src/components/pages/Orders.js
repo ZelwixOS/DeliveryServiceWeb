@@ -3,7 +3,8 @@ import { Box, Container, Grid, Typography } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { withStyles } from "@material-ui/core/styles"
 import Navbar from '../minmod/Navbar'
-import CourseCard from '../elements/OrderCard'
+import OrderCard from '../elements/OrderCard'
+import axios from 'axios';
 
 const styles = (theme) => ({
     btnMenu: {
@@ -22,21 +23,30 @@ const styles = (theme) => ({
     }
 });
 
+
+axios.defaults.withCredentials = true
+const comUrl = "http://localhost:5000"
+
 class Orders extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            orders: null,
+            active: null,
+            available: null,
+            past: null,
+            role: null,
             loading: true
         };
     }
 
 
     componentDidMount() {
-        fetch("http://localhost:5000/api/orders")
-            .then(response => response.json())
-            .then(result =>
-                this.setState({ orders: result, loading: false }));
+        var url = comUrl + "/api/orders";
+        axios.get(
+            url, { withCredentials: true }
+        )
+            .then((response) =>
+                this.setState({ active: response.data.active, available: response.data.available, past: response.data.past, role: response.data.role, loading: false }));
     }
 
     render() {
@@ -44,17 +54,65 @@ class Orders extends Component {
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Navbar title={"Заказы"} link={"/orderForm/"}>  </Navbar>
-    
+
                 <Box className={this.props.classes.paper}>
                     <Grid container spacing={1}>
                         <Grid>
                             {
                                 this.state.loading
-                                    ? <Typography className={this.props.classes.loading}>
+                                    ?
+                                    <Typography className={this.props.classes.loading}>
                                         Загрузка...
                                     </Typography >
-                                    : 
-                                        this.state.orders.map((order, index) =>  {return (<CourseCard orderContent={order} key={index}/>)})
+                                    :
+                                    <React.Fragment>
+                                        {
+                                            this.state.active.length !== 0
+                                                ?
+                                                <React.Fragment>
+                                                    <Typography variant="h4" >
+                                                        Активные заказы
+                                                    </Typography >
+                                                    {
+                                                        this.state.active.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="active" role = {this.state.role} />) })
+                                                    }
+
+                                                </React.Fragment>
+                                                :
+                                                <React.Fragment />
+                                        }
+                                        {
+                                            this.state.available.length !== 0
+                                                ?
+                                                <React.Fragment>
+                                                    <Typography variant="h4" >
+                                                        Доступные заказы
+                                                    </Typography >
+                                                    {
+                                                        this.state.available.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="available" role = {this.state.role}/>) })
+                                                    }
+
+                                                </React.Fragment>
+                                                :
+                                                <React.Fragment />
+                                        }
+                                        {
+                                            this.state.past.length !== 0
+                                                ?
+                                                <React.Fragment>
+                                                    <Typography variant="h4" >
+                                                        Прошлые заказы
+                                                    </Typography >
+                                                    {
+                                                        this.state.past.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="past" role = {this.state.role}/>) })
+                                                    }
+
+                                                </React.Fragment>
+                                                :
+                                                <React.Fragment />
+                                        }
+                                    </React.Fragment>
+
                             }
                         </Grid>
                     </Grid>

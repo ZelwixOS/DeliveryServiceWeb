@@ -75,21 +75,25 @@ namespace BLL.Services
             }
         }
 
-        Task<User> GetCurrentUserAsync(HttpContext httpCont) => _userManager.GetUserAsync(httpCont.User);
+        public Task<User> GetCurrentUserAsync(HttpContext httpCont) => _userManager.GetUserAsync(httpCont.User);
+
+        public Task<IList<string>> GetRole(HttpContext httpCont)
+        {
+            var usr = _userManager.GetUserAsync(httpCont.User);
+            return _userManager.GetRolesAsync(usr.Result);
+        }
 
 
         public async Task<string> LogisAuthenticatedOff(HttpContext httpCont)
         {
-       
-
             User usr = await GetCurrentUserAsync(httpCont);
+
 
             var message = usr == null ? "" : usr.UserName;
 
             return message;
         }
 
-   
 
     }
 }

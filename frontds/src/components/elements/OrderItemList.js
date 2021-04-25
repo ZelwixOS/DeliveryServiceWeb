@@ -24,7 +24,7 @@ class OrderItemList extends Component {
         this.SentItem = this.SentItem.bind(this);
         this.CreateItem = this.CreateItem.bind(this);
         this.DeleteItem = this.DeleteItem.bind(this);
-        
+
         this.componentDidMount = this.componentDidMount.bind(this);
 
         this.onNameChange = this.onNameChange.bind(this);
@@ -39,6 +39,10 @@ class OrderItemList extends Component {
 
 
     componentDidMount() {
+        this.setState({
+            items: null,
+            loading: true
+        });
         const url = "http://localhost:5000/api/OrderItems/order/" + this.props.orderID;
         fetch(url, { method: 'GET' })
             .then(response => response.json())
@@ -65,14 +69,7 @@ class OrderItemList extends Component {
                 typeOfCargo_ID_FK: orderI.typeOfCargo_ID_FK
             })
         }
-        setTimeout(fetch(url, ordJSN) , 10)
-        
-        
-        this.setState({
-            items: null,
-            loading: true
-        })
-        this.componentDidMount();
+        fetch(url, ordJSN).then(this.componentDidMount())
     }
 
     DeleteItem(id) {
@@ -95,7 +92,7 @@ class OrderItemList extends Component {
     render() {
 
         return (
-            <Accordion>
+            <Accordion style={ this.props.type==="past" ? {background: "#DDD"}: {}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}>
                     <Typography>Список заказов</Typography>
@@ -108,42 +105,50 @@ class OrderItemList extends Component {
                                 ?
                                 <Typography>Загрузка</Typography>
                                 :
-                                this.state.items.map((orderIt, index) => { return (<OrderItem itemContent={orderIt} key={index} deleteF={this.DeleteItem} />) })
+                                this.state.items.map((orderIt, index) => { return (<OrderItem itemContent={orderIt} key={index} deleteF={this.DeleteItem} type={this.props.type} role={this.props.role} status = {this.props.status_ID_FK}/>) })
+                        }
+                        {
+                            this.props.status === 1 && this.props.role !== "courier"
+                                ?
+                                <React.Fragment>
+                                    <ListItem>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                required
+                                                label="Предмет"
+                                                fullWidth
+                                                onChange={this.onNameChange}
+                                            />
+                                        </Grid>
+                                    </ListItem>
+                                    <ListItem>
+                                        <Grid item xs={12} sm={5}>
+                                            <TextField
+                                                required
+                                                label="Ценность"
+                                                fullWidth
+                                                onChange={this.onPriceChange}
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={3}>
+                                            <TextField
+                                                required
+                                                label="Тип"
+                                                fullWidth
+                                                onChange={this.onTypeOfCargo_ID_FKChange}
+                                            />
+                                        </Grid>
+
+                                        <IconButton aria-label="Добавить" onClick={this.SentItem}>
+                                            <AddIcon style={{ fontSize: 35, color: "#3B14AF" }} />
+                                        </IconButton>
+                                    </ListItem>
+                                </React.Fragment>
+                                :
+                                <React.Fragment />
                         }
 
-                        <ListItem>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    label="Предмет"
-                                    fullWidth
-                                    onChange={this.onNameChange}
-                                />
-                            </Grid>
-                        </ListItem>
-                        <ListItem>
-                            <Grid item xs={12} sm={5}>
-                                <TextField
-                                    required
-                                    label="Ценность"
-                                    fullWidth
-                                    onChange={this.onPriceChange}
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={3}>
-                                <TextField
-                                    required
-                                    label="Тип"
-                                    fullWidth
-                                    onChange={this.onTypeOfCargo_ID_FKChange}
-                                />
-                            </Grid>
-
-                            <IconButton aria-label="Добавить" onClick={this.SentItem}>
-                                <AddIcon style={{ fontSize: 35, color: "#3B14AF" }} />
-                            </IconButton>
-                        </ListItem>
                     </List>
 
                 </AccordionDetails>

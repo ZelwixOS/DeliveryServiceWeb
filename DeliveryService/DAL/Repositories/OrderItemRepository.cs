@@ -19,7 +19,7 @@ namespace DAL.Repositories
 
         public List<OrderItem> GetList()
         {
-            return db.OrderItem.ToList();
+            return db.OrderItem.Include(i=> i.TypeOfCargo).ToList();
         }
 
         public OrderItem GetItem(int id)

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BLL.Interfaces
 {
     public interface IDbCrud
     {
-        List<OrderModel> GetAllOrders();
+        AllOrdersModel GetAllOrders(IAccountService serv, HttpContext httpContext);
         List<StatusModel> GetAllStatuses();
         List<CustomerModel> GetAllCustomers();
         List<TypeOfCargoModel> GetAllTypesOfCargo();
@@ -28,9 +29,10 @@ namespace BLL.Interfaces
         OrderItemModel GetOrderItem(int id);
         UserModel GetUser(string id);
 
-        int CreateOrder(OrderModel o);
+        int CreateOrder(OrderModel o, IAccountService serv, HttpContext httpContext);
         void UpdateOrder(OrderModel o);
         void DeleteOrder(int id);
+        void UpdateOrderStatus(int id);
 
         void CreateCustomer(CustomerModel c);
         void UpdateCustomer(CustomerModel c);

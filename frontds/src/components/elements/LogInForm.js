@@ -7,13 +7,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ForwardIcon from '@material-ui/icons/Forward';
 import Divider from '@material-ui/core/Divider';
+import axios from 'axios';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+axios.defaults.withCredentials = true
+const comUrl = "http://localhost:5000" 
+
 
 class LogInForm extends Component {
-
 
     constructor(props) {
         super(props);
@@ -50,36 +53,27 @@ class LogInForm extends Component {
 
 
     LogOut() {
-        const url = "http://localhost:5000/api/Account/LogOut/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'credentials' : 'include'
-            }
-        }
-        fetch(url, ordJSN);
+        const url =  comUrl + "/api/Account/LogOut/";
+        axios.post(
+            url, { withCredentials: true }
+        ).then( document.location.href = "/");
     };
 
+       
+
+
     Authorize(userInfo) {
-        const url = "http://localhost:5000/api/Account/LogIn/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'credentials' : 'include'
-            },
-            body: JSON.stringify({
-                userName: userInfo.userName,
-                password: userInfo.password,
-                rememberMe: userInfo.rememberMe
-            })
-        }
-        fetch(url, ordJSN)
-            .then(response => response.json())
-            .then((data) => this.ErrorNotifier(data));
+
+        const url = comUrl +  "/api/Account/LogIn/";
+        var value = { 
+         "userName": userInfo.userName,
+         "password": userInfo.password,
+         "rememberMe": userInfo.rememberMe
+         };
+        axios.post(
+            url, value, { withCredentials: true }
+        ).then((response) => 
+        this.ErrorNotifier(response.data));
     }
 
     ErrorNotifier(response) {
@@ -124,21 +118,15 @@ class LogInForm extends Component {
     }
 
     getCurrentUser() {
-        const url = "http://localhost:5000/api/Account/isAuthenticated/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'credentials' : 'include'
-            }
-        }
-        fetch(url, ordJSN).then(response => response.json())
-            .then(result => {
-                if (result.message.length > 0) {
-                    this.setState({ login: result.userName, isLogin: true })
-                }
-            });
+        const url = comUrl + "/api/Account/isAuthenticated/";
+
+        axios.post(
+            url, { withCredentials: true }
+        ).then(result => {
+                    if (result.data.message.length > 0) {
+                        this.setState({ login: result.data.message, isLogin: true })
+                    }
+                });
     }
 
 
@@ -153,9 +141,9 @@ class LogInForm extends Component {
                     this.state.isLogin
                         ?
                         <React.Fragment >
-                            {this.state.login}
+                            
                             <Button onClick={this.LogOut} variant="contained" color="secondary"  startIcon={<ExitToAppIcon />}>
-                                Выйти
+                                {this.state.login}
                             </Button>
                         </React.Fragment>
                         :

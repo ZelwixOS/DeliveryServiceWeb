@@ -60,15 +60,11 @@ export default function Navbar(props) {
 									<IconButton aria-label="Добавить" href={props.link}>
 										<AddIcon style={{ fontSize: 35, color: '#FFF' }} />
 									</IconButton>
-						
-
-											  <LogInForm/>
-
-
 								</Box>
 								:
 								<Typography variant="h6">{props.title}</Typography>
 						}
+						 <LogInForm/>
 					</Toolbar>
 				</AppBar>
 			</HideOnScroll>

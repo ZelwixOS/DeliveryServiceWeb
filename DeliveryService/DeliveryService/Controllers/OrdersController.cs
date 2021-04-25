@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using BLL;
 using BLL.Interfaces;
 using BLL.Models;
-using DAL;
 using DAL.Interfaces;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -22,15 +21,18 @@ namespace DeliveryService.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IDbCrud dbOp;
-        public OrdersController(IDbCrud dbCrud)
+        private readonly IAccountService accountService;
+
+        public OrdersController(IDbCrud dbCrud, IAccountService accountService)
         {
             dbOp = dbCrud;
+            this.accountService = accountService;
         }
 
         [HttpGet]
-        public IEnumerable<OrderModel> GetAll()
+        public AllOrdersModel GetAll()
         {
-            return dbOp.GetAllOrders();
+            return dbOp.GetAllOrders(accountService, HttpContext);
         }
 
         [HttpGet("{id}")]
@@ -45,7 +47,6 @@ namespace DeliveryService.Controllers
         }
 
 
-
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderModel order)
         {
@@ -53,9 +54,10 @@ namespace DeliveryService.Controllers
             {
                 return BadRequest(ModelState);
             }
-            await Task.Run(() => dbOp.CreateOrder(order));
+            await Task.Run(() => dbOp.CreateOrder(order, accountService, HttpContext));
             return CreatedAtAction("GetOrder", new { id = order.ID }, order);
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] OrderModel order)
@@ -70,7 +72,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "admin")]
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {

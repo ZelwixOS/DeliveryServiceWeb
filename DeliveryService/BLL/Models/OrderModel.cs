@@ -47,11 +47,15 @@ namespace BLL.Models
             AddNote = o.AddNote;
             Status_ID_FK = o.Status_ID_FK;
             Courier_ID_FK = o.Courier_ID_FK;
-            if (o.Customer!=null && o.Courier!=null)
-            {
+
+            if (o.Customer!=null)          
                 CustomerS = o.Customer.UserName;
+
+
+            if (o.Courier != null)
                 CourierS = o.Courier.UserName;
-            }
+
+
             OrderItem = new HashSet<OrderItemModel>();
             foreach (var oi in o.OrderItems)
                 OrderItem.Add(new OrderItemModel(oi));

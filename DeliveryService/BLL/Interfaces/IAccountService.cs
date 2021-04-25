@@ -1,4 +1,5 @@
 ﻿using BLL.Models;
+using DAL;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,9 @@ namespace BLL.Interfaces
         Task<(string, List<string>)> Login(LoginViewModel model);
         Task<string> LogOut();
         Task<string> LogisAuthenticatedOff(HttpContext httpCont);
+
+        public Task<User> GetCurrentUserAsync(HttpContext httpCont);
+        public Task<IList<string>> GetRole(HttpContext httpCont);
+
     }
 }

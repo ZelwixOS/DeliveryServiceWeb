@@ -22,6 +22,11 @@ namespace BLL.Services
                 await roleManager.CreateAsync(new
                 IdentityRole("admin"));
             }
+            if (await roleManager.FindByNameAsync("courier") == null)
+            {
+                await roleManager.CreateAsync(new
+                IdentityRole("courier"));
+            }
             if (await roleManager.FindByNameAsync("customer") == null)
             {
                 await roleManager.CreateAsync(new IdentityRole("customer"));
@@ -64,6 +69,28 @@ namespace BLL.Services
                     await userManager.AddToRoleAsync(cust, "customer");
                 }
             }
+
+            // Создание Курьера
+
+            string courEmail = "courier@mail.com";
+            string courUserName = "Courier";
+            string courPassword = "Aa123456!";
+            if (await userManager.FindByNameAsync(courEmail) == null)
+            {
+                User cour = new User
+                {
+                    Email = courEmail,
+                    UserName = courUserName
+
+                };
+                IdentityResult result = await
+               userManager.CreateAsync(cour, courPassword);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(cour, "courier");
+                }
+            }
+
         }
 
     }

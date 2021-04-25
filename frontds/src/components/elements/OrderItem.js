@@ -34,10 +34,15 @@ class OrderItem extends Component {
           </React.Fragment>
           :
           <ListItem >
-            <ListItemText primary={"Имя: " + orderIt.orderName + "; Ценность:" + orderIt.price + "; Тип: " + orderIt.typeOfCargo_ID_FK} />
+            <ListItemText primary={"Имя: " + orderIt.orderName + "; Ценность:" + orderIt.price + "; Тип: " + orderIt.typeOfCargoS} />
+            {
+              this.props.status === 1 && this.props.role!=="courier" &&  
             <IconButton aria-label="Добавить" onClick={this.onClick}>
-              <HighlightOffIcon style={{ fontSize: 35, color: "#3B14AF" }} />
+            <HighlightOffIcon style={{ fontSize: 35, color: "#3B14AF" }} />
             </IconButton>
+            }
+
+
           </ListItem>
         }
         <Divider />

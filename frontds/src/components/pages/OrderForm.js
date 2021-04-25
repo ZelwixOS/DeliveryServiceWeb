@@ -6,6 +6,12 @@ import Navbar from '../minmod/Navbar'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import SaveIcon from '@material-ui/icons/Save';
+import axios from 'axios';
+
+
+axios.defaults.withCredentials = true
+const comUrl = "http://localhost:5000" 
+
 
 const styles = (theme) => ({
     btnMenu: {
@@ -39,10 +45,7 @@ class OrderForm extends Component {
             adressDestination: "",
             receiverName: "",
             addNote: "",
-            delivery_ID_FK: "",
-            customer_ID_FK: "",
-            status_ID_FK: "",
-            courier_ID_FK: ""
+            delivery_ID_FK: ""
         };
 
         this.CreateOrder = this.CreateOrder.bind(this);
@@ -57,9 +60,7 @@ class OrderForm extends Component {
         this.onReceiverNameChange = this.onReceiverNameChange.bind(this);
         this.onAddNoteChange = this.onAddNoteChange.bind(this);
         this.onDelivery_ID_FKChange = this.onDelivery_ID_FKChange.bind(this);
-        this.onCustomer_ID_FKChange = this.onCustomer_ID_FKChange.bind(this);
-        this.onStatus_ID_FKChange = this.onStatus_ID_FKChange.bind(this);
-        this.onCourier_ID_FKChange = this.onCourier_ID_FKChange.bind(this);
+
     }
 
     onAdressOriginChange(e) { this.setState({ adressOrigin: e.target.value }); }
@@ -68,78 +69,57 @@ class OrderForm extends Component {
     onReceiverNameChange(e) { this.setState({ receiverName: e.target.value }); }
     onAddNoteChange(e) { this.setState({ addNote: e.target.value }); }
     onDelivery_ID_FKChange(e) { this.setState({ delivery_ID_FK: e.target.value }); }
-    onCustomer_ID_FKChange(e) { this.setState({ customer_ID_FK: e.target.value }); }
-    onStatus_ID_FKChange(e) { this.setState({ status_ID_FK: e.target.value }); }
-    onCourier_ID_FKChange(e) { this.setState({ courier_ID_FK: e.target.value }); }
 
 
     componentDidMount() {
-        const url = "http://localhost:5000/api/orders/" + this.props.orderID;
-            fetch(url, { method: 'GET' })
-                .then(response => response.json())
-                .then(result =>
-                    this.setState({
-                        order: result,
-                        loading: false,
-                        adressOrigin: result.adressOrigin,
-                        deadline: result.deadline,
-                        adressDestination: result.adressDestination,
-                        receiverName: result.receiverName,
-                        addNote: result.addNote,
-                        delivery_ID_FK: result.delivery_ID_FK,
-                        customer_ID_FK: result.customer_ID_FK,
-                        status_ID_FK: result.status_ID_FK,
-                        courier_ID_FK: result.courier_ID_FK
-                    }));
+        const url = comUrl+ "/api/orders/" + this.props.orderID;
+        fetch(url, { method: 'GET' })
+        .then(response => response.json())
+        .then(result =>
+            this.setState({
+                order: result,
+                loading: false,
+                adressOrigin: result.adressOrigin,
+                deadline: result.deadline,
+                adressDestination: result.adressDestination,
+                receiverName: result.receiverName,
+                addNote: result.addNote,
+                delivery_ID_FK: result.delivery_ID_FK,
+            }));
     }
 
 
 
     CreateOrder(orderO) {
-        const url = "http://localhost:5000/api/orders/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                adressOrigin: orderO.adressOrigin,
-                deadline: orderO.deadline,
-                adressDestination: orderO.adressDestination,
-                receiverName: orderO.receiverName,
-                addNote: orderO.addNote,
-                delivery_ID_FK: orderO.delivery_ID_FK,
-                customer_ID_FK: orderO.customer_ID_FK,
-                status_ID_FK: orderO.status_ID_FK,
-                courier_ID_FK: orderO.courier_ID_FK
-            })
-        }
-        fetch(url, ordJSN);
+        const url = comUrl+ "/api/orders/";
+
+        var value = { 
+            "adressOrigin": orderO.adressOrigin,
+            "deadline": orderO.deadline,
+            "adressDestination": orderO.adressDestination,
+            "receiverName": orderO.receiverName,
+            "addNote": orderO.addNote,
+            "delivery_ID_FK": orderO.delivery_ID_FK
+            };
+           axios.post(url, value, { withCredentials: true });
     }
 
     EditOrder(orderO) {
-        const url = "http://localhost:5000/api/orders/" + orderO.id;
-        var ordJSN = {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: orderO.id,
-                adressOrigin: orderO.adressOrigin,
-                deadline: orderO.deadline,
-                adressDestination: orderO.adressDestination,
-                receiverName: orderO.receiverName,
-                addNote: orderO.addNote,
-                delivery_ID_FK: orderO.delivery_ID_FK,
-                customer_ID_FK: orderO.customer_ID_FK,
-                status_ID_FK: orderO.status_ID_FK,
-                courier_ID_FK: orderO.courier_ID_FK,
-            })
-        }
-        fetch(url, ordJSN);
+        const url = comUrl+ "/api/orders/" + orderO.id;
+
+        var value = { 
+            "adressOrigin": orderO.adressOrigin,
+            "deadline": orderO.deadline,
+            "adressDestination": orderO.adressDestination,
+            "receiverName": orderO.receiverName,
+            "addNote": orderO.addNote,
+            "delivery_ID_FK": orderO.delivery_ID_FK
+            };
+            
+           axios.put(
+               url, value, { withCredentials: true }
+           );
+
     }
 
     SentOrder(e) {
@@ -164,27 +144,24 @@ class OrderForm extends Component {
         else
             orderDelivery_ID_FK = null;
 
-        var orderCustomer_ID_FK = this.state.customer_ID_FK;
-        var orderStatus_ID_FK = parseInt(this.state.status_ID_FK);
-        var orderCourier_ID_FK = this.state.courier_ID_FK;
 
 
-        if (!orderAdressOrigin || !orderDeadline || !orderAdressDestination || !orderReceiverName || !orderCustomer_ID_FK || orderStatus_ID_FK <= 0 || !orderCourier_ID_FK) {
+        if (!orderAdressOrigin || !orderDeadline || !orderAdressDestination || !orderReceiverName ) {
             return;
         }
         var formDeadline = new Date(orderDeadline);
         if (this.props.orderID === undefined)
-            this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK, customer_ID_FK: orderCustomer_ID_FK, status_ID_FK: orderStatus_ID_FK, courier_ID_FK: orderCourier_ID_FK });
+            this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK});
         else
-            this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK, customer_ID_FK: orderCustomer_ID_FK, status_ID_FK: orderStatus_ID_FK, courier_ID_FK: orderCourier_ID_FK });
+            this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK});
         document.location.href = "/";
     }
 
     render() {
         
-        var deadline, adressOrigin, adressDestination, receiverName, addNote, delivery_ID_FK, customer_ID_FK, status_ID_FK, courier_ID_FK;
+        var deadline, adressOrigin, adressDestination, receiverName, addNote, delivery_ID_FK;
         if (this.props.orderID === undefined || this.state.order === null) {
-            deadline = new Date(Date.now()).toISOString().split('T')[0]; adressOrigin = ""; adressDestination = ""; receiverName = ""; addNote = ""; delivery_ID_FK = ""; customer_ID_FK = ""; status_ID_FK = ""; courier_ID_FK = "";
+            deadline = new Date(Date.now()).toISOString().split('T')[0]; adressOrigin = ""; adressDestination = ""; receiverName = ""; addNote = ""; delivery_ID_FK = ""; 
         }
         else {
             deadline = this.state.order.deadline.toString().substring(0, 10);
@@ -192,9 +169,6 @@ class OrderForm extends Component {
             adressDestination = this.state.order.adressDestination;
             receiverName = this.state.order.receiverName;
             addNote = this.state.order.addNote;
-            customer_ID_FK = this.state.order.customer_ID_FK;
-            status_ID_FK = this.state.order.status_ID_FK.toString();
-            courier_ID_FK = this.state.order.courier_ID_FK;
             if (this.state.order.delivery_ID_FK !== null)
                 delivery_ID_FK = this.state.order.delivery_ID_FK.toString()
             else
@@ -295,38 +269,6 @@ class OrderForm extends Component {
                                                         />
                                                     </Grid>
 
-                                                    <Grid item xs={12} sm={6}>
-                                                        <TextField
-                                                            id="customer_ID_FK"
-                                                            required
-                                                            label="Код получателя"
-                                                            fullWidth
-                                                            defaultValue={customer_ID_FK}
-                                                            onChange={this.onCustomer_ID_FKChange}
-                                                        />
-                                                    </Grid>
-
-                                                    <Grid item xs={12} sm={6}>
-                                                        <TextField
-                                                            id="status_ID_FK"
-                                                            required
-                                                            label="Статус"
-                                                            fullWidth
-                                                            defaultValue={status_ID_FK}
-                                                            onChange={this.onStatus_ID_FKChange}
-                                                        />
-                                                    </Grid>
-
-                                                    <Grid item xs={12} sm={6}>
-                                                        <TextField
-                                                            id="courier_ID_FK"
-                                                            required
-                                                            label="Код курьера"
-                                                            fullWidth
-                                                            defaultValue={courier_ID_FK}
-                                                            onChange={this.onCourier_ID_FKChange}
-                                                        />
-                                                    </Grid>
                                                 </Grid>
                                                 <Button
                                                     variant="contained"

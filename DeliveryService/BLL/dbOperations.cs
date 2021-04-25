@@ -8,6 +8,7 @@ using DAL;
 using DAL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace BLL
 {
@@ -21,45 +22,109 @@ namespace BLL
         }
 
         #region Order
-        public List<OrderModel> GetAllOrders()
+        public AllOrdersModel GetAllOrders(IAccountService serv, HttpContext httpContext)
         {
-            return db.Orders.GetList().Select(i => new OrderModel(i)).ToList();
+            User usr = serv.GetCurrentUserAsync(httpContext).Result;
+            var med = serv.GetRole(httpContext);
+            string role = null;
+            if (med.Status != TaskStatus.Faulted)
+            {
+                role = med.Result.ToList().First();
+            }
+            AllOrdersModel allOrders = new AllOrdersModel();
+            switch (role)
+            {
+                case "customer": {
+                        allOrders.Role = "customer";
+                        var allUserOrders = db.Orders.GetList().Where(o => o.Customer_ID_FK == usr.Id);
+                        allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
+                        return allOrders; 
+                    } 
+                case "courier": {
+                        allOrders.Role = "courier";
+                        var allUserOrders = db.Orders.GetList().Where(o => o.Courier_ID_FK == usr.Id || o.Courier_ID_FK == null);
+                        allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2 && o.Courier_ID_FK != null).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Available = allUserOrders.Where(o => o.Courier_ID_FK == null).Select(i => new OrderModel(i)).ToList();
+                        return allOrders;
+                    } 
+                case "admin": {
+                        allOrders.Role = "admin";
+                        var allUserOrders = db.Orders.GetList();
+                        allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2 && o.Courier_ID_FK != null).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Available = allUserOrders.Where(o => o.Courier_ID_FK == null).Select(i => new OrderModel(i)).ToList();
+                        return allOrders;
+                    }
+                default: return  allOrders; 
+            }
         }
 
-        public int CreateOrder(OrderModel o)
+        public int CreateOrder(OrderModel o, IAccountService serv, HttpContext httpContext)
         {
-            db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = o.Customer_ID_FK, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date,  ReceiverName = o.ReceiverName, Status_ID_FK = o.Status_ID_FK });
-            Save();
-            int id = db.Orders.GetList().Where(i=>i.AddNote == o.AddNote&&i.AdressDestination == o.AdressDestination&&i.AdressOrigin == o.AdressOrigin&&i.Courier_ID_FK == o.Courier_ID_FK&&i.Customer_ID_FK == o.Customer_ID_FK&&i.Deadline == o.Deadline&&i.Delivery_ID_FK == o.Delivery_ID_FK&&i.ReceiverName == o.ReceiverName&&i.Status_ID_FK == o.Status_ID_FK).First().ID;
-            return id;
+            if (DateTime.Compare(o.Deadline, DateTime.Today)>0)
+            {
+                User usr = serv.GetCurrentUserAsync(httpContext).Result;
+
+                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.Id, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 1 });
+                Save();
+                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.Id && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 1).First().ID;
+                return id;
+            }
+            else
+                return 0;
         }
 
         public void UpdateOrder(OrderModel o)
         {
             Order ord = db.Orders.GetItem(o.ID);
-            ord.AddNote = o.AddNote;
-            ord.AdressDestination = o.AdressDestination;
-            ord.AdressOrigin = o.AdressOrigin;
-            ord.Courier_ID_FK = o.Courier_ID_FK;
-            ord.Customer_ID_FK = o.Customer_ID_FK;
-            ord.Deadline = o.Deadline;
-            ord.Delivery_ID_FK = o.Delivery_ID_FK;          
-            ord.ReceiverName = o.ReceiverName;
-            ord.Status_ID_FK = o.Status_ID_FK;
-            db.Orders.Update(ord);
-            Save();
+            if (DateTime.Compare(ord.Deadline, DateTime.Today) > 1)
+            {
+                ord.AddNote = o.AddNote;
+                ord.AdressDestination = o.AdressDestination;
+                ord.AdressOrigin = o.AdressOrigin;
+                ord.Courier_ID_FK = o.Courier_ID_FK;
+                ord.Customer_ID_FK = o.Customer_ID_FK;
+                ord.Deadline = o.Deadline;
+                ord.Delivery_ID_FK = o.Delivery_ID_FK;
+                ord.ReceiverName = o.ReceiverName;
+                ord.Status_ID_FK = o.Status_ID_FK;
+                db.Orders.Update(ord);
+                Save();
+            }
+            else
+                return;
+
+        }
+
+
+        public void UpdateOrderStatus(int id)
+        {
+            Order ord = db.Orders.GetItem(id);
+            if (ord != null)
+            {
+                ord.Status_ID_FK = 2;
+                db.Orders.Update(ord);
+                Save();
+            }
         }
 
         public void DeleteOrder(int id)
         {
             Order ord = db.Orders.GetItem(id);
-            if (ord!=null)
+            if (ord != null)
             {
-                var allOI = GetAllOrderItems();
-                foreach (var item in allOI)
-                    DeleteOrderItem(item.ID);
-                db.Orders.Delete(ord.ID);
-                Save();
+                if (DateTime.Compare(ord.Deadline, DateTime.Today) > 1)
+                {
+                    var allOI = GetAllOrderItems();
+                    foreach (var item in allOI)
+                        DeleteOrderItem(item.ID);
+                    db.Orders.Delete(ord.ID);
+                    Save();
+                }
+                else
+                    return;
             }
         }
 
@@ -79,7 +144,7 @@ namespace BLL
         #region Status
         public List<StatusModel> GetAllStatuses()
         {
-            return db.Statuses.GetList().Select(i=> new StatusModel(i)).ToList();
+            return db.Statuses.GetList().Select(i => new StatusModel(i)).ToList();
         }
 
         public void CreateStatus(StatusModel s)
@@ -127,7 +192,7 @@ namespace BLL
 
         public void CreateCustomer(CustomerModel c)
         {
-            db.Users.Create(new User() { Email = c.Email, PasswordHash=c.Password, UserName=c.UserName, Discount=c.Discount});
+            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName, Discount = c.Discount });
             Save();
         }
 
@@ -162,7 +227,7 @@ namespace BLL
 
         public void CreateCargoType(TypeOfCargoModel t)
         {
-            db.TypesOfCargo.Create(new TypeOfCargo() { TypeName=t.TypeName, Coefficient=t.Coefficient  });
+            db.TypesOfCargo.Create(new TypeOfCargo() { TypeName = t.TypeName, Coefficient = t.Coefficient });
             Save();
         }
 
@@ -208,9 +273,9 @@ namespace BLL
 
         public int CreateDelivery(DeliveryModel d)
         {
-            db.Deliveries.Create(new Delivery() { Courier_ID_FK = d.Courier_ID_FK, Date=d.Date, Distance=d.Distance, KmPrice=d.KmPrice });
+            db.Deliveries.Create(new Delivery() { Courier_ID_FK = d.Courier_ID_FK, Date = d.Date, Distance = d.Distance, KmPrice = d.KmPrice });
             Save();
-            int id = db.Deliveries.GetList().Where(i=>i.Courier_ID_FK == d.Courier_ID_FK&&i.Date == d.Date&&i.Distance == d.Distance&&i.KmPrice == d.KmPrice).First().ID;
+            int id = db.Deliveries.GetList().Where(i => i.Courier_ID_FK == d.Courier_ID_FK && i.Date == d.Date && i.Distance == d.Distance && i.KmPrice == d.KmPrice).First().ID;
             return id;
         }
 
@@ -221,7 +286,7 @@ namespace BLL
             dl.Date = d.Date;
             dl.Distance = d.Distance;
             dl.KmPrice = d.KmPrice;
-          
+
             db.Deliveries.Update(dl);
             Save();
         }
@@ -246,7 +311,7 @@ namespace BLL
 
         public void CreateCourier(CourierModel c)
         {
-            db.Users.Create(new User() {  Email=c.Email, PasswordHash=c.Password, UserName=c.UserName, PhoneNumber = c.PhoneNumber });
+            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName, PhoneNumber = c.PhoneNumber });
             Save();
         }
 
@@ -289,14 +354,14 @@ namespace BLL
         }
         public void CreateOrderItem(OrderItemModel c)
         {
-            db.OrderItems.Create(new OrderItem() { TypeOfCargo_ID_FK =c.TypeOfCargo_ID_FK, OrderName=c.OrderName, Price = c.Price, Order_ID_FK =c.Order_ID_FK });
+            db.OrderItems.Create(new OrderItem() { TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK, OrderName = c.OrderName, Price = c.Price, Order_ID_FK = c.Order_ID_FK });
             Save();
             var ord = db.Orders.GetItem(c.Order_ID_FK);
             var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
-            if (ord!=null)
+            if (ord != null)
             {
                 var cust = db.Users.GetItem(ord.Customer_ID_FK);
-                if (toc !=null && cust!=null)
+                if (toc != null && cust != null)
                 {
                     double dsc = 0;
                     if (cust.Discount != null)
@@ -306,13 +371,13 @@ namespace BLL
                     Save();
                 }
             }
-            
+
         }
 
         public void UpdateOrderItem(OrderItemModel c)
         {
             OrderItem oi = db.OrderItems.GetItem(c.ID);
-            if (oi!=null)
+            if (oi != null)
             {
                 oi.OrderName = c.OrderName;
                 oi.Order_ID_FK = c.Order_ID_FK;
@@ -336,7 +401,7 @@ namespace BLL
                 Save();
             }
 
-            
+
         }
         public void DeleteOrderItem(int id)
         {
@@ -376,7 +441,7 @@ namespace BLL
 
         public void CreateUser(UserModel c)
         {
-            db.Users.Create(new User() { Email=c.Email, PasswordHash=c.Password, UserName=c.UserName });
+            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName });
             Save();
         }
 
