@@ -81,6 +81,8 @@ namespace BLL
             Order ord = db.Orders.GetItem(o.ID);
             if (DateTime.Compare(ord.Deadline, DateTime.Today) > 1)
             {
+
+
                 ord.AddNote = o.AddNote;
                 ord.AdressDestination = o.AdressDestination;
                 ord.AdressOrigin = o.AdressOrigin;
@@ -99,12 +101,22 @@ namespace BLL
         }
 
 
-        public void UpdateOrderStatus(int id)
+        public void UpdateOrderStatus(int id, int status, IAccountService serv, HttpContext httpContext)
         {
             Order ord = db.Orders.GetItem(id);
             if (ord != null)
             {
-                ord.Status_ID_FK = 2;
+                User usr = serv.GetCurrentUserAsync(httpContext).Result;
+                var med = serv.GetRole(httpContext);
+                string role = null;
+                if (med.Status != TaskStatus.Faulted)
+                {
+                    role = med.Result.ToList().First();
+                }
+                if (role == "courier")
+                    ord.Courier_ID_FK = usr.Id;
+
+                ord.Status_ID_FK = status;
                 db.Orders.Update(ord);
                 Save();
             }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {}
+    "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {}
   },
   "projects": {
-    "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
+    "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+        "projectUniqueName": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+        "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-        "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
+        "outputPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-                "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+              "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
               }
             }
           }
@@ -76,18 +76,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+    "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+        "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-        "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
+        "outputPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -162,7 +162,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

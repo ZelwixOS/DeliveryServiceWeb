@@ -35,6 +35,21 @@ export default function OrderCard(props) {
     ).then((response) => DRInfoOrder(response));
   }
 
+  function Recieved(){
+    var url =comUrl + "/api/Recieved/"+ orderContent.id
+    axios.post(url, {withCredentials: true})
+  }
+
+  function Delivered(){
+    var url =comUrl + "/api/Delivered/"+ orderContent.id
+    axios.post(url, {withCredentials: true})
+  }
+
+  function Add(){
+    var url = comUrl + "/api/OneClick/"+orderContent.id;
+    axios.post(url, {withCredentials: true})
+  }
+
   function DRInfoOrder(resp) {
     var msg = "";
     if (resp.status === 401) {
@@ -145,21 +160,26 @@ export default function OrderCard(props) {
               ?
               <React.Fragment>
                 <Button size="small" href={"/orderForm/" + orderContent.id}> Редактировать </Button>
-                <Button size="small" onClick= {axios.post(comUrl + "/api/OneClick/Recieved/", {withCredentials: true})} > Получил </Button>
                 <Button size="small" onClick={DeleteOrder} >Удалить </Button>
               </React.Fragment>
               :
-              <React.Fragment />
+              orderContent.status_ID_FK === 3 || orderContent.status_ID_FK === 4
+              ?
+              <React.Fragment>
+                <Button size="small" onClick= {Recieved} > Получил </Button>
+              </React.Fragment>
+              :
+              <React.Fragment/>
             :
             role === "courier"
               ?
-              cardType === "active"
+              orderContent.status_ID_FK === 3
                 ?
-                <Button size="small" onClick= {axios.post(comUrl + "/api/OneClick/Delivered/" + orderContent.id, {withCredentials: true})}> Доставил </Button>
+                <Button size="small" onClick= {Delivered}> Доставил </Button>
                 :
                 cardType === "available"
                   ?
-                  <Button size="small" onClick= {axios.post(comUrl + "/api/OneClick/Add/" + orderContent.id, {withCredentials: true})}> Забронировать </Button>
+                  <Button size="small" onClick= {Add}> Забронировать </Button>
                   :
                   <React.Fragment />
               :

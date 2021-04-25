@@ -52,7 +52,7 @@ export default function Navbar(props) {
 				<AppBar>
 					<Toolbar>
 						{
-							props.link !== undefined
+							props.link !== undefined && props.role!=="courier"
 								?
 								<Box>
 								

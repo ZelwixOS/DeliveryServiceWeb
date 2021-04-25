@@ -6620,11 +6620,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-      "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
+      "outputPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6699,7 +6699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

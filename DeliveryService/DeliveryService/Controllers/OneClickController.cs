@@ -11,73 +11,51 @@ using System.Threading.Tasks;
 namespace DeliveryService.Controllers
 {
     [EnableCors("SUPolicy")]
-    [Produces("application/json")]
+    [ApiController]
     public class OneClickController : ControllerBase
     {
         private readonly IDbCrud dbOp;
+        private readonly IAccountService accountService;
 
-        public OneClickController(IDbCrud dbCrud)
+        public OneClickController(IDbCrud dbCrud, IAccountService accountService)
         {
             dbOp = dbCrud;
+            this.accountService = accountService;
         }
 
-        [Route("api/OneClick/Add")]
-        [HttpPost("{id}")]
-        public async Task<IActionResult> Add([FromRoute] int id)
+        [Route("api/Add/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Add(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            OrderModel o = dbOp.GetOrder(id);
-            if (o != null)
-            {
-                if (o.Status_ID_FK == 1)
-                {
-                    o.Status_ID_FK = 3;
-                    await Task.Run(() => dbOp.UpdateOrder(o));
-                }
-            }
+            await Task.Run(() => dbOp.UpdateOrderStatus(id, 3, accountService, HttpContext));
             return NoContent();
         }
-        [Route("api/OneClick/Recieved")]
-        [HttpPost("{id}")]
-        public async Task<IActionResult> Recieved([FromRoute] int id)
+
+        [Route("api/Recieved/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Recieved(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            OrderModel o = dbOp.GetOrder(id);
-            if (o != null)
-            {
-                if (o.Status_ID_FK != 1)
-                {
-                    o.Status_ID_FK = 2;
-                    await Task.Run(() => dbOp.UpdateOrder(o));
-                }
-            }
+            await Task.Run(() => dbOp.UpdateOrderStatus(id, 2, accountService, HttpContext));
 
             return NoContent();
         }
-        [Route("api/OneClick/Delivered")]
-        [HttpPost("{id}")]
-        public async Task<IActionResult> Delivered([FromRoute] int id)
+        [Route("api/Delivered/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Delivered(int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            OrderModel o = dbOp.GetOrder(id);
-            if (o != null)
-            {
-                if (o.Status_ID_FK == 3)
-                {
-                    o.Status_ID_FK = 4;
-                    await Task.Run(() => dbOp.UpdateOrder(o));
-                }
-
-            }
+            await Task.Run(() => dbOp.UpdateOrderStatus(id, 4, accountService, HttpContext));
             return NoContent();
         }
 

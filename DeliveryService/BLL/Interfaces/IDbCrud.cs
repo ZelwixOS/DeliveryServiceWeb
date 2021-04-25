@@ -32,7 +32,7 @@ namespace BLL.Interfaces
         int CreateOrder(OrderModel o, IAccountService serv, HttpContext httpContext);
         void UpdateOrder(OrderModel o);
         void DeleteOrder(int id);
-        void UpdateOrderStatus(int id);
+        void UpdateOrderStatus(int id, int status, IAccountService accountService, HttpContext httpContext);
 
         void CreateCustomer(CustomerModel c);
         void UpdateCustomer(CustomerModel c);

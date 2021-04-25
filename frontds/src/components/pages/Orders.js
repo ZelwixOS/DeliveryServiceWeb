@@ -53,7 +53,7 @@ class Orders extends Component {
         return (
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <Navbar title={"Заказы"} link={"/orderForm/"}>  </Navbar>
+                <Navbar title={"Заказы"} link={"/orderForm/"} role={this.state.role}>  </Navbar>
 
                 <Box className={this.props.classes.paper}>
                     <Grid container spacing={1}>
