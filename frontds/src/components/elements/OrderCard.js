@@ -37,17 +37,17 @@ export default function OrderCard(props) {
 
   function Recieved(){
     var url =comUrl + "/api/Recieved/"+ orderContent.id
-    axios.post(url, {withCredentials: true})
+    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
   }
 
   function Delivered(){
     var url =comUrl + "/api/Delivered/"+ orderContent.id
-    axios.post(url, {withCredentials: true})
+    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
   }
 
   function Add(){
     var url = comUrl + "/api/OneClick/"+orderContent.id;
-    axios.post(url, {withCredentials: true})
+    axios.post(url, {withCredentials: true});
   }
 
   function DRInfoOrder(resp) {

@@ -44,8 +44,7 @@ class OrderForm extends Component {
             deadline: new Date(Date.now()).toISOString().split('T')[0],
             adressDestination: "",
             receiverName: "",
-            addNote: "",
-            delivery_ID_FK: ""
+            addNote: ""
         };
 
         this.CreateOrder = this.CreateOrder.bind(this);
@@ -59,7 +58,6 @@ class OrderForm extends Component {
         this.onAdressDestinationChange = this.onAdressDestinationChange.bind(this);
         this.onReceiverNameChange = this.onReceiverNameChange.bind(this);
         this.onAddNoteChange = this.onAddNoteChange.bind(this);
-        this.onDelivery_ID_FKChange = this.onDelivery_ID_FKChange.bind(this);
 
     }
 
@@ -68,7 +66,6 @@ class OrderForm extends Component {
     onAdressDestinationChange(e) { this.setState({ adressDestination: e.target.value }); }
     onReceiverNameChange(e) { this.setState({ receiverName: e.target.value }); }
     onAddNoteChange(e) { this.setState({ addNote: e.target.value }); }
-    onDelivery_ID_FKChange(e) { this.setState({ delivery_ID_FK: e.target.value }); }
 
 
     componentDidMount() {
@@ -83,8 +80,7 @@ class OrderForm extends Component {
                 deadline: result.deadline,
                 adressDestination: result.adressDestination,
                 receiverName: result.receiverName,
-                addNote: result.addNote,
-                delivery_ID_FK: result.delivery_ID_FK,
+                addNote: result.addNote
             }));
     }
 
@@ -99,7 +95,7 @@ class OrderForm extends Component {
             "adressDestination": orderO.adressDestination,
             "receiverName": orderO.receiverName,
             "addNote": orderO.addNote,
-            "delivery_ID_FK": orderO.delivery_ID_FK
+ 
             };
            axios.post(url, value, { withCredentials: true });
     }
@@ -112,8 +108,7 @@ class OrderForm extends Component {
             "deadline": orderO.deadline,
             "adressDestination": orderO.adressDestination,
             "receiverName": orderO.receiverName,
-            "addNote": orderO.addNote,
-            "delivery_ID_FK": orderO.delivery_ID_FK
+            "addNote": orderO.addNote
             };
             
            axios.put(
@@ -138,11 +133,7 @@ class OrderForm extends Component {
             orderAddNote = this.state.addNote.trim();
         else
             orderAddNote = null;
-        var orderDelivery_ID_FK;
-        if (this.state.delivery_ID_FK !== null && this.state.delivery_ID_FK!==undefined)
-            orderDelivery_ID_FK = parseInt(this.state.delivery_ID_FK);
-        else
-            orderDelivery_ID_FK = null;
+
 
 
 
@@ -151,17 +142,17 @@ class OrderForm extends Component {
         }
         var formDeadline = new Date(orderDeadline);
         if (this.props.orderID === undefined)
-            this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK});
+            this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote});
         else
-            this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote, delivery_ID_FK: orderDelivery_ID_FK});
+            this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote});
         document.location.href = "/";
     }
 
     render() {
         
-        var deadline, adressOrigin, adressDestination, receiverName, addNote, delivery_ID_FK;
+        var deadline, adressOrigin, adressDestination, receiverName, addNote;
         if (this.props.orderID === undefined || this.state.order === null) {
-            deadline = new Date(Date.now()).toISOString().split('T')[0]; adressOrigin = ""; adressDestination = ""; receiverName = ""; addNote = ""; delivery_ID_FK = ""; 
+            deadline = new Date(Date.now()).toISOString().split('T')[0]; adressOrigin = ""; adressDestination = ""; receiverName = ""; addNote = ""; 
         }
         else {
             deadline = this.state.order.deadline.toString().substring(0, 10);
@@ -169,10 +160,6 @@ class OrderForm extends Component {
             adressDestination = this.state.order.adressDestination;
             receiverName = this.state.order.receiverName;
             addNote = this.state.order.addNote;
-            if (this.state.order.delivery_ID_FK !== null)
-                delivery_ID_FK = this.state.order.delivery_ID_FK.toString()
-            else
-                delivery_ID_FK = ""
 
 
         }
@@ -259,15 +246,6 @@ class OrderForm extends Component {
                                                         />
                                                     </Grid>
 
-                                                    <Grid item xs={12} sm={6}>
-                                                        <TextField
-                                                            id="delivery_ID_FK"
-                                                            label="Код доставки"
-                                                            fullWidth
-                                                            defaultValue={delivery_ID_FK}
-                                                            onChange={this.onDelivery_ID_FKChange}
-                                                        />
-                                                    </Grid>
 
                                                 </Grid>
                                                 <Button

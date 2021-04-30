@@ -105,7 +105,7 @@ class OrderItemList extends Component {
                                 ?
                                 <Typography>Загрузка</Typography>
                                 :
-                                this.state.items.map((orderIt, index) => { return (<OrderItem itemContent={orderIt} key={index} deleteF={this.DeleteItem} type={this.props.type} role={this.props.role} status = {this.props.status_ID_FK}/>) })
+                                this.state.items.map((orderIt, index) => { return (<OrderItem itemContent={orderIt} key={index} deleteF={this.DeleteItem} type={this.props.type} role={this.props.role} status = {this.props.status}/>) })
                         }
                         {
                             this.props.status === 1 && this.props.role !== "courier"
