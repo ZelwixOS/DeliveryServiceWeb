@@ -6723,11 +6723,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
+      "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6744,8 +6744,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+            "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+              "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
             }
           }
         }
@@ -6792,7 +6792,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

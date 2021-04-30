@@ -46,8 +46,8 @@ export default function OrderCard(props) {
   }
 
   function Add(){
-    var url = comUrl + "/api/OneClick/"+orderContent.id;
-    axios.post(url, {withCredentials: true});
+    var url = comUrl + "/api/Add/"+orderContent.id;
+    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
   }
 
   function DRInfoOrder(resp) {
