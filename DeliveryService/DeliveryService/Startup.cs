@@ -41,7 +41,7 @@ namespace DeliveryService
                 options.AddPolicy(name: "SUPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000", "http://192.168.1.47:3000/")
+                        builder.WithOrigins("http://localhost:3000")
                                 .WithMethods("PUT", "DELETE", "GET", "POST")
                                 .AllowAnyHeader()
                                 .AllowCredentials();

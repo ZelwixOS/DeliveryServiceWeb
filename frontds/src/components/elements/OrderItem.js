@@ -37,7 +37,7 @@ class OrderItem extends Component {
             <ListItemText primary={"Имя: " + orderIt.orderName + "; Ценность:" + orderIt.price + "; Тип: " + orderIt.typeOfCargoS} />
             {
               this.props.status === 1 && this.props.role!=="courier" &&  
-            <IconButton aria-label="Добавить" onClick={this.onClick}>
+            <IconButton aria-label="Удалить" onClick={this.onClick}>
             <HighlightOffIcon style={{ fontSize: 35, color: "#3B14AF" }} />
             </IconButton>
             }

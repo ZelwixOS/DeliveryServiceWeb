@@ -79,7 +79,7 @@ namespace BLL
         public void UpdateOrder(OrderModel o)
         {
             Order ord = db.Orders.GetItem(o.ID);
-            if (DateTime.Compare(ord.Deadline, DateTime.Today) > 1)
+            if (DateTime.Compare(ord.Deadline, DateTime.Today) > 0)
             {
 
 
@@ -127,7 +127,7 @@ namespace BLL
             Order ord = db.Orders.GetItem(id);
             if (ord != null)
             {
-                if (DateTime.Compare(ord.Deadline, DateTime.Today) > 1)
+                if (DateTime.Compare(ord.Deadline, DateTime.Today) > 0)
                 {
                     var allOI = GetAllOrderItems();
                     foreach (var item in allOI)
@@ -407,7 +407,7 @@ namespace BLL
                         double dsc = 0;
                         if (cust.Discount != null)
                             dsc = (double)cust.Discount;
-                        ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - dsc);
+                        ord.Cost = ord.Cost + c.Price * toc.Coefficient * (100 - dsc) / 10000.0;
                     }
                 }
                 Save();
@@ -430,7 +430,7 @@ namespace BLL
                         double dsc = 0;
                         if (cust.Discount != null)
                             dsc = (double)cust.Discount;
-                        ord.Cost = ord.Cost - cr.Price * toc.Coefficient / 100.0 * (100 - dsc);
+                        ord.Cost = ord.Cost - cr.Price * toc.Coefficient  * (100 - dsc) / 10000.0;
                     }
                 }
                 db.OrderItems.Delete(cr.ID);

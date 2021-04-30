@@ -32,6 +32,7 @@ namespace DeliveryService.Controllers
                 return BadRequest(ModelState);
             }
             await Task.Run(() => dbOp.UpdateOrderStatus(id, 3, accountService, HttpContext));
+
             return NoContent();
         }
 
