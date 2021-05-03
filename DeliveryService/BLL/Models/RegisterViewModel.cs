@@ -24,5 +24,12 @@ namespace BLL.Models
         [DataType(DataType.Password)]
         [Display(Name = "Подтвердить пароль")]
         public string PasswordConfirm { get; set; }
+        [Display(Name = "Номер телефона")]
+        public string PhoneNumber { get; set; }
+        [Display(Name = "Имя")]
+        public string FirstName { get; set; }
+        [Display(Name = "Фамилия")]
+        public string SecondName { get; set; }
+
     }
 }

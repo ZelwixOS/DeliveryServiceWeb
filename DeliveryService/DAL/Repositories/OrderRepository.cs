@@ -26,7 +26,8 @@ namespace DAL.Repositories
             if (item != null)
             {
                 item.Status = db.Status.Find(item.Status_ID_FK);
-                item.ReceiverName = db.User.Find(item.Customer_ID_FK).UserName;
+                item.Customer = db.User.Find(item.Customer_ID_FK);
+                item.Courier = db.User.Find(item.Courier_ID_FK);
                 item.OrderItems = db.OrderItem.Where(i => i.Order_ID_FK == id).ToList();
                 foreach(var oi in item.OrderItems)
                 {

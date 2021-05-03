@@ -18,6 +18,7 @@ namespace DeliveryService.Controllers
     [EnableCors("SUPolicy")]
     [Route("api/[controller]")]
     [ApiController]
+
     public class OrdersController : ControllerBase
     {
         private readonly IDbCrud dbOp;
@@ -30,9 +31,10 @@ namespace DeliveryService.Controllers
         }
 
         [HttpGet]
-        public AllOrdersModel GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return dbOp.GetAllOrders(accountService, HttpContext);
+            (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
+            return Ok(await Task.Run(() => dbOp.GetAllOrders(role, usr)));
         }
 
         [HttpGet("{id}")]
@@ -54,7 +56,8 @@ namespace DeliveryService.Controllers
             {
                 return BadRequest(ModelState);
             }
-            await Task.Run(() => dbOp.CreateOrder(order, accountService, HttpContext));
+            (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
+            await Task.Run(() => dbOp.CreateOrder(order, role, usr));
             return CreatedAtAction("GetOrder", new { id = order.ID }, order);
         }
 

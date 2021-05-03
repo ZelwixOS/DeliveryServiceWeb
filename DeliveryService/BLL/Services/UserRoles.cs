@@ -40,7 +40,9 @@ namespace BLL.Services
                 User admin = new User
                 {
                     Email = adminEmail,
-                    UserName = adminUserName
+                    UserName = adminUserName,
+                    FirstName = "Главный",
+                    SecondName = "Администратор"
                 };
                 IdentityResult result = await
                userManager.CreateAsync(admin, adminPassword);
@@ -59,8 +61,9 @@ namespace BLL.Services
                 User cust = new User
                 {
                     Email = custEmail,
-                    UserName = custUserName
-
+                    UserName = custUserName,
+                    FirstName = "Иван",
+                    SecondName = "Иванов"
                 };
                 IdentityResult result = await
                userManager.CreateAsync(cust, custPassword);
@@ -80,7 +83,10 @@ namespace BLL.Services
                 User cour = new User
                 {
                     Email = courEmail,
-                    UserName = courUserName
+                    UserName = courUserName,
+                    FirstName = "Пётр",
+                    SecondName = "Петров",
+                    PhoneNumber = "89807352100"
 
                 };
                 IdentityResult result = await

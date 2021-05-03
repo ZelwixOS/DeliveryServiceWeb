@@ -21,29 +21,52 @@ namespace BLL
             db = repos;
         }
 
-        #region Order
-        public AllOrdersModel GetAllOrders(IAccountService serv, HttpContext httpContext)
+        public (string, UserModel) GetRole(IAccountService serv, HttpContext httpContext)
         {
             User usr = serv.GetCurrentUserAsync(httpContext).Result;
+            UserModel usrM = null;
+            if (usr!=null)
+                usrM = new UserModel(usr);
             var med = serv.GetRole(httpContext);
             string role = null;
             if (med.Status != TaskStatus.Faulted)
             {
                 role = med.Result.ToList().First();
             }
+            return (role, usrM);
+        }
+
+        public UsersByRole GetUsersByRole(IAccountService serv)
+        {
+            UsersByRole ubr = new UsersByRole();
+
+            var cour = serv.GetByRole("courier").Result;
+                foreach (User c in cour)
+                    ubr.Couriers.Add(new UserModel(c));
+
+            var cust = serv.GetByRole("customer").Result;
+            foreach (User c in cust)
+                ubr.Customers.Add(new UserModel(c));
+
+            return ubr;
+        }
+
+        #region Order
+        public AllOrdersModel GetAllOrders(string role, UserModel usr)
+        {
             AllOrdersModel allOrders = new AllOrdersModel();
             switch (role)
             {
                 case "customer": {
                         allOrders.Role = "customer";
-                        var allUserOrders = db.Orders.GetList().Where(o => o.Customer_ID_FK == usr.Id);
+                        var allUserOrders = db.Orders.GetList().Where(o => o.Customer_ID_FK == usr.ID);
                         allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2).Select(i => new OrderModel(i)).ToList();
                         allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
                         return allOrders; 
                     } 
                 case "courier": {
                         allOrders.Role = "courier";
-                        var allUserOrders = db.Orders.GetList().Where(o => o.Courier_ID_FK == usr.Id || o.Courier_ID_FK == null);
+                        var allUserOrders = db.Orders.GetList().Where(o => o.Courier_ID_FK == usr.ID || o.Courier_ID_FK == null);
                         allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2 && o.Courier_ID_FK != null).Select(i => new OrderModel(i)).ToList();
                         allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
                         allOrders.Available = allUserOrders.Where(o => o.Courier_ID_FK == null && o.Status_ID_FK == 1).Select(i => new OrderModel(i)).ToList();
@@ -61,15 +84,13 @@ namespace BLL
             }
         }
 
-        public int CreateOrder(OrderModel o, IAccountService serv, HttpContext httpContext)
+        public int CreateOrder(OrderModel o, string role, UserModel usr)
         {
-            if (DateTime.Compare(o.Deadline, DateTime.Today)>0)
+            if (DateTime.Compare(o.Deadline, DateTime.Today)>0 && role == "customer")
             {
-                User usr = serv.GetCurrentUserAsync(httpContext).Result;
-
-                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.Id, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
+                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.ID, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
                 Save();
-                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.Id && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 5).First().ID;
+                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.ID && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 5).First().ID;
                 return id;
             }
             else
@@ -99,20 +120,13 @@ namespace BLL
         }
 
 
-        public void UpdateOrderStatus(int id, int status, IAccountService serv, HttpContext httpContext)
+        public void UpdateOrderStatus(int id, int status, string role, UserModel usr)
         {
             Order ord = db.Orders.GetItem(id);
             if (ord != null)
             {
-                User usr = serv.GetCurrentUserAsync(httpContext).Result;
-                var med = serv.GetRole(httpContext);
-                string role = null;
-                if (med.Status != TaskStatus.Faulted)
-                {
-                    role = med.Result.ToList().First();
-                }
                 if (role == "courier")
-                    ord.Courier_ID_FK = usr.Id;
+                    ord.Courier_ID_FK = usr.ID;
 
                 ord.Status_ID_FK = status;
                 db.Orders.Update(ord);
@@ -186,46 +200,6 @@ namespace BLL
             StatusModel s = new StatusModel(db.Statuses.GetItem(id));
             return s;
         }
-        #endregion
-
-        #region Customer
-        public List<CustomerModel> GetAllCustomers()
-        {
-            return db.Users.GetList().Select(i => new CustomerModel(i)).ToList();
-        }
-
-        public CustomerModel GetClient(string id)
-        {
-            CustomerModel cl = new CustomerModel(db.Users.GetItem(id));
-            return cl;
-        }
-
-        public void CreateCustomer(CustomerModel c)
-        {
-            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName, Discount = c.Discount });
-            Save();
-        }
-
-        public void UpdateCustomer(CustomerModel c)
-        {
-            User cl = db.Users.GetItem(c.ID);
-            cl.Discount = c.Discount;
-            cl.Email = c.Email;
-            cl.PasswordHash = c.Password;
-            cl.UserName = c.UserName;
-            db.Users.Update(cl);
-            Save();
-        }
-        public void DeleteCustomer(string id)
-        {
-            User cl = db.Users.GetItem(id);
-            if (cl != null)
-            {
-                db.Users.Delete(cl.Id);
-                Save();
-            }
-        }
-
         #endregion
 
         #region TypeOfCargo
@@ -310,48 +284,6 @@ namespace BLL
             }
         }
         #endregion
-
-
-        #region Courier
-
-        public List<CourierModel> GetAllCouriers()
-        {
-            return db.Users.GetList().Select(i => new CourierModel(i)).ToList();
-        }
-
-        public void CreateCourier(CourierModel c)
-        {
-            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName, PhoneNumber = c.PhoneNumber });
-            Save();
-        }
-
-        public void UpdateCourier(CourierModel c)
-        {
-            User cr = db.Users.GetItem(c.ID);
-            cr.Email = c.Email;
-            cr.PasswordHash = c.Password;
-            cr.UserName = c.UserName;
-            cr.PhoneNumber = c.PhoneNumber;
-            db.Users.Update(cr);
-            Save();
-        }
-        public void DeleteCourier(string id)
-        {
-            User cr = db.Users.GetItem(id);
-            if (cr != null)
-            {
-                db.Users.Delete(cr.Id);
-                Save();
-            }
-        }
-
-        public CourierModel GetCourier(string id)
-        {
-            CourierModel dv = new CourierModel(db.Users.GetItem(id));
-            return dv;
-        }
-        #endregion
-
 
         #region OrderItem
         public List<OrderItemModel> GetAllOrderItems()
@@ -452,6 +384,7 @@ namespace BLL
         #region User
         public List<UserModel> GetAllUsers()
         {
+
             return db.Users.GetList().Select(i => new UserModel(i)).ToList();
         }
 

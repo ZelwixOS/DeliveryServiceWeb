@@ -9,38 +9,29 @@ namespace BLL.Interfaces
 {
     public interface IDbCrud
     {
-        AllOrdersModel GetAllOrders(IAccountService serv, HttpContext httpContext);
+        (string, UserModel) GetRole(IAccountService serv, HttpContext httpContext);
+        UsersByRole GetUsersByRole(IAccountService serv);
+
+        AllOrdersModel GetAllOrders(string role, UserModel usr);
         List<StatusModel> GetAllStatuses();
-        List<CustomerModel> GetAllCustomers();
         List<TypeOfCargoModel> GetAllTypesOfCargo();
         List<DeliveryModel> GetAllDeliveries();
-        List<CourierModel> GetAllCouriers();
         List<UserModel> GetAllUsers();
         List<OrderItemModel> GetAllOrderItems();
         List<OrderItemModel> GetOrderItems(int id);
 
 
-        CustomerModel GetClient(string id);
         TypeOfCargoModel GetTypeOfCargo(int id);
         OrderModel GetOrder(int id);
         StatusModel GetStatus(int id);
         DeliveryModel GetDelivery(int id);
-        CourierModel GetCourier(string id);
         OrderItemModel GetOrderItem(int id);
         UserModel GetUser(string id);
 
-        int CreateOrder(OrderModel o, IAccountService serv, HttpContext httpContext);
+        int CreateOrder(OrderModel o, string role, UserModel usr);
         void UpdateOrder(OrderModel o);
         void DeleteOrder(int id);
-        void UpdateOrderStatus(int id, int status, IAccountService accountService, HttpContext httpContext);
-
-        void CreateCustomer(CustomerModel c);
-        void UpdateCustomer(CustomerModel c);
-        void DeleteCustomer(string id);
-
-        void CreateCourier(CourierModel c);
-        void UpdateCourier(CourierModel c);
-        void DeleteCourier(string id);
+        void UpdateOrderStatus(int id, int status, string role, UserModel usr);
 
         void CreateCargoType(TypeOfCargoModel t);
         void UpdateCargoType(TypeOfCargoModel t);

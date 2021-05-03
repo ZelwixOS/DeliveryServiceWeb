@@ -152,7 +152,7 @@ export default function OrderCard(props) {
 
 
           <ListItem >
-            <ListItemText primary={"Получатель: " + orderContent.customerS} />
+            <ListItemText primary={"Заказчик: " + orderContent.customerS} />
           </ListItem>
           <Divider />
           <ListItem >

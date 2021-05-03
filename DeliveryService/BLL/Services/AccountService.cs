@@ -50,7 +50,9 @@ namespace BLL.Services
             User user = new User
             {
                 Email = model.Email,
-                UserName = model.UserName
+                UserName = model.UserName,
+                FirstName = model.FirstName,
+                SecondName = model.SecondName
             };
             // Добавление нового пользователя
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -75,6 +77,40 @@ namespace BLL.Services
             }
         }
 
+        public async Task<(string, List<string>)> RegisterCourier(RegisterViewModel model)
+        {
+            User user = new User
+            {
+                Email = model.Email,
+                UserName = model.UserName,
+                PhoneNumber = model.PhoneNumber,
+                FirstName = model.FirstName,
+                SecondName = model.SecondName
+            };
+            // Добавление нового курьера
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "courier");
+
+                await _signInManager.SignInAsync(user, false);
+
+                var msg = "Добавлен новый курьер: " + user.UserName;
+
+                return (msg, null);
+            }
+            else
+            {
+                List<string> errorList = new List<string>();
+                foreach (var error in result.Errors)
+                {
+                    errorList.Add(error.Description);
+                }
+                return ("Ошибка. Курьер не был добавлен.", errorList);
+            }
+        }
+
+
         public Task<User> GetCurrentUserAsync(HttpContext httpCont) => _userManager.GetUserAsync(httpCont.User);
 
         public Task<IList<string>> GetRole(HttpContext httpCont)
@@ -83,6 +119,10 @@ namespace BLL.Services
             return _userManager.GetRolesAsync(usr.Result);
         }
 
+        public Task<IList<User>> GetByRole(string role)
+        {
+            return _userManager.GetUsersInRoleAsync(role);
+        }
 
         public async Task<string> LogisAuthenticatedOff(HttpContext httpCont)
         {

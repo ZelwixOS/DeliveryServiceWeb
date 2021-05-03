@@ -180,9 +180,7 @@ class LogInForm extends Component {
                                 onChange={this.onPasswordChange}
                             />
                         </Grid>
-                        <FormControlLabel
-                            control={<Checkbox checked={this.state.rememberMe} onChange={this.handleChange} name="checkedA" />}
-                            label="Запомнить меня" />
+                        <FormControlLabel control={<Checkbox checked={this.state.rememberMe} onChange={this.handleChange} name="checkedA" />} label="Запомнить меня" />
 
                     </DialogContent>
                     <DialogActions>

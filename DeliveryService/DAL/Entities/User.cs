@@ -12,7 +12,8 @@ namespace DAL
             Deliveries = new HashSet<Delivery>();
         }
 
-
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
         public double? Discount { get; set; }
 
         public virtual ICollection<Order> MyOrders { get; set; }

@@ -48,12 +48,12 @@ namespace BLL.Models
             Status_ID_FK = o.Status_ID_FK;
             Courier_ID_FK = o.Courier_ID_FK;
 
-            if (o.Customer!=null)          
-                CustomerS = o.Customer.UserName;
+            if (o.Customer != null)
+                CustomerS = o.Customer.UserName + " (" + o.Customer.SecondName + " " + o.Customer.FirstName + ")";
 
 
             if (o.Courier != null)
-                CourierS = o.Courier.UserName;
+                CourierS = o.Courier.UserName + " ("+ o.Courier.SecondName + " " + o.Courier.FirstName + ")";
 
 
             OrderItem = new HashSet<OrderItemModel>();

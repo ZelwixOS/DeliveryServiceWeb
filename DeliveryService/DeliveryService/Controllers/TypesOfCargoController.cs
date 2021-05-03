@@ -10,12 +10,14 @@ using BLL.Models;
 using DAL;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DeliveryService.Controllers
 {
     [EnableCors("SUPolicy")]
     [Route("api/[controller]")]
     [ApiController]
+
     public class TypesOfCargoController : ControllerBase
     {
 
@@ -31,40 +33,43 @@ namespace DeliveryService.Controllers
             return dbOp.GetAllTypesOfCargo();
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetOrder([FromRoute] int id)
+        public async Task<IActionResult> Get([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var typeOfCargo = dbOp.GetTypeOfCargo(id);
+            var typeOfCargo = await Task.Run(() => dbOp.GetTypeOfCargo(id));
             return Ok(typeOfCargo);
         }
 
 
 
         [HttpPost]
+     //   [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromBody] TypeOfCargoModel typeOfCargo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            dbOp.CreateCargoType(typeOfCargo);
+           await Task.Run(() => dbOp.CreateCargoType(typeOfCargo));
             return CreatedAtAction("GetOrder", new { id = typeOfCargo.ID }, typeOfCargo);
         }
 
         [HttpPut]
+     //   [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromBody] TypeOfCargoModel typeOfCargo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            dbOp.UpdateCargoType(typeOfCargo);
+            await Task.Run(() =>  dbOp.UpdateCargoType(typeOfCargo));
             return NoContent();
         }
 
+     //   [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
@@ -72,7 +77,7 @@ namespace DeliveryService.Controllers
             {
                 return BadRequest(ModelState);
             }
-            dbOp.DeleteCargoType(id);
+            await Task.Run(() => dbOp.DeleteCargoType(id));
             return NoContent();
         }
 

@@ -10,25 +10,30 @@ using BLL.Models;
 using DAL;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DeliveryService.Controllers
 {
     [EnableCors("SUPolicy")]
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize(Roles = "admin")]
     public class UsersController : ControllerBase
     {
 
         private readonly IDbCrud dbOp;
-        public UsersController(IDbCrud dbCrud)
+        private readonly IAccountService serv;
+
+        public UsersController(IDbCrud dbCrud, IAccountService services)
         {
             dbOp =  dbCrud;
+            serv = services;
         }
 
         [HttpGet]
-        public IEnumerable<UserModel> GetAll()
+        public UsersByRole GetAll()
         {
-            return dbOp.GetAllUsers();
+            return dbOp.GetUsersByRole(serv);
         }
 
         [HttpGet("{id}")]

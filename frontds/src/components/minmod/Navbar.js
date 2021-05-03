@@ -7,20 +7,27 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AddIcon from '@material-ui/icons/Add';
-import { Box,  IconButton } from '@material-ui/core/';
+import { Box, IconButton } from '@material-ui/core/';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import LogInForm from '../elements/LogInForm'
+import LogInForm from '../elements/LogInForm';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme = useTheme()) => ({
 	typoClass:
 	{
 		display: "inline",
+		padding: theme.spacing(1)
 	},
 	buttonpos:
 	{
 		display: "flex",
 		justifyContent: "right"
-	}
+	},
+	root: {
+		'& > *': {
+		  margin: theme.spacing(1),
+		},
+	  },
 
 }));
 
@@ -52,10 +59,10 @@ export default function Navbar(props) {
 				<AppBar>
 					<Toolbar>
 						{
-							props.link !== undefined && props.role!=="courier"
+							props.link !== undefined && props.role === "customer"
 								?
 								<Box>
-								
+
 									<Typography className={classes.typoClass} variant="h6" >{props.title}</Typography>
 									<IconButton aria-label="Добавить" href={props.link}>
 										<AddIcon style={{ fontSize: 35, color: '#FFF' }} />
@@ -64,7 +71,26 @@ export default function Navbar(props) {
 								:
 								<Typography variant="h6">{props.title}</Typography>
 						}
-						 <LogInForm/>
+						<LogInForm />
+						{
+							props.role === "admin" &&
+							<React.Fragment>
+								 <div className={classes.root}>
+								<Button   variant="contained" href="/orders">
+									Заказы
+								 </Button>
+								<Button variant="contained" href="/types">
+									Типы
+								</Button>
+								<Button variant="contained" href="/couriers">
+									Курьеры
+								</Button>
+								<Button variant="contained" href="/courierForm">
+									Регистрация курьеров
+								</Button>
+								</div>
+							</React.Fragment>
+						}
 					</Toolbar>
 				</AppBar>
 			</HideOnScroll>

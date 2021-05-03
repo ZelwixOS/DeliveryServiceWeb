@@ -6,6 +6,7 @@ import Navbar from '../minmod/Navbar'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import ForwardIcon from '@material-ui/icons/Forward';
+import axios from 'axios';
 
 const styles = (theme) => ({
     btnMenu: {
@@ -28,6 +29,8 @@ const styles = (theme) => ({
 
 });
 
+const comUrl = "http://localhost:5000"
+
 class CourierRegForm extends Component {
     constructor(props) {
         super(props);
@@ -37,11 +40,13 @@ class CourierRegForm extends Component {
             confPassword: "",
             userName: "",
             firstName: "",
-            secondName: ""
+            secondName: "",
+            phoneNumber: "",
+            role: ""
         };
 
-        this.CreateCourier = this.CreateCourier.bind(this);
-        this.SentCourier = this.SentCourier.bind(this);
+        this.CreateCustomer = this.CreateCustomer.bind(this);
+        this.SentCustomer = this.SentCustomer.bind(this);
         this.ErrorNotifier = this.ErrorNotifier.bind(this);
 
 
@@ -51,6 +56,7 @@ class CourierRegForm extends Component {
         this.onConfPasswordChange = this.onConfPasswordChange.bind(this);
         this.onFirstNameChange = this.onFirstNameChange.bind(this);
         this.onSecondNameChange = this.onSecondNameChange.bind(this);
+        this.onPhoneNumberChange = this.onPhoneNumberChange.bind(this);
     }
 
 
@@ -60,9 +66,10 @@ class CourierRegForm extends Component {
     onConfPasswordChange(e) { this.setState({ confPassword: e.target.value }); }
     onFirstNameChange(e) { this.setState({ firstName: e.target.value }); }
     onSecondNameChange(e) { this.setState({ secondName: e.target.value }); }
+    onPhoneNumberChange(e) { this.setState({ phoneNumber: e.target.value }); }
 
-    CreateCourier(cour) {
-        const url = "http://localhost:5000/api/Account/Register";
+    CreateCustomer(cust) {
+        const url = "http://localhost:5000/api/Account/RegisterCourier";
         var ordJSN = {
             method: 'POST',
             credentials: "same-origin",
@@ -71,18 +78,27 @@ class CourierRegForm extends Component {
                 'Content-Type': 'application/json; charset=UTF-8'
             },
             body: JSON.stringify({
-                userName: cour.userName,
-                email: cour.email,
-                password: cour.password,
-                passwordConfirm: cour.passwordConfirm,
-                firstName: cour.firstName,
-                secondName: cour.secondName
+                userName: cust.userName,
+                email: cust.email,
+                password: cust.password,
+                passwordConfirm: cust.passwordConfirm,
+                firstName: cust.firstName,
+                secondName: cust.secondName,
+                phoneNumber: cust.phoneNumber
             })
         }
         fetch(url, ordJSN)
             .then(response => response.json())
             .then((data) => this.ErrorNotifier(data));
     }
+
+    componentDidMount() {
+        var url1 = comUrl + "/api/Account/Role/";
+        axios.post(
+            url1, { withCredentials: true }
+        ).then((response) => this.setState({ role: response.data }));
+    }
+
 
     ErrorNotifier(response) {
         document.querySelector("#response").innerHTML = "";
@@ -113,18 +129,19 @@ class CourierRegForm extends Component {
     }
 
 
-    SentCourier(e) {
+    SentCustomer(e) {
         e.preventDefault();
-        var courEmail = this.state.email.trim();
-        var courPassword = this.state.password.trim();
-        var courUserName = this.state.userName.trim();
-        var courConfPassword = this.state.confPassword.trim();
-        var courFirstName = this.state.firstName.trim();
-        var courSecondName = this.state.secondName.trim();
-        if (!courEmail || !courPassword || !courUserName || !courConfPassword || !courFirstName || !courSecondName) {
+        var custEmail = this.state.email.trim();
+        var custPassword = this.state.password.trim();
+        var custUserName = this.state.userName.trim();
+        var custConfPassword = this.state.confPassword.trim();
+        var custFirstName = this.state.firstName.trim();
+        var custSecondName = this.state.secondName.trim();
+        var custPhoneNumber = this.state.phoneNumber.trim();
+        if (!custEmail || !custPassword || !custUserName || !custConfPassword || !custFirstName || !custSecondName || !custPhoneNumber) {
             return;
         }
-        this.CreateCourier({ email: courEmail, password: courPassword, passwordConfirm: courConfPassword, userName: courUserName, firstName: courFirstName, secondName: courSecondName });
+        this.CreateCustomer({ email: custEmail, password: custPassword, passwordConfirm: custConfPassword, userName: custUserName, firstName: custFirstName, secondName: custSecondName, phoneNumber: custPhoneNumber });
 
     }
 
@@ -133,7 +150,7 @@ class CourierRegForm extends Component {
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
 
-                <Navbar title={"Регистрация"} />
+                <Navbar title={"Регистрация"} role={this.state.role}/>
 
                 <Box className={this.props.classes.paper}>
                     <Grid container spacing={1}>
@@ -179,6 +196,15 @@ class CourierRegForm extends Component {
                                             />
                                         </Grid>
 
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                id="PhoneNumber"
+                                                required
+                                                label="Телефон"
+                                                fullWidth
+                                                onChange={this.onPhoneNumberChange}
+                                            />
+                                        </Grid>
 
                                         <Grid item xs={12}>
                                             <TextField
@@ -218,7 +244,7 @@ class CourierRegForm extends Component {
                                         color="primary"
                                         className={this.props.classes.button}
                                         startIcon={<ForwardIcon />}
-                                        onClick={this.SentCourier}
+                                        onClick={this.SentCustomer}
                                     >
                                         Зарегестрироваться
                                         </Button>
