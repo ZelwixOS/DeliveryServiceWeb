@@ -13,6 +13,8 @@ namespace BLL.Models
             OrderName = o.OrderName;
             Price = o.Price;
         }
+
+
         public OrderItemModel()
         {
 

@@ -58,7 +58,12 @@ namespace BLL.Models
 
             OrderItem = new HashSet<OrderItemModel>();
             foreach (var oi in o.OrderItems)
+            {
+                if (oi.TypeOfCargo == null)
+                    
                 OrderItem.Add(new OrderItemModel(oi));
+            }    
+            
             Status = new StatusModel(o.Status);
         }
         public  OrderModel()

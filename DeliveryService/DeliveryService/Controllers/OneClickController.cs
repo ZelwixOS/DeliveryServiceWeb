@@ -60,5 +60,29 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
+        [Route("api/Confirmed/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Confirmed(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await Task.Run(() => dbOp.UpdateOrderStatus(id, 1, accountService, HttpContext));
+            return NoContent();
+        }
+
+        [Route("api/Updating/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Updating(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await Task.Run(() => dbOp.UpdateOrderStatus(id, 5, accountService, HttpContext));
+            return NoContent();
+        }
+
     }
 }

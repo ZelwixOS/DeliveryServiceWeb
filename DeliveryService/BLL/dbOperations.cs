@@ -46,7 +46,7 @@ namespace BLL
                         var allUserOrders = db.Orders.GetList().Where(o => o.Courier_ID_FK == usr.Id || o.Courier_ID_FK == null);
                         allOrders.Active = allUserOrders.Where(o => o.Status_ID_FK != 2 && o.Courier_ID_FK != null).Select(i => new OrderModel(i)).ToList();
                         allOrders.Past = allUserOrders.Where(o => o.Status_ID_FK == 2).Select(i => new OrderModel(i)).ToList();
-                        allOrders.Available = allUserOrders.Where(o => o.Courier_ID_FK == null).Select(i => new OrderModel(i)).ToList();
+                        allOrders.Available = allUserOrders.Where(o => o.Courier_ID_FK == null && o.Status_ID_FK == 1).Select(i => new OrderModel(i)).ToList();
                         return allOrders;
                     } 
                 case "admin": {
@@ -67,9 +67,9 @@ namespace BLL
             {
                 User usr = serv.GetCurrentUserAsync(httpContext).Result;
 
-                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.Id, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 1 });
+                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.Id, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
                 Save();
-                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.Id && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 1).First().ID;
+                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.Id && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 5).First().ID;
                 return id;
             }
             else
@@ -81,8 +81,6 @@ namespace BLL
             Order ord = db.Orders.GetItem(o.ID);
             if (DateTime.Compare(ord.Deadline, DateTime.Today) > 0)
             {
-
-
                 ord.AddNote = o.AddNote;
                 ord.AdressDestination = o.AdressDestination;
                 ord.AdressOrigin = o.AdressOrigin;
@@ -91,7 +89,7 @@ namespace BLL
                 ord.Deadline = o.Deadline;
                 ord.Delivery_ID_FK = o.Delivery_ID_FK;
                 ord.ReceiverName = o.ReceiverName;
-                ord.Status_ID_FK = o.Status_ID_FK;
+                ord.Status_ID_FK = 5;
                 db.Orders.Update(ord);
                 Save();
             }
@@ -366,6 +364,11 @@ namespace BLL
         }
         public void CreateOrderItem(OrderItemModel c)
         {
+            
+            if (c.TypeOfCargo == null)
+            {
+                c.TypeOfCargo = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
+            }
             db.OrderItems.Create(new OrderItem() { TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK, OrderName = c.OrderName, Price = c.Price, Order_ID_FK = c.Order_ID_FK });
             Save();
             var ord = db.Orders.GetItem(c.Order_ID_FK);
@@ -379,6 +382,7 @@ namespace BLL
                     if (cust.Discount != null)
                         dsc = (double)cust.Discount;
                     ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - dsc) / 100.0;
+                    ord.Status_ID_FK = 5;
                     db.Orders.Update(ord);
                     Save();
                 }
@@ -412,9 +416,8 @@ namespace BLL
                 }
                 Save();
             }
-
-
         }
+
         public void DeleteOrderItem(int id)
         {
             OrderItem cr = db.OrderItems.GetItem(id);
@@ -433,6 +436,7 @@ namespace BLL
                         ord.Cost = ord.Cost - cr.Price * toc.Coefficient  * (100 - dsc) / 10000.0;
                     }
                 }
+                ord.Status_ID_FK = 5;
                 db.OrderItems.Delete(cr.ID);
                 Save();
             }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -23,10 +23,27 @@ const useStyles = makeStyles((theme = useTheme()) => ({
 axios.defaults.withCredentials = true
 
 export default function OrderCard(props) {
+
+  const [orderContent, setOrderContent] = useState(props.orderContent);
+
   const classes = useStyles();
-  const orderContent = props.orderContent;
   const cardType = props.type;
   const role = props.role;
+
+  function UpdateOrderInfo()
+  {
+    const url = comUrl + "/api/orders/" + orderContent.id;
+    axios.get(
+      url, { withCredentials: true }
+    ).then((response) => setOrderContent(response.data));
+  }
+
+  function UpdateOrder(){
+    const url = comUrl + "/api/Updating/" + orderContent.id;
+    axios.post(
+      url, { withCredentials: true }
+    ).then(document.location.href = "/orderForm/" + orderContent.id);
+  }
 
   function DeleteOrder() {
     const url = comUrl + "/api/orders/" + orderContent.id;
@@ -35,19 +52,26 @@ export default function OrderCard(props) {
     ).then((response) => DRInfoOrder(response));
   }
 
-  function Recieved(){
-    var url =comUrl + "/api/Recieved/"+ orderContent.id
-    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
+  function Confirmed() {
+    const url = comUrl + "/api/Confirmed/" + orderContent.id;
+    axios.post(
+      url, { withCredentials: true }
+    ).then(UpdateOrderInfo);
   }
 
-  function Delivered(){
-    var url =comUrl + "/api/Delivered/"+ orderContent.id
-    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
+  function Recieved() {
+    var url = comUrl + "/api/Recieved/" + orderContent.id
+    axios.post(url, { withCredentials: true }).then(props.listUpdate);
   }
 
-  function Add(){
-    var url = comUrl + "/api/Add/"+orderContent.id;
-    axios.post(url, {withCredentials: true}).then(document.location.href = "/");
+  function Delivered() {
+    var url = comUrl + "/api/Delivered/" + orderContent.id
+    axios.post(url, { withCredentials: true }).then(UpdateOrderInfo);
+  }
+
+  function Add() {
+    var url = comUrl + "/api/Add/" + orderContent.id;
+    axios.post(url, { withCredentials: true }).then(props.listUpdate);
   }
 
   function DRInfoOrder(resp) {
@@ -62,10 +86,11 @@ export default function OrderCard(props) {
       msg = "Неизвестная ошибка";
     }
     document.querySelector("#actionMsg").innerHTML = msg;
+    UpdateOrderInfo();
   }
 
   return (
-    <Card className={classes.root} variant="outlined" style={ cardType==="past" ? {background: "#DDD"}: {}}>
+    <Card className={classes.root} variant="outlined" style={cardType === "past" ? { background: "#DDD" } : orderContent.status_ID_FK === 5 ? {background: "#EA0"}: {}}>
       <CardContent>
         <div id="actionMsg" style={{ color: "#F00" }} />
         <Typography className={classes.title} gutterBottom>
@@ -103,25 +128,25 @@ export default function OrderCard(props) {
           <Divider />
           {
             orderContent.addNote !== null
-              &&
-              <React.Fragment>
-                <ListItem >
-                  <ListItemText primary={"Примечание: " + orderContent.addNote} />
-                </ListItem>
-                <Divider />
-              </React.Fragment>
+            &&
+            <React.Fragment>
+              <ListItem >
+                <ListItemText primary={"Примечание: " + orderContent.addNote} />
+              </ListItem>
+              <Divider />
+            </React.Fragment>
 
           }
 
           {
             orderContent.delivery_ID_FK !== null
-              &&
-              <React.Fragment>
-                <ListItem >
-                  <ListItemText primary={"Код доставки: " + orderContent.delivery_ID_FK} />
-                </ListItem>
-                <Divider />
-              </React.Fragment>
+            &&
+            <React.Fragment>
+              <ListItem >
+                <ListItemText primary={"Код доставки: " + orderContent.delivery_ID_FK} />
+              </ListItem>
+              <Divider />
+            </React.Fragment>
 
           }
 
@@ -145,7 +170,7 @@ export default function OrderCard(props) {
             }
           </ListItem>
           <Divider />
-          <OrderItemList orderID={orderContent.id} type={cardType} role={role} status = {orderContent.status_ID_FK}/>
+          <OrderItemList orderID={orderContent.id} type={cardType} role={role} status={orderContent.status_ID_FK} updateOrder={UpdateOrderInfo}/>
 
 
 
@@ -159,31 +184,39 @@ export default function OrderCard(props) {
             orderContent.status_ID_FK === 1
               ?
               <React.Fragment>
-                <Button size="small" href={"/orderForm/" + orderContent.id}> Редактировать </Button>
+                <Button size="small" onClick={UpdateOrder}> Редактировать </Button>
                 <Button size="small" onClick={DeleteOrder} >Удалить </Button>
               </React.Fragment>
               :
-              orderContent.status_ID_FK === 3 || orderContent.status_ID_FK === 4
-              ?
-              <React.Fragment>
-                <Button size="small" onClick= {Recieved} > Получил </Button>
-              </React.Fragment>
-              :
-              <React.Fragment/>
+              orderContent.status_ID_FK === 5
+                ?
+                <React.Fragment>
+                  <Button size="small" onClick={Confirmed} > Подтвердить </Button>
+                  <Button size="small" onClick={UpdateOrder}> Редактировать </Button>
+                <Button size="small" onClick={DeleteOrder} >Удалить </Button>
+                </React.Fragment>
+                :
+                orderContent.status_ID_FK === 3 || orderContent.status_ID_FK === 4
+                  ?
+                  <React.Fragment>
+                    <Button size="small" onClick={Recieved} > Получил </Button>
+                  </React.Fragment>
+                  :
+                  <React.Fragment />
             :
             role === "courier"
               ?
               orderContent.status_ID_FK === 3
                 ?
-                <Button size="small" onClick= {Delivered}> Доставил </Button>
+                <Button size="small" onClick={Delivered}> Доставил </Button>
                 :
                 cardType === "available"
                   ?
-                  <Button size="small" onClick= {Add}> Забронировать </Button>
+                  <Button size="small" onClick={Add}> Забронировать </Button>
                   :
                   <React.Fragment />
               :
-              <React.Fragment/>
+              <React.Fragment />
         }
 
       </CardActions>

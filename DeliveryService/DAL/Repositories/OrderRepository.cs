@@ -16,7 +16,7 @@ namespace DAL.Repositories
 
         public List<Order> GetList()
         {
-            List<Order> nl = db.Order.Include(s => s.Status).Include(cl=> cl.Customer).Include(cour=>cour.Courier).ToList(); // убери!
+            List<Order> nl = db.Order.Include(s => s.Status).Include(cl=> cl.Customer).Include(cour=>cour.Courier).ToList();
             return nl;
         }
 
@@ -26,7 +26,12 @@ namespace DAL.Repositories
             if (item != null)
             {
                 item.Status = db.Status.Find(item.Status_ID_FK);
+                item.ReceiverName = db.User.Find(item.Customer_ID_FK).UserName;
                 item.OrderItems = db.OrderItem.Where(i => i.Order_ID_FK == id).ToList();
+                foreach(var oi in item.OrderItems)
+                {
+                    oi.TypeOfCargo = db.TypeOfCargo.Find(oi.TypeOfCargo_ID_FK);
+                }
             }
             return item;
         }

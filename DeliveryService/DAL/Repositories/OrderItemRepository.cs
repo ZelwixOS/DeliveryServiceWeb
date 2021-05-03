@@ -24,7 +24,10 @@ namespace DAL.Repositories
 
         public OrderItem GetItem(int id)
         {
-            return db.OrderItem.Find(id);
+            var oi = db.OrderItem.Find(id);
+            if (oi != null)
+                oi.TypeOfCargo = db.TypeOfCargo.Find(oi.TypeOfCargo_ID_FK);
+            return oi;
         }
 
         public void Create(OrderItem item)

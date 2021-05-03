@@ -69,11 +69,11 @@ class OrderItemList extends Component {
                 typeOfCargo_ID_FK: orderI.typeOfCargo_ID_FK
             })
         }
-        fetch(url, ordJSN).then(this.componentDidMount())
+        fetch(url, ordJSN).then(this.props.updateOrder).then(this.componentDidMount);
     }
 
     DeleteItem(id) {
-        fetch("http://localhost:5000/api/OrderItems/" + id, { method: 'DELETE' }).then(response => response.json());
+        fetch("http://localhost:5000/api/OrderItems/" + id, { method: 'DELETE' }).then(this.props.updateOrder).then(this.componentDidMount);;
     }
 
     SentItem(e) {
@@ -92,7 +92,7 @@ class OrderItemList extends Component {
     render() {
 
         return (
-            <Accordion style={ this.props.type==="past" ? {background: "#DDD"}: {}}>
+            <Accordion style={ this.props.type==="past" ? {background: "#DDD"} :  this.props.status === 5 ? {background: "#EA0"}: {}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}>
                     <Typography>Список заказов</Typography>
@@ -108,7 +108,7 @@ class OrderItemList extends Component {
                                 this.state.items.map((orderIt, index) => { return (<OrderItem itemContent={orderIt} key={index} deleteF={this.DeleteItem} type={this.props.type} role={this.props.role} status = {this.props.status}/>) })
                         }
                         {
-                            this.props.status === 1 && this.props.role !== "courier"
+                            (this.props.status === 1 || this.props.status === 5) && this.props.role !== "courier"
                                 ?
                                 <React.Fragment>
                                     <ListItem>

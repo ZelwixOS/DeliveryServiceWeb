@@ -37,6 +37,7 @@ class Orders extends Component {
             role: null,
             loading: true
         };
+        this.ComponentDidMount = this.componentDidMount.bind(this);
     }
 
 
@@ -74,7 +75,7 @@ class Orders extends Component {
                                                         Активные заказы
                                                     </Typography >
                                                     {
-                                                        this.state.active.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="active" role = {this.state.role} />) })
+                                                        this.state.active.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="active" role = {this.state.role} listUpdate={this.ComponentDidMount}/>) })
                                                     }
 
                                                 </React.Fragment>
@@ -89,7 +90,7 @@ class Orders extends Component {
                                                         Доступные заказы
                                                     </Typography >
                                                     {
-                                                        this.state.available.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="available" role = {this.state.role}/>) })
+                                                        this.state.available.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="available" role = {this.state.role} listUpdate={this.ComponentDidMount}/>) })
                                                     }
 
                                                 </React.Fragment>
@@ -104,7 +105,7 @@ class Orders extends Component {
                                                         Прошлые заказы
                                                     </Typography >
                                                     {
-                                                        this.state.past.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="past" role = {this.state.role}/>) })
+                                                        this.state.past.map((order, index) => { return (<OrderCard orderContent={order} key={index} type="past" role = {this.state.role} listUpdate={this.ComponentDidMount}/>) })
                                                     }
 
                                                 </React.Fragment>

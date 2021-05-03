@@ -89,7 +89,7 @@ class CustomerRegForm extends Component {
         if (response.error.length !== undefined)
         {
         if (response.error.length > 0) failed = true;
-        if (response.error.length > 0) {
+        if (response.error.length > 0) {    
             for (var i = 0; i < response.error.length; i++) {
                 let ul = document.querySelector("ul");
                 let li = document.createElement("li");
