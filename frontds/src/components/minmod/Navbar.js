@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import AddIcon from '@material-ui/icons/Add';
-import { Box, IconButton } from '@material-ui/core/';
+import { IconButton } from '@material-ui/core/';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import LogInForm from '../elements/LogInForm';
 import Button from '@material-ui/core/Button';
@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme = useTheme()) => ({
 		justifyContent: "right"
 	},
 	root: {
+		flexGrow: 1,
 		'& > *': {
 		  margin: theme.spacing(1),
 		},
@@ -53,25 +54,24 @@ export default function Navbar(props) {
 
 
 	return (
-		<React.Fragment>
+		<React.Fragment >
 			<CssBaseline />
-			<HideOnScroll {...props}>
-				<AppBar>
+			<HideOnScroll {...props} >
+				<AppBar >
 					<Toolbar>
+					<div style={{margin: "10px"}}>
+						<Typography variant="h6" >{props.title}</Typography>
+					</div>
 						{
 							props.link !== undefined && props.role === "customer"
-								?
-								<Box>
-
-									<Typography className={classes.typoClass} variant="h6" >{props.title}</Typography>
+								&&
+								
 									<IconButton aria-label="Добавить" href={props.link}>
 										<AddIcon style={{ fontSize: 35, color: '#FFF' }} />
 									</IconButton>
-								</Box>
-								:
-								<Typography variant="h6">{props.title}</Typography>
 						}
-						<LogInForm />
+						 <LogInForm /> 
+						
 						{
 							props.role === "admin" &&
 							<React.Fragment>

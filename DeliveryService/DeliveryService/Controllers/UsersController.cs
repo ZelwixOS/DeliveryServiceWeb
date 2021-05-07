@@ -17,7 +17,7 @@ namespace DeliveryService.Controllers
     [EnableCors("SUPolicy")]
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(Roles = "admin")]
+ //   [Authorize(Roles = "admin")]
     public class UsersController : ControllerBase
     {
 

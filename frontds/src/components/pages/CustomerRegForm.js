@@ -6,6 +6,7 @@ import Navbar from '../minmod/Navbar'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import ForwardIcon from '@material-ui/icons/Forward';
+import axios from 'axios';
 
 const styles = (theme) => ({
     btnMenu: {
@@ -27,6 +28,7 @@ const styles = (theme) => ({
     },
 
 });
+const comUrl = "http://localhost:5000" 
 
 class CourierRegForm extends Component {
     constructor(props) {
@@ -62,26 +64,16 @@ class CourierRegForm extends Component {
     onSecondNameChange(e) { this.setState({ secondName: e.target.value }); }
 
     CreateCourier(cour) {
-        const url = "http://localhost:5000/api/Account/Register";
-        var ordJSN = {
-            method: 'POST',
-            credentials: "same-origin",
-            headers: {
-                'Accept': 'application/json; charset=UTF-8',
-                'Content-Type': 'application/json; charset=UTF-8'
-            },
-            body: JSON.stringify({
-                userName: cour.userName,
-                email: cour.email,
-                password: cour.password,
-                passwordConfirm: cour.passwordConfirm,
-                firstName: cour.firstName,
-                secondName: cour.secondName
-            })
-        }
-        fetch(url, ordJSN)
-            .then(response => response.json())
-            .then((data) => this.ErrorNotifier(data));
+        const url = comUrl + "/api/Account/Register";
+            var value = { 
+                "userName": cour.userName,
+                "email": cour.email,
+                "password":  cour.password,
+                "passwordConfirm": cour.passwordConfirm,
+                "firstName": cour.firstName
+
+                };
+               axios.post(url, value).then((data) => this.ErrorNotifier(data.data));
     }
 
     ErrorNotifier(response) {

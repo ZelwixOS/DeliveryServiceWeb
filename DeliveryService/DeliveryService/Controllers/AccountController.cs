@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using BLL.Interfaces;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASPNetCoreApp.Controllers
 {
@@ -66,6 +67,7 @@ namespace ASPNetCoreApp.Controllers
 
         [HttpPost]
         [Route("api/Account/RegisterCourier")]
+//        [Authorize(Roles = "admin")]
         public async Task<IActionResult> RegisterCourier([FromBody] RegisterViewModel model)
         {
             if (ModelState.IsValid)

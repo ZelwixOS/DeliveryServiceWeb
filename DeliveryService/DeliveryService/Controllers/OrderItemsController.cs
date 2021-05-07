@@ -7,6 +7,7 @@ using BLL.Interfaces;
 using BLL.Models;
 using DAL;
 using DAL.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +54,7 @@ namespace DeliveryService.Controllers
         }
 
 
-
+ //       [Authorize(Roles = "customer")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderItemModel orderItem)
         {
@@ -65,7 +66,7 @@ namespace DeliveryService.Controllers
             
             return CreatedAtAction("GetOrder", new { id = orderItem.ID }, orderItem);
         }
-
+ //       [Authorize(Roles = "customer")]
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] OrderItemModel orderItem)
         {
@@ -77,7 +78,7 @@ namespace DeliveryService.Controllers
             
             return NoContent();
         }
-
+ //       [Authorize(Roles = "customer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {

@@ -37,14 +37,10 @@ class Couriers extends Component {
 
     componentDidMount() {
         var url1 = comUrl + "/api/Account/Role/";
-        axios.post(
-            url1, { withCredentials: true }
-        ).then((response) => this.setState({ role: response.data }));
+        axios.post(url1).then((response) => this.setState({ role: response.data }));
 
         var url = comUrl + "/api/Users";
-        axios.get(
-            url, { withCredentials: true }
-        ).then((response) => this.setState({ users: response.data, loading: false }));
+        axios.get(url).then((response) => this.setState({ users: response.data, loading: false }));
     }
 
     render() {

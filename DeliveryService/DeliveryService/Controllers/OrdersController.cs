@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BLL;
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using BLL.Models;
-using DAL.Interfaces;
-using DAL.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Threading.Tasks;
 
 namespace DeliveryService.Controllers
 {
     [EnableCors("SUPolicy")]
-    [Route("api/[controller]")]
     [ApiController]
-
     public class OrdersController : ControllerBase
     {
         private readonly IDbCrud dbOp;
@@ -30,6 +20,7 @@ namespace DeliveryService.Controllers
             this.accountService = accountService;
         }
 
+        [Route("api/Orders")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -37,7 +28,8 @@ namespace DeliveryService.Controllers
             return Ok(await Task.Run(() => dbOp.GetAllOrders(role, usr)));
         }
 
-        [HttpGet("{id}")]
+        [Route("api/Orders/{id}")]
+        [HttpGet]
         public async Task<IActionResult> GetOrder([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -48,7 +40,8 @@ namespace DeliveryService.Controllers
             return Ok(order);
         }
 
-
+ //       [Authorize(Roles = "customer")]
+        [Route("api/NewOrder")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderModel order)
         {
@@ -61,8 +54,9 @@ namespace DeliveryService.Controllers
             return CreatedAtAction("GetOrder", new { id = order.ID }, order);
         }
 
-
-        [HttpPut("{id}")]
+ //       [Authorize(Roles = "customer")]
+        [Route("api/PutOrder/{id}")]
+        [HttpPut]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] OrderModel order)
         {
             if (!ModelState.IsValid)
@@ -70,22 +64,24 @@ namespace DeliveryService.Controllers
                 return BadRequest(ModelState);
             }
             order.ID = id;
-            await Task.Run(() => dbOp.UpdateOrder(order));
+            (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
+            await Task.Run(() => dbOp.UpdateOrder(order, usr));
             
             return NoContent();
         }
-
-
-        [HttpDelete("{id}")]
+//        [Authorize(Roles = "customer")]
+        [Route("api/DeleteOrder/{id}")]
+        [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            await Task.Run(() => dbOp.DeleteOrder(id));
+            (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
+            await Task.Run(() => dbOp.DeleteOrder(id, usr));
 
-            return NoContent();
+            return Ok();
         }
 
     }

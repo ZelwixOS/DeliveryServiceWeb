@@ -46,7 +46,7 @@ namespace DeliveryService.Controllers
 
 
         [HttpPost]
-     //   [Authorize(Roles = "admin")]
+ //       [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromBody] TypeOfCargoModel typeOfCargo)
         {
             if (!ModelState.IsValid)
@@ -58,7 +58,7 @@ namespace DeliveryService.Controllers
         }
 
         [HttpPut]
-     //   [Authorize(Roles = "admin")]
+//        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromBody] TypeOfCargoModel typeOfCargo)
         {
             if (!ModelState.IsValid)
@@ -69,7 +69,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-     //   [Authorize(Roles = "admin")]
+ //       [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {

@@ -69,34 +69,22 @@ class CourierRegForm extends Component {
     onPhoneNumberChange(e) { this.setState({ phoneNumber: e.target.value }); }
 
     CreateCustomer(cust) {
-        const url = "http://localhost:5000/api/Account/RegisterCourier";
-        var ordJSN = {
-            method: 'POST',
-            credentials: "same-origin",
-            headers: {
-                'Accept': 'application/json; charset=UTF-8',
-                'Content-Type': 'application/json; charset=UTF-8'
-            },
-            body: JSON.stringify({
-                userName: cust.userName,
-                email: cust.email,
-                password: cust.password,
-                passwordConfirm: cust.passwordConfirm,
-                firstName: cust.firstName,
-                secondName: cust.secondName,
-                phoneNumber: cust.phoneNumber
-            })
-        }
-        fetch(url, ordJSN)
-            .then(response => response.json())
-            .then((data) => this.ErrorNotifier(data));
+        const url = comUrl + "/api/Account/RegisterCourier";
+            var value = { 
+                "userName": cust.userName,
+                "email": cust.email,
+                "password":  cust.password,
+                "passwordConfirm": cust.passwordConfirm,
+                "firstName": cust.firstName,
+                "phoneNumber": cust.phoneNumber
+                };
+               axios.post(url, value).then((data) => this.ErrorNotifier(data.data));
     }
+
 
     componentDidMount() {
         var url1 = comUrl + "/api/Account/Role/";
-        axios.post(
-            url1, { withCredentials: true }
-        ).then((response) => this.setState({ role: response.data }));
+        axios.post(url1).then((response) => this.setState({ role: response.data }));
     }
 
 
@@ -142,7 +130,6 @@ class CourierRegForm extends Component {
             return;
         }
         this.CreateCustomer({ email: custEmail, password: custPassword, passwordConfirm: custConfPassword, userName: custUserName, firstName: custFirstName, secondName: custSecondName, phoneNumber: custPhoneNumber });
-
     }
 
     render() {

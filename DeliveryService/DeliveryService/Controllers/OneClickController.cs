@@ -2,11 +2,7 @@
 using BLL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DeliveryService.Controllers
@@ -24,7 +20,7 @@ namespace DeliveryService.Controllers
             this.accountService = accountService;
         }
 
-      //  [Authorize(Roles = "courier")]
+        [Authorize(Roles = "courier")]
         [Route("api/Add/{id}")]
         [HttpPost]
         public async Task<IActionResult> Add(int id)
@@ -39,7 +35,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-      //  [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [Route("api/Recieved/{id}")]
         [HttpPost]
         public async Task<IActionResult> Recieved(int id)
@@ -54,7 +50,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-      //  [Authorize(Roles = "courier")]
+        [Authorize(Roles = "courier")]
         [Route("api/Delivered/{id}")]
         [HttpPost]
         public async Task<IActionResult> Delivered(int id)
@@ -68,7 +64,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-       // [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [Route("api/Confirmed/{id}")]
         [HttpPost]
         public async Task<IActionResult> Confirmed(int id)
@@ -82,7 +78,7 @@ namespace DeliveryService.Controllers
             return NoContent();
         }
 
-       // [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [Route("api/Updating/{id}")]
         [HttpPost]
         public async Task<IActionResult> Updating(int id)

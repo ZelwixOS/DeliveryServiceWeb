@@ -42,10 +42,8 @@ class Orders extends Component {
 
 
     componentDidMount() {
-        var url = comUrl + "/api/orders";
-        axios.get(
-            url, { withCredentials: true }
-        )
+        var url = comUrl + "/api/Orders";
+        axios.get(url)
             .then((response) =>
                 this.setState({ active: response.data.active, available: response.data.available, past: response.data.past, role: response.data.role, loading: false }));
     }

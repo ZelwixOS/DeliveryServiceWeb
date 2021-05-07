@@ -46,19 +46,11 @@ class Types extends Component {
 
     CreateItem(type) {
         const url = comUrl + "/api/TypesOfCargo/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                typeName: type.typeName,
-                coefficient: type.coefficient,
-            })
-        }
-
-        fetch(url, ordJSN).then(this.ComponentDidMount);
+        var value = { 
+         "typeName": type.typeName,
+         "coefficient": type.coefficient
+         };
+        axios.post(url, value).then(this.ComponentDidMount);
     }
 
     SentItem(e) {
@@ -74,14 +66,10 @@ class Types extends Component {
 
     componentDidMount() {
         var url1 = comUrl + "/api/Account/Role/";
-        axios.post(
-            url1, { withCredentials: true }
-        ).then((response) => this.setState({ role: response.data }));
+        axios.post(url1).then((response) => this.setState({ role: response.data }));
 
         var url = comUrl + "/api/TypesOfCargo";
-        axios.get(
-            url, { withCredentials: true }
-        ).then((response) => this.setState({ types: response.data, loading: false }));
+        axios.get(url).then((response) => this.setState({ types: response.data, loading: false }));
     }
 
     render() {
@@ -131,8 +119,8 @@ class Types extends Component {
                                         <List>
                                             {
                                                 this.state.types.map((type, index) => {
-                                                    return (<ListItem >
-                                                        <ListItemText primary={type.typeName + " - " + type.coefficient} key={index} />
+                                                    return (<ListItem key={index}>
+                                                        <ListItemText primary={type.typeName + " - " + type.coefficient}  />
                                                     </ListItem>)
                                                 })
                                             }

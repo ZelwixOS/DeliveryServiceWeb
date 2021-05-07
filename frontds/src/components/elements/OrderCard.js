@@ -25,6 +25,7 @@ axios.defaults.withCredentials = true
 export default function OrderCard(props) {
 
   const [orderContent, setOrderContent] = useState(props.orderContent);
+  const [message, setMessage] = useState("");
 
   const classes = useStyles();
   const cardType = props.type;
@@ -33,66 +34,60 @@ export default function OrderCard(props) {
   function UpdateOrderInfo()
   {
     const url = comUrl + "/api/orders/" + orderContent.id;
-    axios.get(
-      url, { withCredentials: true }
-    ).then((response) => setOrderContent(response.data));
+    axios.get(url).then((response) => setOrderContent(response.data));
   }
 
   function UpdateOrder(){
     const url = comUrl + "/api/Updating/" + orderContent.id;
-    axios.post(
-      url, { withCredentials: true }
-    ).then(document.location.href = "/orderForm/" + orderContent.id);
+    axios.post(url).then(document.location.href = "/orderForm/" + orderContent.id);
   }
 
   function DeleteOrder() {
-    const url = comUrl + "/api/orders/" + orderContent.id;
-    axios.delete(
-      url, { withCredentials: true }
-    ).then((response) => DRInfoOrder(response));
+    const url = comUrl + "/api/DeleteOrder/" + orderContent.id;
+    axios.delete(url).then((response) => DRInfoOrder(response));
   }
-
+  
   function Confirmed() {
     const url = comUrl + "/api/Confirmed/" + orderContent.id;
-    axios.post(
-      url, { withCredentials: true }
-    ).then(UpdateOrderInfo);
+    axios.post(url).then(UpdateOrderInfo);
   }
 
   function Recieved() {
     var url = comUrl + "/api/Recieved/" + orderContent.id
-    axios.post(url, { withCredentials: true }).then(props.listUpdate);
+    axios.post(url).then(props.listUpdate);
   }
 
   function Delivered() {
     var url = comUrl + "/api/Delivered/" + orderContent.id
-    axios.post(url, { withCredentials: true }).then(UpdateOrderInfo);
+    axios.post(url).then(UpdateOrderInfo);
   }
 
   function Add() {
     var url = comUrl + "/api/Add/" + orderContent.id;
-    axios.post(url, { withCredentials: true }).then(props.listUpdate);
+    axios.post(url).then(props.listUpdate);
   }
 
   function DRInfoOrder(resp) {
     var msg = "";
     if (resp.status === 401) {
       msg = "У вас не хватает прав для удаления";
-    } else if (resp.status === 201) {
-
-      document.location.href = "/";
-
+    } else if (resp.status === 200) {
+      props.listUpdate();
     } else {
       msg = "Неизвестная ошибка";
     }
+    setMessage(msg);
     document.querySelector("#actionMsg").innerHTML = msg;
-    UpdateOrderInfo();
   }
 
   return (
     <Card className={classes.root} variant="outlined" style={cardType === "past" ? { background: "#DDD" } : orderContent.status_ID_FK === 5 ? {background: "#EA0"}: {}}>
       <CardContent>
-        <div id="actionMsg" style={{ color: "#F00" }} />
+        {
+          message !== "" &&
+        <div id="actionMsg" style={{ color: "#F00" }} > {message} </div>
+        }
+        
         <Typography className={classes.title} gutterBottom>
           Заказ {orderContent.id}
         </Typography>

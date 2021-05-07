@@ -63,42 +63,32 @@ class OrderItemList extends Component {
             loading2: true
         });
         const url = comUrl+ "/api/OrderItems/order/" + this.props.orderID;
-        axios.get(
-            url, { withCredentials: true }
-          ).then((response) =>  this.setState({
+        axios.get(url).then((response) =>  this.setState({
             items: response.data, loading1: false}));
            
         const url1 = comUrl+ "/api/TypesOfCargo/";
-        axios.get(
-            url1, { withCredentials: true }
-          ).then((response) =>  this.setState({
+        axios.get(url1).then((response) =>  this.setState({
             types: response.data,
             loading2: false}));
     }
 
 
     CreateItem(orderI) {
-        const url = "http://localhost:5000/api/OrderItems/";
-        var ordJSN = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order_ID_FK: this.props.orderID,
-                orderName: orderI.orderName,
-                price: orderI.price,
-                typeOfCargo_ID_FK: orderI.typeOfCargo_ID_FK
-            })
-        }
-        fetch(url, ordJSN).then(this.props.updateOrder).then(this.componentDidMount);
+        const url = comUrl + "/api/OrderItems/";
+        var value = { 
+            "order_ID_FK": this.props.orderID,
+            "orderName": orderI.orderName,
+            "price": orderI.price,
+            "typeOfCargo_ID_FK": orderI.typeOfCargo_ID_FK
+            };
+           axios.post(url, value).then(this.props.updateOrder).then(this.componentDidMount);
     }
 
     DeleteItem(id) {
-        fetch("http://localhost:5000/api/OrderItems/" + id, { method: 'DELETE' }).then(this.props.updateOrder).then(this.componentDidMount);;
-    }
-
+        const url = comUrl + "/api/OrderItems/"+ id;
+           axios.delete(url).then(this.props.updateOrder).then(this.componentDidMount);
+    } 
+//  переделай!
     SentItem(e) {
         e.preventDefault();
         var itemOrderName = this.state.orderName.trim();
@@ -145,7 +135,7 @@ class OrderItemList extends Component {
                                         </Grid>
                                     </ListItem>
                                     <ListItem>
-                                        <Grid item xs={12} sm={5}>
+                                        <Grid item xs={12} sm={6}>
                                             <TextField
                                                 required
                                                 label="Ценность"
@@ -159,16 +149,16 @@ class OrderItemList extends Component {
                                         <FormControl className={styles.formControl}>
                                         <InputLabel id="TypeLabel">Тип</InputLabel>
                                         <Select
+                                            required
                                             labelId="TypeLabel"
                                             id="Type"
                                             value={this.state.typeOfCargo_ID_FK}
                                             onChange={this.onTypeOfCargo_ID_FKChange}>
                                             {
                                                 this.state.types !== null
-                                                ?
+                                                &&
                                                 this.state.types.map((type, index) => { return (<MenuItem key={index} value={type.id}>{type.typeName}</MenuItem>) })
-                                                :
-                                                <React.Fragment />
+
                                             }
                                         </Select>
                                         </FormControl>

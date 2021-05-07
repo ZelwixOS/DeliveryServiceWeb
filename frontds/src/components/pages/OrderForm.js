@@ -69,39 +69,38 @@ class OrderForm extends Component {
 
 
     componentDidMount() {
-        const url = comUrl+ "/api/orders/" + this.props.orderID;
-        fetch(url, { method: 'GET' })
-        .then(response => response.json())
-        .then(result =>
-            this.setState({
-                order: result,
-                loading: false,
-                adressOrigin: result.adressOrigin,
-                deadline: result.deadline,
-                adressDestination: result.adressDestination,
-                receiverName: result.receiverName,
-                addNote: result.addNote
-            }));
+        if (this.props.orderID !== undefined)
+        {
+            const url = comUrl+ "/api/orders/" + this.props.orderID;
+            axios.get(url).then(result =>
+                this.setState({
+                    order: result.data,
+                    loading: false,
+                    adressOrigin: result.data.adressOrigin,
+                    deadline: result.data.deadline,
+                    adressDestination: result.data.adressDestination,
+                    receiverName: result.data.receiverName,
+                    addNote: result.data.addNote}));
+        }
+        else
+        this.setState({loading: false});
+
     }
 
-
-
     CreateOrder(orderO) {
-        const url = comUrl+ "/api/orders/";
-
+        const url = comUrl+ "/api/NewOrder";
         var value = { 
             "adressOrigin": orderO.adressOrigin,
             "deadline": orderO.deadline,
             "adressDestination": orderO.adressDestination,
             "receiverName": orderO.receiverName,
-            "addNote": orderO.addNote,
- 
+            "addNote": orderO.addNote
             };
-           axios.post(url, value, { withCredentials: true });
+           axios.post(url, value);
     }
 
     EditOrder(orderO) {
-        const url = comUrl+ "/api/orders/" + orderO.id;
+        const url = comUrl+ "/api/PutOrder/" + orderO.id;
 
         var value = { 
             "adressOrigin": orderO.adressOrigin,
@@ -111,10 +110,7 @@ class OrderForm extends Component {
             "addNote": orderO.addNote
             };
             
-           axios.put(
-               url, value, { withCredentials: true }
-           );
-
+           axios.put(url, value);
     }
 
     SentOrder(e) {
@@ -134,9 +130,6 @@ class OrderForm extends Component {
         else
             orderAddNote = null;
 
-
-
-
         if (!orderAdressOrigin || !orderDeadline || !orderAdressDestination || !orderReceiverName ) {
             return;
         }
@@ -145,7 +138,7 @@ class OrderForm extends Component {
             this.CreateOrder({ adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote});
         else
             this.EditOrder({ id: this.props.orderID, adressOrigin: orderAdressOrigin, deadline: formDeadline, adressDestination: orderAdressDestination, receiverName: orderReceiverName, addNote: orderAddNote});
-        document.location.href = "/";
+        // document.location.href = "/";
     }
 
     render() {

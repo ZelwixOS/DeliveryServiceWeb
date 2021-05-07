@@ -29,8 +29,8 @@ namespace BLL.Interfaces
         UserModel GetUser(string id);
 
         int CreateOrder(OrderModel o, string role, UserModel usr);
-        void UpdateOrder(OrderModel o);
-        void DeleteOrder(int id);
+        void UpdateOrder(OrderModel o, UserModel usr);
+        void DeleteOrder(int id, UserModel usr);
         void UpdateOrderStatus(int id, int status, string role, UserModel usr);
 
         void CreateCargoType(TypeOfCargoModel t);

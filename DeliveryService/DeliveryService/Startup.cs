@@ -45,6 +45,7 @@ namespace DeliveryService
                                 .WithMethods("PUT", "DELETE", "GET", "POST")
                                 .AllowAnyHeader()
                                 .AllowCredentials();
+                        
                     });
             });
 
@@ -64,7 +65,7 @@ namespace DeliveryService
                 options.Events.OnRedirectToAccessDenied = context =>
                 {
                     context.Response.StatusCode = 401;
-                return Task.CompletedTask;
+                    return Task.CompletedTask;
                 };
             });
         }
@@ -94,7 +95,7 @@ namespace DeliveryService
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
             app.UseCors();

@@ -26,7 +26,8 @@ class LogInForm extends Component {
             rememberMe: true,
             open: false,
             isLogin: false,
-            login: ""
+            login: "",
+            error: null
         };
 
         this.SentItem = this.SentItem.bind(this);
@@ -59,9 +60,6 @@ class LogInForm extends Component {
         ).then( document.location.href = "/");
     };
 
-       
-
-
     Authorize(userInfo) {
 
         const url = comUrl +  "/api/Account/LogIn/";
@@ -72,32 +70,14 @@ class LogInForm extends Component {
          };
         axios.post(
             url, value, { withCredentials: true }
-        ).then((response) => 
-        this.ErrorNotifier(response.data));
+        ).then((response) => this.setState({ error: response.data.error})).then(this.ErrorNotifier);
     }
 
-    ErrorNotifier(response) {
-        document.querySelector("#response").innerHTML = "";
-        var formError = document.querySelector("#formError");
-        while (formError.firstChild) {
-            formError.removeChild(formError.firstChild);
-        }
-
-        document.querySelector("#response").innerHTML = response.message;
-
+    ErrorNotifier() {
         var failed = false;
-        if (response.error !== undefined) {
-            if (response.error.length > 0) failed = true;
-            if (response.error.length > 0) {
-                for (var i = 0; i < response.error.length; i++) {
-                    let ul = document.querySelector("ul");
-                    let li = document.createElement("li");
-                    li.appendChild(document.createTextNode(response.error[i]));
-                    ul.appendChild(li);
-                }
-            }
-        }
-
+        if (this.state.error !== undefined && this.state.error !== null) 
+            if (this.state.error.length > 0) failed = true;
+   
         if (failed)
             return;
         else
@@ -119,7 +99,6 @@ class LogInForm extends Component {
 
     getCurrentUser() {
         const url = comUrl + "/api/Account/isAuthenticated/";
-
         axios.post(
             url, { withCredentials: true }
         ).then(result => {
@@ -148,7 +127,7 @@ class LogInForm extends Component {
                         </React.Fragment>
                         :
 
-                        <Button variant="contained" startIcon={<ForwardIcon />} onClick={this.handleClickOpen}>
+                        <Button  variant="contained" startIcon={<ForwardIcon />} onClick={this.handleClickOpen}>
                             Войти
 				        </Button>
                 }
@@ -158,6 +137,16 @@ class LogInForm extends Component {
                     <Divider />
                     <DialogContent>
                         <Grid container spacing={3} style={{ color: "#F00" }}>
+                            {
+                                this.state.error !== undefined && this.state.error !== null && this.state.error.length > 0  && 
+                                <ul> 
+                                    Ошибка:
+                                    {
+                                        this.state.error.map((er, index) => { return (<li key={index}>{er}</li>) })
+                                    }
+                                </ul>
+
+                            }
                             <div id="response" />
                             <ul id="formError"></ul>
                         </Grid>
