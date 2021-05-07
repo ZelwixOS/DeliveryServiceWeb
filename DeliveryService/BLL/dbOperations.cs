@@ -89,32 +89,45 @@ namespace BLL
 
         public int CreateOrder(OrderModel o, string role, UserModel usr)
         {
-            if (DateTime.Compare(o.Deadline, DateTime.Today) > 0 && role == "customer")
+            if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
             {
-                db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.ID, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
-                Save();
-                int id = db.Orders.GetList().Where(i => i.AddNote == o.AddNote && i.AdressDestination == o.AdressDestination && i.AdressOrigin == o.AdressOrigin && i.Courier_ID_FK == o.Courier_ID_FK && i.Customer_ID_FK == usr.ID && i.Deadline == o.Deadline && i.Delivery_ID_FK == o.Delivery_ID_FK && i.ReceiverName == o.ReceiverName && i.Status_ID_FK == 5).First().ID;
-                return id;
+                    db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.ID, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
+                    Save();
+                    return 1;
             }
             else
-                return 0;
+                return 3;
         }
 
-        public void UpdateOrder(OrderModel o, UserModel usr)
+        public int UpdateOrder(OrderModel o, UserModel usr)
         {
             Order ord = db.Orders.GetItem(o.ID);
-            if (ord != null && ord.Customer_ID_FK == usr.ID)
-                if (DateTime.Compare(ord.Deadline, DateTime.Today) > 0)
+
+            if (ord != null)
+            {
+                if (ord.Customer_ID_FK == usr.ID)
                 {
-                    ord.AddNote = o.AddNote;
-                    ord.AdressDestination = o.AdressDestination;
-                    ord.AdressOrigin = o.AdressOrigin;
-                    ord.Deadline = o.Deadline;
-                    ord.ReceiverName = o.ReceiverName;
-                    ord.Status_ID_FK = 5;
-                    db.Orders.Update(ord);
-                    Save();
+                    if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+                    {
+                        ord.AddNote = o.AddNote;
+                        ord.AdressDestination = o.AdressDestination;
+                        ord.AdressOrigin = o.AdressOrigin;
+                        ord.Deadline = o.Deadline;
+                        ord.ReceiverName = o.ReceiverName;
+                        ord.Status_ID_FK = 5;
+                        db.Orders.Update(ord);
+                        Save();
+                        return 1;
+                    }
+                    else
+                        return 3;
                 }
+                else
+                    return 2;
+            }
+            else
+                return 4;
+
         }
 
 
@@ -134,22 +147,31 @@ namespace BLL
             }
         }
 
-        public void DeleteOrder(int id, UserModel usr)
+        public int DeleteOrder(int id, UserModel usr)
         {
             Order ord = db.Orders.GetItem(id);
-            if (ord != null && ord.Customer_ID_FK == usr.ID)
+
+            if (ord != null)
             {
-                if (DateTime.Compare(ord.Deadline, DateTime.Today) > 0)
+                if (ord.Customer_ID_FK == usr.ID)
                 {
-                    var allOI = GetAllOrderItems();
-                    foreach (var item in allOI)
-                        DeleteOrderItem(item.ID);
-                    db.Orders.Delete(ord.ID);
-                    Save();
+                    if (ord.Courier_ID_FK == null)
+                    {
+                        var allOI = GetAllOrderItems();
+                        foreach (var item in allOI)
+                            DeleteOrderItem(item.ID);
+                        db.Orders.Delete(ord.ID);
+                        Save();
+                        return 1;
+                    }
+                    else
+                        return 5;
                 }
                 else
-                    return;
+                    return 2;
             }
+            else
+                return 4;
         }
 
         public OrderModel GetOrder(int id)
