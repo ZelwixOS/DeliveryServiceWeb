@@ -40,7 +40,7 @@ namespace DeliveryService.Controllers
             return Ok(order);
         }
 
- //       [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [Route("api/NewOrder")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderModel order)
@@ -50,11 +50,12 @@ namespace DeliveryService.Controllers
                 return BadRequest(ModelState);
             }
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
-            await Task.Run(() => dbOp.CreateOrder(order, role, usr));
-            return CreatedAtAction("GetOrder", new { id = order.ID }, order);
+            int res = await Task.Run(() => dbOp.CreateOrder(order, role, usr));
+            string answer = Result(res);
+            return Ok(answer);
         }
 
- //       [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [Route("api/PutOrder/{id}")]
         [HttpPut]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] OrderModel order)
@@ -65,11 +66,12 @@ namespace DeliveryService.Controllers
             }
             order.ID = id;
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
-            await Task.Run(() => dbOp.UpdateOrder(order, usr));
-            
-            return NoContent();
+            int res = await Task.Run(() => dbOp.UpdateOrder(order, usr));
+            string answer = Result(res);
+            return Ok(answer);
         }
-//        [Authorize(Roles = "customer")]
+
+        [Authorize(Roles = "customer")]
         [Route("api/DeleteOrder/{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete([FromRoute] int id)
@@ -79,9 +81,22 @@ namespace DeliveryService.Controllers
                 return BadRequest(ModelState);
             }
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
-            await Task.Run(() => dbOp.DeleteOrder(id, usr));
+            int res = await Task.Run(() => dbOp.DeleteOrder(id, usr));
+            string answer = Result(res);
+            return Ok(answer);
+        }
 
-            return Ok();
+        protected string Result(int answer)
+        {
+            switch (answer)
+            {
+                case 1: return null; 
+                case 2: return "Не достаточно прав"; 
+                case 3: return "Выберите корректную дату"; 
+                case 4: return "Заказ не найден";
+                case 5: return "Курьер уже назаначен";
+                default: return "Возникла непредвиденная ошибка";
+            }
         }
 
     }

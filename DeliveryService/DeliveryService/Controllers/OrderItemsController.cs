@@ -54,7 +54,7 @@ namespace DeliveryService.Controllers
         }
 
 
- //       [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] OrderItemModel orderItem)
         {
@@ -66,7 +66,7 @@ namespace DeliveryService.Controllers
             
             return CreatedAtAction("GetOrder", new { id = orderItem.ID }, orderItem);
         }
- //       [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] OrderItemModel orderItem)
         {
@@ -78,7 +78,7 @@ namespace DeliveryService.Controllers
             
             return NoContent();
         }
- //       [Authorize(Roles = "customer")]
+        [Authorize(Roles = "customer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {

@@ -1,72 +1,70 @@
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.deps.json
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.json
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.dev.json
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csprojAssemblyReference.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Runtime.Caching.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Web.Http.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.Core.dll
-C:\Users\Zelwix\OneDrive\University\WEB\ver5\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cs
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.deps.json
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.json
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.dev.json
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csprojAssemblyReference.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.GeneratedMSBuildEditorConfig.editorconfig
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
+X:\NewVers\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Runtime.Caching.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.dll
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.pdb
+X:\NewVers\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.pdb
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
@@ -77,9 +75,12 @@ C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.pdb
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Web.Http.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.SpaServices.Extensions.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -87,18 +88,15 @@ C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.Core.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
@@ -125,241 +123,22 @@ C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorAssemblyInfo.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorAssemblyInfo.cs
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.TagHelpers.input.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.TagHelpers.output.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorCoreGenerate.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cs
+C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.Views.pdb
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
 C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-C:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csprojAssemblyReference.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.GeneratedMSBuildEditorConfig.editorconfig
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cs
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.deps.json
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.json
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.dev.json
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Web.Http.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.OpenApi.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.Core.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Runtime.Caching.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.dll
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.pdb
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
-G:\WEB Proj\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.deps.json
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.json
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.dev.json
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Web.Http.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.Core.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Runtime.Caching.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csprojAssemblyReference.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.GeneratedMSBuildEditorConfig.editorconfig
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cs
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
-C:\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.Development.json
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\appsettings.json
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.exe
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.deps.json
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.json
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.runtimeconfig.dev.json
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\ref\DeliveryService.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DeliveryService.Views.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Humanizer.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Web.Http.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.Identity.Client.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Microsoft.OpenApi.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Newtonsoft.Json.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\Swashbuckle.Core.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Runtime.Caching.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\BLL.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\bin\Debug\net5.0\DAL.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csprojAssemblyReference.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.GeneratedMSBuildEditorConfig.editorconfig
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfoInputs.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.AssemblyInfo.cs
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CoreCompileInputs.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cs
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.MvcApplicationPartsAssemblyInfo.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.Manifest.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\staticwebassets\DeliveryService.StaticWebAssets.xml
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\scopedcss\bundle\DeliveryService.styles.css
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.RazorTargetAssemblyInfo.cache
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.csproj.CopyComplete
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\ref\DeliveryService.dll
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.pdb
-X:\Projects\DeliveryServiceWeb\DeliveryService\DeliveryService\obj\Debug\net5.0\DeliveryService.genruntimeconfig.cache

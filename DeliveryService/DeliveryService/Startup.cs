@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +10,7 @@ using System;
 using Microsoft.Extensions.Logging;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace DeliveryService
 {
@@ -25,32 +26,29 @@ namespace DeliveryService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddControllersWithViews();
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
+
             services.RegisterBllServices(Configuration);
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddControllers();
-
-            services.AddSwaggerGen((options) =>
-            {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "DS API", Version = "v1" });
-            });
-
 
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "SUPolicy",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000")
+                        builder.WithOrigins("*")
                                 .WithMethods("PUT", "DELETE", "GET", "POST")
-                                .AllowAnyHeader()
-                                .AllowCredentials();
-                        
+                                .AllowAnyHeader();
                     });
             });
-
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = "SimpleWebApp";
@@ -68,6 +66,7 @@ namespace DeliveryService
                     return Task.CompletedTask;
                 };
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,31 +79,34 @@ namespace DeliveryService
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
             }
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DS API V1");
-            });
 
             app.UseAuthentication();
 
-            //app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
-            
-            app.UseAuthorization();
 
+            app.UseAuthorization();
             app.UseCors();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
 
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
 
             userRoles.CreateUserRoles(services).Wait();
         }

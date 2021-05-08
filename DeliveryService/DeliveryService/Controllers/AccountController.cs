@@ -67,7 +67,7 @@ namespace ASPNetCoreApp.Controllers
 
         [HttpPost]
         [Route("api/Account/RegisterCourier")]
-//        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> RegisterCourier([FromBody] RegisterViewModel model)
         {
             if (ModelState.IsValid)
