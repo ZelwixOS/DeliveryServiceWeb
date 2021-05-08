@@ -14,12 +14,11 @@ namespace BLL.Interfaces
 
         AllOrdersModel GetAllOrders(string role, UserModel usr);
         List<StatusModel> GetAllStatuses();
-        List<TypeOfCargoModel> GetAllTypesOfCargo();
+        List<TypeOfCargoModel> GetAllTypesOfCargo(string role);
         List<DeliveryModel> GetAllDeliveries();
         List<UserModel> GetAllUsers();
         List<OrderItemModel> GetAllOrderItems();
         List<OrderItemModel> GetOrderItems(int id);
-
 
         TypeOfCargoModel GetTypeOfCargo(int id);
         OrderModel GetOrder(int id);
@@ -31,28 +30,14 @@ namespace BLL.Interfaces
         int CreateOrder(OrderModel o, string role, UserModel usr);
         int UpdateOrder(OrderModel o, UserModel usr);
         int DeleteOrder(int id, UserModel usr);
-        void UpdateOrderStatus(int id, int status, string role, UserModel usr);
+        int UpdateOrderStatus(int id, int status, string role, UserModel usr);
 
-        void CreateCargoType(TypeOfCargoModel t);
-        void UpdateCargoType(TypeOfCargoModel t);
-        void DeleteCargoType(int id);
+        int CreateCargoType(TypeOfCargoModel t);
+        int TurnCargoType(int id, bool status);
 
-        void CreateStatus(StatusModel s);
-        void UpdateStatus(StatusModel s);
-        void DeleteStatus(int id);
-
-
-        int CreateDelivery(DeliveryModel s);
-        void UpdateDelivery(DeliveryModel s);
-        void DeleteDelivery(int id);
-
-        void CreateUser(UserModel c);
-        void UpdateUser(UserModel c);
-        void DeleteUser(string id);
-
-        void CreateOrderItem(OrderItemModel c);
-        void UpdateOrderItem(OrderItemModel c);
-        void DeleteOrderItem(int id);
+        int CreateOrderItem(OrderItemModel c, UserModel usr);
+        int UpdateOrderItem(OrderItemModel c, UserModel usr);
+        int DeleteOrderItem(int id, UserModel usr);
 
         int Save();
     }

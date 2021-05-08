@@ -16,13 +16,18 @@ const styles = (theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+    },
+    cards:
+    {
+        margin: '5px',
+        padding: '5px'
     }
 });
 
 axios.defaults.withCredentials = true
 const comUrl = "http://localhost:5000"
 
-class Couriers extends Component {
+class Users extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,16 +66,20 @@ class Couriers extends Component {
                                     :
                                     <React.Fragment>
 
+                                        
+                                        <Typography variant="h5" gutterBottom>
                                         Курьеры
-                                        <List>
+                                          </Typography>
+                                       
                                             {
                                                 this.state.users.couriers.map((user, index) => {
                                                     return (
-                                                        <Card key={index}>
+                                                        <Card className={styles.cards} key={index}>
+                                                             
                                                             <Typography variant="h6" gutterBottom>
                                                                 Пользователь {user.userName}
                                                             </Typography>
-
+                                                            <List>
                                                             <ListItem >
                                                                 <ListItemText primary={"Имя: " + user.secondName + " " + user.firstName} />
                                                             </ListItem>
@@ -80,33 +89,36 @@ class Couriers extends Component {
                                                             <ListItem >
                                                                 <ListItemText primary={"Телефон: " + user.phoneNumber} />
                                                             </ListItem>
+                                                            </List>
                                                         </Card>
+
                                                     )
                                                 })
                                             }
 
-                                        </List>
+                                        <Typography variant="h5" gutterBottom>
                                           Пользователи
-                                        <List>
+                                          </Typography>
                                             {
                                                 this.state.users.customers.map((user, index) => {
                                                     return (
-                                                        <Card key={index}>
+                                                        <Card className={styles.cards} key={index}>
                                                             <Typography variant="h6" gutterBottom>
                                                                 Пользователь {user.userName}
                                                             </Typography>
-
+                                                            <List>
                                                             <ListItem >
                                                                 <ListItemText primary={"Имя: " + user.secondName + " " + user.firstName} />
                                                             </ListItem>
                                                             <ListItem >
                                                                 <ListItemText primary={"email: " + user.email} />
                                                             </ListItem>
+                                                        </List>
                                                         </Card>
                                                     )
                                                 })
                                             }
-                                        </List>
+                                      
 
                                     </React.Fragment>
                             }
@@ -117,5 +129,5 @@ class Couriers extends Component {
         )
     }
 }
-export default withStyles(styles)(Couriers)
+export default withStyles(styles)(Users)
 

@@ -38,7 +38,7 @@ class OrderItem extends Component {
             {
               (this.props.status === 1 || this.props.status ===5 )&& this.props.role!=="courier" &&  
             <IconButton aria-label="Удалить" onClick={this.onClick}>
-            <HighlightOffIcon style={{ fontSize: 35, color: "#3B14AF" }} />
+            <HighlightOffIcon style={{ fontSize: 35, color: "#03a9f4" }} />
             </IconButton>
             }
 

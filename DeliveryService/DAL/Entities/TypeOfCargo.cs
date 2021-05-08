@@ -17,8 +17,10 @@ namespace DAL
         [Required]
         [StringLength(50)]
         public string TypeName { get; set; }
-
+        [Required]
         public double Coefficient { get; set; }
+        [Required]
+        public bool Active { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

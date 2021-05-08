@@ -11,6 +11,7 @@ using DAL;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace DeliveryService.Controllers
 {
@@ -23,16 +24,19 @@ namespace DeliveryService.Controllers
 
         private readonly IDbCrud dbOp;
         private readonly IAccountService serv;
+        private readonly ILogger logger;
 
-        public UsersController(IDbCrud dbCrud, IAccountService services)
+        public UsersController(IDbCrud dbCrud, IAccountService services, ILogger<UsersController> logger)
         {
             dbOp =  dbCrud;
             serv = services;
+            this.logger = logger;
         }
 
         [HttpGet]
         public UsersByRole GetAll()
         {
+            logger.LogInformation("All users were requested");
             return dbOp.GetUsersByRole(serv);
         }
 
@@ -41,48 +45,18 @@ namespace DeliveryService.Controllers
         {
             if (!ModelState.IsValid)
             {
+                logger.LogWarning("Get User: Bad Request");
                 return BadRequest(ModelState);
             }
+            logger.LogInformation("User "+ id+" was requested");
             var user = await Task.Run(() => dbOp.GetUser(id)); 
+            if (user!=null)
+                logger.LogInformation("User " + id + " was returned");
+            else
+                logger.LogWarning("User " + id + " was not found");
             return Ok(user);
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UserModel user)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            await Task.Run(() => dbOp.CreateUser(user));
-            
-            return CreatedAtAction("GetOrder", new { id = user.ID }, user);
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UserModel user)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            await Task.Run(() => dbOp.UpdateUser(user));
-            
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] string id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            await Task.Run(() => dbOp.DeleteUser(id));
-            
-            return NoContent();
-        }
 
     }
 }

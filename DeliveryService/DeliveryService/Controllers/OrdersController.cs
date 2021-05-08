@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace DeliveryService.Controllers
 {
@@ -11,20 +12,27 @@ namespace DeliveryService.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
+        private readonly ILogger logger;
         private readonly IDbCrud dbOp;
         private readonly IAccountService accountService;
 
-        public OrdersController(IDbCrud dbCrud, IAccountService accountService)
+        public OrdersController(IDbCrud dbCrud, IAccountService accountService, ILogger<OrdersController> logger)
         {
             dbOp = dbCrud;
             this.accountService = accountService;
+            this.logger = logger;
         }
 
         [Route("api/Orders")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
+            if (usr != null)
+                logger.LogInformation("Orders were requested by "+ usr.UserName);
+            else
+                logger.LogWarning("Orders were requested by unauthorized user");
             return Ok(await Task.Run(() => dbOp.GetAllOrders(role, usr)));
         }
 
@@ -34,9 +42,16 @@ namespace DeliveryService.Controllers
         {
             if (!ModelState.IsValid)
             {
+                logger.LogWarning("Get order answered: Bad Request");
                 return BadRequest(ModelState);
             }
+            logger.LogInformation("User requested order "+ id);
             var order = await Task.Run(() => dbOp.GetOrder(id));
+
+            if (order != null)
+                logger.LogInformation("Order " + id + "was found and sent");
+            else
+                logger.LogWarning("Order "+ id +"wasn't found");
             return Ok(order);
         }
 
@@ -47,11 +62,12 @@ namespace DeliveryService.Controllers
         {
             if (!ModelState.IsValid)
             {
+                logger.LogWarning("Create order answered: Bad Request");
                 return BadRequest(ModelState);
             }
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
             int res = await Task.Run(() => dbOp.CreateOrder(order, role, usr));
-            string answer = Result(res);
+            string answer = ResultHelper.Result(res, usr, role, "Create Order", logger);
             return Ok(answer);
         }
 
@@ -62,12 +78,13 @@ namespace DeliveryService.Controllers
         {
             if (!ModelState.IsValid)
             {
+                logger.LogWarning("Update order answered: Bad Request");
                 return BadRequest(ModelState);
             }
             order.ID = id;
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
             int res = await Task.Run(() => dbOp.UpdateOrder(order, usr));
-            string answer = Result(res);
+            string answer = ResultHelper.Result(res, usr, role, "Update Order", logger);
             return Ok(answer);
         }
 
@@ -78,25 +95,13 @@ namespace DeliveryService.Controllers
         {
             if (!ModelState.IsValid)
             {
+                logger.LogWarning("Delete order answered: Bad Request");
                 return BadRequest(ModelState);
             }
             (string role, UserModel usr) = await Task.Run(() => dbOp.GetRole(accountService, HttpContext));
             int res = await Task.Run(() => dbOp.DeleteOrder(id, usr));
-            string answer = Result(res);
+            string answer = ResultHelper.Result(res, usr, role, "Delete Order", logger);
             return Ok(answer);
-        }
-
-        protected string Result(int answer)
-        {
-            switch (answer)
-            {
-                case 1: return null; 
-                case 2: return "Не достаточно прав"; 
-                case 3: return "Выберите корректную дату"; 
-                case 4: return "Заказ не найден";
-                case 5: return "Курьер уже назаначен";
-                default: return "Возникла непредвиденная ошибка";
-            }
         }
 
     }

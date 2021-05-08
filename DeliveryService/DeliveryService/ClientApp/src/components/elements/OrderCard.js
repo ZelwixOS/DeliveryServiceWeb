@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme = useTheme()) => ({
   root: {
     marginBottom: theme.spacing(2)
   },
-
 }));
 
 axios.defaults.withCredentials = true
@@ -44,36 +43,34 @@ export default function OrderCard(props) {
 
   function DeleteOrder() {
     const url = comUrl + "/api/DeleteOrder/" + orderContent.id;
-    axios.delete(url).then((response) => DRInfoOrder(response));
+    axios.delete(url).then((response) => DRInfoOrder(response)).then(props.listUpdate);;
   }
   
   function Confirmed() {
     const url = comUrl + "/api/Confirmed/" + orderContent.id;
-    axios.post(url).then(UpdateOrderInfo);
+    axios.post(url).then((response) => DRInfoOrder(response)).then(UpdateOrderInfo);
   }
 
   function Recieved() {
     var url = comUrl + "/api/Recieved/" + orderContent.id
-    axios.post(url).then(props.listUpdate);
+    axios.post(url).then((response) => DRInfoOrder(response)).then(props.listUpdate);
   }
 
   function Delivered() {
     var url = comUrl + "/api/Delivered/" + orderContent.id
-    axios.post(url).then(UpdateOrderInfo);
+    axios.post(url).then((response) => DRInfoOrder(response)).then(UpdateOrderInfo);
   }
 
   function Add() {
     var url = comUrl + "/api/Add/" + orderContent.id;
-    axios.post(url).then(props.listUpdate);
+    axios.post(url).then((response) => DRInfoOrder(response)).then(props.listUpdate);
   }
 
   function DRInfoOrder(resp) {
-    var msg = "";
+    var msg = resp.data;
     if (resp.status === 401) {
-      msg = "У вас не хватает прав для удаления";
-    } else if (resp.status === 200) {
-      props.listUpdate();
-    } else {
+      msg = "У вас не хватает прав";
+    } else if (resp.status !== 200 && resp.status !== 204) {
       msg = "Неизвестная ошибка";
     }
     setMessage(msg);

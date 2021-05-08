@@ -164,7 +164,7 @@ class OrderItemList extends Component {
                                         </FormControl>
 
                                         <IconButton aria-label="Добавить" onClick={this.SentItem}>
-                                            <AddIcon style={{ fontSize: 35, color: "#3B14AF" }} />
+                                            <AddIcon style={{ fontSize: 35, color: "#03a9f4" }} />
                                         </IconButton>
                                     </ListItem>
                                 </React.Fragment>

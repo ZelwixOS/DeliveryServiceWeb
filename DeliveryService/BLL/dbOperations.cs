@@ -89,89 +89,125 @@ namespace BLL
 
         public int CreateOrder(OrderModel o, string role, UserModel usr)
         {
-            if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+            try
             {
+                if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+                {
                     db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = 0, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = usr.ID, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = DateTime.Now.Date, ReceiverName = o.ReceiverName, Status_ID_FK = 5 });
                     Save();
                     return 1;
+                }
+                else
+                    return 3;
             }
-            else
-                return 3;
+            catch
+            {
+                return 0;
+            }
+
         }
 
         public int UpdateOrder(OrderModel o, UserModel usr)
         {
             Order ord = db.Orders.GetItem(o.ID);
 
-            if (ord != null)
+            try
             {
-                if (ord.Customer_ID_FK == usr.ID)
+                if (ord != null)
                 {
-                    if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+                    if (ord.Customer_ID_FK == usr.ID)
                     {
-                        ord.AddNote = o.AddNote;
-                        ord.AdressDestination = o.AdressDestination;
-                        ord.AdressOrigin = o.AdressOrigin;
-                        ord.Deadline = o.Deadline;
-                        ord.ReceiverName = o.ReceiverName;
-                        ord.Status_ID_FK = 5;
+                        if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+                        {
+                            ord.AddNote = o.AddNote;
+                            ord.AdressDestination = o.AdressDestination;
+                            ord.AdressOrigin = o.AdressOrigin;
+                            ord.Deadline = o.Deadline;
+                            ord.ReceiverName = o.ReceiverName;
+                            ord.Status_ID_FK = 5;
+                            db.Orders.Update(ord);
+                            Save();
+                            return 1;
+                        }
+                        else
+                            return 3;
+                    }
+                    else
+                        return 2;
+                }
+                else
+                    return 4;
+            }
+            catch
+            {
+                return 0;
+            }
+
+
+        }
+
+
+        public int UpdateOrderStatus(int id, int status, string role, UserModel usr)
+        {
+            Order ord = db.Orders.GetItem(id);
+            try
+            {
+                if (ord != null)
+                {
+                    if (role == "courier")
+                        ord.Courier_ID_FK = usr.ID;
+                    if (role == "customer" && usr.ID == ord.Customer_ID_FK || role == "courier")
+                    {
+                        ord.Status_ID_FK = status;
                         db.Orders.Update(ord);
                         Save();
                         return 1;
                     }
                     else
-                        return 3;
+                        return 2;
                 }
                 else
-                    return 2;
+                    return 4;
             }
-            else
-                return 4;
-
-        }
-
-
-        public void UpdateOrderStatus(int id, int status, string role, UserModel usr)
-        {
-            Order ord = db.Orders.GetItem(id);
-            if (ord != null)
-            {
-                if (role == "courier")
-                    ord.Courier_ID_FK = usr.ID;
-                if (role == "customer" && usr.ID == ord.Customer_ID_FK || role == "courier")
-                {
-                    ord.Status_ID_FK = status;
-                    db.Orders.Update(ord);
-                    Save();
-                }
+            catch
+            { 
+                return 0; 
             }
+
         }
 
         public int DeleteOrder(int id, UserModel usr)
         {
             Order ord = db.Orders.GetItem(id);
 
-            if (ord != null)
+            try
             {
-                if (ord.Customer_ID_FK == usr.ID)
+                if (ord != null)
                 {
-                    if (ord.Courier_ID_FK == null)
+                    if (ord.Customer_ID_FK == usr.ID)
                     {
-                        var allOI = GetAllOrderItems();
-                        foreach (var item in allOI)
-                            DeleteOrderItem(item.ID);
-                        db.Orders.Delete(ord.ID);
-                        Save();
-                        return 1;
+                        if (ord.Courier_ID_FK == null)
+                        {
+                            var allOI = GetAllOrderItems();
+                            foreach (var item in allOI)
+                                DeleteOrderItem(item.ID, usr);
+                            db.Orders.Delete(ord.ID);
+                            Save();
+                            return 1;
+                        }
+                        else
+                            return 5;
                     }
                     else
-                        return 5;
+                        return 2;
                 }
                 else
-                    return 2;
+                    return 4;
             }
-            else
-                return 4;
+            catch
+            {
+                return 0;
+            }
         }
 
         public OrderModel GetOrder(int id)
@@ -181,7 +217,6 @@ namespace BLL
             if (ord != null)
                 o = new OrderModel(ord);
 
-            //OrderModel o = new OrderModel(db.Orders.GetItem(id));
             return o;
         }
         #endregion
@@ -226,15 +261,27 @@ namespace BLL
 
         #region TypeOfCargo
 
-        public List<TypeOfCargoModel> GetAllTypesOfCargo()
+        public List<TypeOfCargoModel> GetAllTypesOfCargo(string role)
         {
-            return db.TypesOfCargo.GetList().Select(i => new TypeOfCargoModel(i)).ToList();
+            switch (role)
+            {
+                case "customer": return db.TypesOfCargo.GetList().Where(t => t.Active == true).Select(i => new TypeOfCargoModel(i)).ToList();
+                case "admin": return db.TypesOfCargo.GetList().Select(i => new TypeOfCargoModel(i)).ToList();
+                default: return db.TypesOfCargo.GetList().Where(t => t.Active == true).Select(i => new TypeOfCargoModel(i)).ToList();
+            }
         }
 
-        public void CreateCargoType(TypeOfCargoModel t)
+        public int CreateCargoType(TypeOfCargoModel t)
         {
-            db.TypesOfCargo.Create(new TypeOfCargo() { TypeName = t.TypeName, Coefficient = t.Coefficient });
-            Save();
+            try
+            {
+                db.TypesOfCargo.Create(new TypeOfCargo() { TypeName = t.TypeName, Coefficient = t.Coefficient, Active = true });
+                return Save();
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public void UpdateCargoType(TypeOfCargoModel t)
@@ -246,14 +293,25 @@ namespace BLL
             Save();
         }
 
-        public void DeleteCargoType(int id)
+        public int TurnCargoType(int id, bool status)
         {
             TypeOfCargo ct = db.TypesOfCargo.GetItem(id);
-            if (ct != null)
+            try
             {
-                db.TypesOfCargo.Delete(ct.ID);
-                Save();
+                if (ct != null)
+                {
+                    ct.Active = status;
+                    db.TypesOfCargo.Update(ct);
+                    return Save();
+                }
+                else
+                    return 6;
             }
+            catch
+            {
+                return 0;
+            }
+
         }
 
         public TypeOfCargoModel GetTypeOfCargo(int id)
@@ -316,85 +374,144 @@ namespace BLL
         {
             return db.OrderItems.GetList().Select(i => new OrderItemModel(i)).Where(i => i.Order_ID_FK == id).ToList();
         }
-        public void CreateOrderItem(OrderItemModel c)
+
+        public int CreateOrderItem(OrderItemModel c, UserModel usr)
         {
+            Order ord = db.Orders.GetItem(c.Order_ID_FK);
+            if (ord != null)
+            {
+                if (ord.Customer_ID_FK != usr.ID)
+                    return 2;
+            }
+            else
+                return 6;
 
             if (c.TypeOfCargo == null)
             {
                 c.TypeOfCargo = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
+                if (c.TypeOfCargo == null || c.TypeOfCargo.Active == false)
+                    return 6;
             }
-            db.OrderItems.Create(new OrderItem() { TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK, OrderName = c.OrderName, Price = c.Price, Order_ID_FK = c.Order_ID_FK });
-            Save();
-            var ord = db.Orders.GetItem(c.Order_ID_FK);
-            var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
+            try
+            {
+                db.OrderItems.Create(new OrderItem() { TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK, OrderName = c.OrderName, Price = c.Price, Order_ID_FK = c.Order_ID_FK });
+                Save();
+
+                var cust = db.Users.GetItem(ord.Customer_ID_FK);
+                if (cust != null)
+                {
+                    double dsc = 0;
+                    if (cust.Discount != null)
+                        dsc = (double)cust.Discount;
+                    ord.Cost = ord.Cost + c.Price * c.TypeOfCargo.Coefficient / 100.0 * (100 - dsc) / 100.0;
+                    ord.Status_ID_FK = 5;
+                    db.Orders.Update(ord);
+                    Save();
+                    return 1;
+                }
+                else
+                    return 6;
+
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int UpdateOrderItem(OrderItemModel c, UserModel usr)
+        {
+            Order ord = db.Orders.GetItem(c.Order_ID_FK);
             if (ord != null)
             {
-                var cust = db.Users.GetItem(ord.Customer_ID_FK);
+                if (ord.Customer_ID_FK != usr.ID)
+                    return 2;
+            }
+            else
+                return 6;
+
+            if (c.TypeOfCargo == null)
+            {
+                c.TypeOfCargo = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
+                if (c.TypeOfCargo == null || c.TypeOfCargo.Active == false)
+                    return 6;
+            }
+
+            OrderItem oi = db.OrderItems.GetItem(c.ID);
+
+            try
+            {
+                if (oi != null)
+                {
+                    oi.OrderName = c.OrderName;
+                    oi.Order_ID_FK = c.Order_ID_FK;
+                    oi.Price = c.Price;
+                    oi.TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK;
+                    db.OrderItems.Update(oi);
+
+                    var cust = db.Users.GetItem(ord.Customer_ID_FK);
+                    if (cust != null)
+                    {
+                        double dsc = 0;
+                        if (cust.Discount != null)
+                            dsc = (double)cust.Discount;
+                        ord.Cost = ord.Cost + c.Price * c.TypeOfCargo.Coefficient * (100 - dsc) / 10000.0;
+                    }
+                    else
+                        return 6;
+                    Save();
+                    return 1;
+                }
+                else
+                    return 4;
+            }
+            catch
+            {
+                return 0;
+            }
+                 
+        }
+
+        public int DeleteOrderItem(int id, UserModel usr)
+        {
+            OrderItem cr = db.OrderItems.GetItem(id);
+            Order ord = db.Orders.GetItem(cr.Order_ID_FK);
+
+            if (ord != null && cr != null)
+            {
+                if (ord.Customer_ID_FK != usr.ID)
+                    return 2;
+            }
+            else
+                return 6;
+
+
+
+            var toc = db.TypesOfCargo.GetItem(cr.TypeOfCargo_ID_FK);
+            var cust = db.Users.GetItem(ord.Customer_ID_FK);
+
+            try
+            {
                 if (toc != null && cust != null)
                 {
                     double dsc = 0;
                     if (cust.Discount != null)
                         dsc = (double)cust.Discount;
-                    ord.Cost = ord.Cost + c.Price * toc.Coefficient / 100.0 * (100 - dsc) / 100.0;
-                    ord.Status_ID_FK = 5;
-                    db.Orders.Update(ord);
-                    Save();
+                    ord.Cost = ord.Cost - cr.Price * toc.Coefficient * (100 - dsc) / 10000.0;
                 }
-            }
-
-        }
-
-        public void UpdateOrderItem(OrderItemModel c)
-        {
-            OrderItem oi = db.OrderItems.GetItem(c.ID);
-            if (oi != null)
-            {
-                oi.OrderName = c.OrderName;
-                oi.Order_ID_FK = c.Order_ID_FK;
-                oi.Price = c.Price;
-                oi.TypeOfCargo_ID_FK = c.TypeOfCargo_ID_FK;
-                db.OrderItems.Update(oi);
-
-                var ord = db.Orders.GetItem(c.Order_ID_FK);
-                var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
-                if (ord != null)
-                {
-                    var cust = db.Users.GetItem(ord.Customer_ID_FK);
-                    if (toc != null && cust != null)
-                    {
-                        double dsc = 0;
-                        if (cust.Discount != null)
-                            dsc = (double)cust.Discount;
-                        ord.Cost = ord.Cost + c.Price * toc.Coefficient * (100 - dsc) / 10000.0;
-                    }
-                }
-                Save();
-            }
-        }
-
-        public void DeleteOrderItem(int id)
-        {
-            OrderItem cr = db.OrderItems.GetItem(id);
-            if (cr != null)
-            {
-                var ord = db.Orders.GetItem(cr.Order_ID_FK);
-                var toc = db.TypesOfCargo.GetItem(cr.TypeOfCargo_ID_FK);
-                if (ord != null)
-                {
-                    var cust = db.Users.GetItem(ord.Customer_ID_FK);
-                    if (toc != null && cust != null)
-                    {
-                        double dsc = 0;
-                        if (cust.Discount != null)
-                            dsc = (double)cust.Discount;
-                        ord.Cost = ord.Cost - cr.Price * toc.Coefficient * (100 - dsc) / 10000.0;
-                    }
-                }
+                else
+                    return 6;
                 ord.Status_ID_FK = 5;
                 db.OrderItems.Delete(cr.ID);
                 Save();
+                return 1;
+            }
+            catch
+            {
+                return 0;
             }
         }
+
         public OrderItemModel GetOrderItem(int id)
         {
             OrderItemModel dv = new OrderItemModel(db.OrderItems.GetItem(id));
@@ -408,31 +525,6 @@ namespace BLL
         {
 
             return db.Users.GetList().Select(i => new UserModel(i)).ToList();
-        }
-
-        public void CreateUser(UserModel c)
-        {
-            db.Users.Create(new User() { Email = c.Email, PasswordHash = c.Password, UserName = c.UserName });
-            Save();
-        }
-
-        public void UpdateUser(UserModel c)
-        {
-            User us = db.Users.GetItem(c.ID);
-            us.Email = c.Email;
-            us.PasswordHash = c.Password;
-            us.UserName = c.UserName;
-            db.Users.Update(us);
-            Save();
-        }
-        public void DeleteUser(string id)
-        {
-            User cr = db.Users.GetItem(id);
-            if (cr != null)
-            {
-                db.Users.Delete(cr.Id);
-                Save();
-            }
         }
 
         public UserModel GetUser(string id)
@@ -453,10 +545,10 @@ namespace BLL
             }
             catch
             {
-                return 2;
+                return 0;
             }
             if (SaveCh > 0) return 1;
-            return 0;
+            return 7;
         }
 
     }

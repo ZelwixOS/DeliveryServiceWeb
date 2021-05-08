@@ -7,6 +7,7 @@ using BLL.Interfaces;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace ASPNetCoreApp.Controllers
 {
@@ -16,11 +17,13 @@ namespace ASPNetCoreApp.Controllers
     {
         private readonly IAccountService accountService;
         private readonly IDbCrud dbOp;
+        private readonly ILogger logger;
 
-        public AccountController(IAccountService accountService, IDbCrud dbCrud)
+        public AccountController(IAccountService accountService, IDbCrud dbCrud, ILogger<AccountController> logger)
         {
             this.accountService = accountService;
             dbOp = dbCrud;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -29,6 +32,7 @@ namespace ASPNetCoreApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                logger.LogInformation("User is trying to register");
                 string msg;
                 List<string> err;
 
@@ -37,11 +41,12 @@ namespace ASPNetCoreApp.Controllers
 
                 if (err == null)
                 {
+
                     var msgres = new
                     {
                         message = msg
-
                     };
+                    logger.LogInformation("Successful customer registration:" + msg);
                     return Ok(msgres);
                 }
                 else
@@ -51,6 +56,7 @@ namespace ASPNetCoreApp.Controllers
                         message = msg,
                         error = err.ToArray()
                     };
+                    logger.LogWarning("Customer registration was finished with errors");
                     return Ok(errorMsg);
                 }
             }
@@ -61,6 +67,7 @@ namespace ASPNetCoreApp.Controllers
                     message = "Неверные входные данные.",
                     error = ModelState.Values.SelectMany(e => e.Errors.Select(er => er.ErrorMessage)).ToArray()
                 };
+                logger.LogWarning("Customer registration attempt failed: BadRequest");
                 return Ok(errorMsg);
             }
         }
@@ -85,6 +92,7 @@ namespace ASPNetCoreApp.Controllers
                         message = msg
 
                     };
+                    logger.LogInformation("Successful courier registration:" + msg);
                     return Ok(msgres);
                 }
                 else
@@ -94,6 +102,7 @@ namespace ASPNetCoreApp.Controllers
                         message = msg,
                         error = err.ToArray()
                     };
+                    logger.LogWarning("Courier registration was finished with errors");
                     return Ok(errorMsg);
                 }
             }
@@ -104,6 +113,7 @@ namespace ASPNetCoreApp.Controllers
                     message = "Неверные входные данные.",
                     error = ModelState.Values.SelectMany(e => e.Errors.Select(er => er.ErrorMessage)).ToArray()
                 };
+                logger.LogWarning("Courier registration attempt failed: BadRequest");
                 return Ok(errorMsg);
             }
         }
@@ -125,6 +135,7 @@ namespace ASPNetCoreApp.Controllers
                     {
                         message = msg
                     };
+                    logger.LogInformation("Successful login:" + msg);
                     return Ok(response);
                 }
                 else
@@ -136,6 +147,7 @@ namespace ASPNetCoreApp.Controllers
                         message = msg,
                         error = err.ToArray()
                     };
+                    logger.LogWarning("Login failed: incorrect login or/and password");
                     return Ok(errorMsg);
                 }
             }
@@ -146,6 +158,7 @@ namespace ASPNetCoreApp.Controllers
                     message = "Вход не выполнен.",
                     error = ModelState.Values.SelectMany(e => e.Errors.Select(er => er.ErrorMessage)).ToArray()
                 };
+                logger.LogWarning("Login failed: BadRequest");
                 return Ok(errorMsg);
             }
         }
@@ -159,6 +172,7 @@ namespace ASPNetCoreApp.Controllers
             {
                 message = await accountService.LogOut()
             };
+            logger.LogInformation("LogOut: " + msg.message);
             return Ok(msg);
         }
 
@@ -170,6 +184,7 @@ namespace ASPNetCoreApp.Controllers
             {
                 message = await accountService.LogisAuthenticatedOff(HttpContext)
             };
+            logger.LogInformation("LogOut: " + msg.message);
             return Ok(msg);
         }
 

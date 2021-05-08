@@ -1,6 +1,6 @@
 import React from "react";
-import Couriers from '../pages/Couriers';
+import Users from '../pages/Users';
 
 export default function TypesRedir() {
-    return <Couriers/>
+    return <Users/>
   } 

@@ -9,6 +9,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddIcon from '@material-ui/icons/Add';
+import CargoTypeItem from '../elements/CargoTypeItem'
 
 const styles = (theme) => ({
     paper: {
@@ -110,7 +111,7 @@ class Types extends Component {
                                                     />
                                                 </Grid>
                                                 <IconButton aria-label="Добавить" onClick={this.SentItem}>
-                                                    <AddIcon style={{ fontSize: 35, color: "#3B14AF" }} />
+                                                    <AddIcon style={{ fontSize: 35, color: "#03a9f4" }} />
                                                 </IconButton>
 
                                             </ListItem>
@@ -118,10 +119,8 @@ class Types extends Component {
                                         </List>
                                         <List>
                                             {
-                                                this.state.types.map((type, index) => {
-                                                    return (<ListItem key={index}>
-                                                        <ListItemText primary={type.typeName + " - " + type.coefficient}  />
-                                                    </ListItem>)
+                                                this.state.types.map((typeC, index) => { 
+                                                    return (<CargoTypeItem key={index} type={typeC}/>)
                                                 })
                                             }
                                         </List>

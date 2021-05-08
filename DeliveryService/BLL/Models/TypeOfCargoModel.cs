@@ -11,11 +11,14 @@ namespace BLL.Models
 
         public double Coefficient { get; set; }
 
+        public bool Active { get; set; }
+
         public TypeOfCargoModel(TypeOfCargo t)
         {
             ID = t.ID;
             TypeName = t.TypeName;
             Coefficient = t.Coefficient;
+            Active = t.Active;
         }
 
         public TypeOfCargoModel() { }

@@ -82,8 +82,8 @@ export default function Navbar(props) {
 								<Button variant="contained" href="/types">
 									Типы
 								</Button>
-								<Button variant="contained" href="/couriers">
-									Курьеры
+								<Button variant="contained" href="/users">
+									Пользователи
 								</Button>
 								<Button variant="contained" href="/courierForm">
 									Регистрация курьеров

@@ -21,7 +21,7 @@ namespace BLL.Models
         public string ReceiverName { get; set; }
         public string AddNote { get; set; }
         public int Status_ID_FK { get; set; }
-        public string? Courier_ID_FK { get; set; }
+        public string Courier_ID_FK { get; set; }
         public string CourierS { get; set; }
 
         public void UpdateDates()

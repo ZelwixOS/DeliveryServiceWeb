@@ -16,7 +16,7 @@ import OrderForm from '../src/components/pages/OrderForm';
 import CustomerRegFormRedir from '../src/components/redirection/CustomerRegFormRedir';
 import CourierRegFormRedir from '../src/components/redirection/CourierRegFormRedir';
 import TypesRedir from '../src/components/redirection/TypesRedir';
-import CouriersRedir from '../src/components/redirection/CouriersRedir';
+import Users from '../src/components/redirection/UsersRedir';
 import ForGuestsRedir from '../src/components/redirection/ForGuestsRedir';
 
 
@@ -47,8 +47,8 @@ class App extends Component {
           <Route  history={history} path='/registration' component={CustomerRegFormRedir} />
           <Route  history={history} path='/types' component={TypesRedir} />
           <Route  history={history} path='/courierForm' component={CourierRegFormRedir} />
-          <Route  history={history} path='/couriers' component={CouriersRedir} />
-          <Route  history={history} path='/TheNew' component={ForGuestsRedir} />
+          <Route  history={history} path='/users' component={Users} />
+          <Route  history={history} path='/theNew' component={ForGuestsRedir} />
         </Switch>
       </div>
       </ThemeProvider>
