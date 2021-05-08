@@ -60,6 +60,8 @@ namespace BLL.Services
             {
                 await _userManager.AddToRoleAsync(user, "customer");
 
+                await _signInManager.SignInAsync(user, false);
+
                 var msg = "Добавлен новый пользователь: " + user.UserName;
 
                 return (msg, null);
@@ -91,7 +93,7 @@ namespace BLL.Services
             {
                 await _userManager.AddToRoleAsync(user, "courier");
 
-                await _signInManager.SignInAsync(user, false);
+                
 
                 var msg = "Добавлен новый курьер: " + user.UserName;
 
