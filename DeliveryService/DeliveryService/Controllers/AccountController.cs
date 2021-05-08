@@ -184,7 +184,7 @@ namespace ASPNetCoreApp.Controllers
             {
                 message = await accountService.LogisAuthenticatedOff(HttpContext)
             };
-            logger.LogInformation("LogOut: " + msg.message);
+            logger.LogInformation("IsLogin: " + msg.message);
             return Ok(msg);
         }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Box, Container, Grid, Typography } from '@material-ui/core'
+import { Box, Container, Divider, Grid, Typography } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { withStyles } from "@material-ui/core/styles"
 import Navbar from '../minmod/Navbar'
@@ -19,8 +19,7 @@ const styles = (theme) => ({
     },
     cards:
     {
-        margin: '5px',
-        padding: '5px'
+        margin: '5px'
     }
 });
 
@@ -64,7 +63,7 @@ class Users extends Component {
                                         Загрузка...
                                     </Typography >
                                     :
-                                    <React.Fragment>
+                                    <React.Fragment >
 
                                         
                                         <Typography variant="h5" gutterBottom>
@@ -76,10 +75,14 @@ class Users extends Component {
                                                     return (
                                                         <Card className={styles.cards} key={index}>
                                                              
-                                                            <Typography variant="h6" gutterBottom>
-                                                                Пользователь {user.userName}
-                                                            </Typography>
+                                                       
                                                             <List>
+                                                                <ListItem >
+                                                                    <Typography variant="h6" gutterBottom>
+                                                                        Пользователь {user.userName}
+                                                                    </Typography>
+                                                                </ListItem>
+                                                                <Divider />
                                                             <ListItem >
                                                                 <ListItemText primary={"Имя: " + user.secondName + " " + user.firstName} />
                                                             </ListItem>
@@ -88,7 +91,8 @@ class Users extends Component {
                                                             </ListItem>
                                                             <ListItem >
                                                                 <ListItemText primary={"Телефон: " + user.phoneNumber} />
-                                                            </ListItem>
+                                                                </ListItem>
+                                                               
                                                             </List>
                                                         </Card>
 
@@ -103,16 +107,21 @@ class Users extends Component {
                                                 this.state.users.customers.map((user, index) => {
                                                     return (
                                                         <Card className={styles.cards} key={index}>
-                                                            <Typography variant="h6" gutterBottom>
-                                                                Пользователь {user.userName}
-                                                            </Typography>
+                                                          
                                                             <List>
+                                                                <ListItem>
+                                                                    <Typography variant="h6" gutterBottom>
+                                                                    Пользователь {user.userName}
+                                                                    </Typography>
+                                                                </ListItem>
+                                                                <Divider />
                                                             <ListItem >
                                                                 <ListItemText primary={"Имя: " + user.secondName + " " + user.firstName} />
                                                             </ListItem>
                                                             <ListItem >
                                                                 <ListItemText primary={"email: " + user.email} />
-                                                            </ListItem>
+                                                                </ListItem>
+                 
                                                         </List>
                                                         </Card>
                                                     )
