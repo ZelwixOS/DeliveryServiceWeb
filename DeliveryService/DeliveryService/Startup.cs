@@ -51,7 +51,7 @@ namespace DeliveryService
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.Name = "SimpleWebApp";
+                options.Cookie.Name = "EmuCookies";
                 options.LoginPath = "/";
                 options.AccessDeniedPath = "/";
                 options.LogoutPath = "/";

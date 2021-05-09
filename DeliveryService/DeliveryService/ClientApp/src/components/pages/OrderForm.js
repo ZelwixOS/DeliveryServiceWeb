@@ -96,7 +96,7 @@ class OrderForm extends Component {
             "receiverName": orderO.receiverName,
             "addNote": orderO.addNote
         };
-        axios.post(url, value).then(res => this.RespInfoOrder(res));
+        axios.post(url, value).then(res =>this.RespInfoOrder(res)).catch(err=>  this.RespInfoOrder(err.response));
     }
 
     EditOrder(orderO) {
@@ -109,7 +109,7 @@ class OrderForm extends Component {
             "receiverName": orderO.receiverName,
             "addNote": orderO.addNote
         };
-        axios.put(url, value).then(res => this.RespInfoOrder(res));
+        axios.put(url, value).then(res => this.RespInfoOrder(res)).catch(err=>  this.RespInfoOrder(err.response));
     }
 
     SentOrder(e) {
@@ -141,7 +141,7 @@ class OrderForm extends Component {
 
     RespInfoOrder(resp) {
         if (resp.status === 401) {
-            this.ServerAnswer("У вас не хватает прав для удаления");
+            this.ServerAnswer("У вас не достаточно прав");
         } else this.ServerAnswer(resp.data);
       }
 
