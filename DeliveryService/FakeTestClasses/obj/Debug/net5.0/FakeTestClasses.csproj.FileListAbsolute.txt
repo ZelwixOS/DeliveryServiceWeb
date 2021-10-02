@@ -1,0 +1,15 @@
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\FakeTestClasses.deps.json
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\FakeTestClasses.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\ref\FakeTestClasses.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\FakeTestClasses.pdb
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\DAL.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\DAL.pdb
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.csprojAssemblyReference.cache
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.GeneratedMSBuildEditorConfig.editorconfig
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.AssemblyInfoInputs.cache
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.AssemblyInfo.cs
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.csproj.CoreCompileInputs.cache
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.csproj.CopyComplete
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\ref\FakeTestClasses.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.pdb
