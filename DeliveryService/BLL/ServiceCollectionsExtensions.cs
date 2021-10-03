@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using BLL.Services;
 using DAL;
+using DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

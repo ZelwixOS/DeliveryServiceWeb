@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using DAL.Interfaces;
+using DAL;
 
 namespace DeliveryService
 {
@@ -37,6 +39,7 @@ namespace DeliveryService
             services.RegisterBllServices(Configuration);
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IDatabaseContextFactory, DatabaseContextFactory>();
 
             services.AddCors(options =>
             {

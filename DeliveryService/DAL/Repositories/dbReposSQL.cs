@@ -12,12 +12,11 @@ namespace DAL.Repositories
         private UserRepository userRepository;
         private OrderItemRepository orderItemRepository;
         private TypeOfCargoRepository typeOfCargoRepository;
-         
-        public dbReposSQL(DbContextOptions<DSdb> options)
-        {
-            db = new DSdb(options);
-        }
 
+        public dbReposSQL(DSdb dSdb)
+        {
+            db = dSdb;
+        }
 
         public IRepository<Delivery> Deliveries
         {

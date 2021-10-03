@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    class UserRoles : IUserRoles
+    public class UserRoles : IUserRoles
     {
         public async Task CreateUserRoles(IServiceProvider serviceProvider)
         {

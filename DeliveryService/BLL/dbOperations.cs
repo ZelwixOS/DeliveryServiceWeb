@@ -109,17 +109,17 @@ namespace BLL
 
         public int UpdateOrder(OrderModel o, UserModel usr)
         {
-            Order ord = db.Orders.GetItem(o.ID);
+            Order ord = db.Orders.GetItem(o.ID); //1
 
-            try
+            try //2
             {
-                if (ord != null)
+                if (ord != null) //3
                 {
-                    if (ord.Customer_ID_FK == usr.ID)
+                    if (ord.Customer_ID_FK == usr.ID) //4
                     {
-                        if (DateTime.Compare(o.Deadline, DateTime.Today) > 0)
+                        if (DateTime.Compare(o.Deadline, DateTime.Today) > 0) //5
                         {
-                            ord.AddNote = o.AddNote;
+                            ord.AddNote = o.AddNote; //6
                             ord.AdressDestination = o.AdressDestination;
                             ord.AdressOrigin = o.AdressOrigin;
                             ord.Deadline = o.Deadline;
@@ -127,23 +127,21 @@ namespace BLL
                             ord.Status_ID_FK = 5;
                             db.Orders.Update(ord);
                             Save();
-                            return 1;
+                            return 1; //7
                         }
                         else
-                            return 3;
+                            return 3; //7
                     }
                     else
-                        return 2;
+                        return 2; // 7
                 }
                 else
-                    return 4;
+                    return 4; // 7
             }
             catch
             {
-                return 0;
+                return 0; // 7
             }
-
-
         }
 
 

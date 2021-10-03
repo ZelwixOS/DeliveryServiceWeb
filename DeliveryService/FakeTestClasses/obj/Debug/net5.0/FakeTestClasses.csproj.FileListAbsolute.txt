@@ -13,3 +13,5 @@ X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\
 X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.dll
 X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\ref\FakeTestClasses.dll
 X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\obj\Debug\net5.0\FakeTestClasses.pdb
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\BLL.dll
+X:\Projects\DeliveryServiceWeb\DeliveryService\FakeTestClasses\bin\Debug\net5.0\BLL.pdb
