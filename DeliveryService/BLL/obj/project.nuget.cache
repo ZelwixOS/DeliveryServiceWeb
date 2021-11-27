@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8PdZNM+A5owyF3ZKO3f1WqEI2L5F9G/0LYYfsrVzl7WrkOyYz+ratAbZXq+jFy/LnmY2QGE5Og4W4KjXGLdCmw==",
+  "dgSpecHash": "IslHMdaRoTCAfo+4rf92vGrWMTveDBs6/9XO8jRAC32zV+AwPlLGQ65wTpLiGwmHS0ZLqy6GW4K2cYJh1anZnw==",
   "success": true,
-  "projectFilePath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+  "projectFilePath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zelwix\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Zelwix\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

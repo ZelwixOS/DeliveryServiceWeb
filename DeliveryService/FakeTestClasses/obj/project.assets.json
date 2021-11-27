@@ -8724,19 +8724,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zelwix\\.nuget\\packages\\": {}
+    "C:\\Users\\Zelwix\\.nuget\\packages\\": {},
+    "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
+      "projectUniqueName": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
       "projectName": "FakeTestClasses",
-      "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
+      "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
       "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-      "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\obj\\",
+      "outputPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8750,11 +8755,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
-              "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
+            "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj": {
+              "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj"
             },
-            "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-              "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+            "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+              "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
             }
           }
         }
@@ -8797,7 +8802,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

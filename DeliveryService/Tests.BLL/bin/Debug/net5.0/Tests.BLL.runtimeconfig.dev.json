@@ -2,7 +2,8 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\Zelwix\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Zelwix\\.nuget\\packages"
+      "C:\\Users\\Zelwix\\.nuget\\packages",
+      "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ]
   }
 }

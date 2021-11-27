@@ -176,35 +176,35 @@ namespace BLL
 
         public int DeleteOrder(int id, UserModel usr)
         {
-            Order ord = db.Orders.GetItem(id);
+            Order ord = db.Orders.GetItem(id);          // 1
 
-            try
+            try                                         // 2
             {
-                if (ord != null)
+                if (ord != null)                        // 3
                 {
-                    if (ord.Customer_ID_FK == usr.ID)
+                    if (ord.Customer_ID_FK == usr.ID)   // 4
                     {
-                        if (ord.Courier_ID_FK == null)
+                        if (ord.Courier_ID_FK == null)   // 5
                         {
-                            var allOI = GetAllOrderItems();
+                            var allOI = GetAllOrderItems();     // 6
                             foreach (var item in allOI)
                                 DeleteOrderItem(item.ID, usr);
                             db.Orders.Delete(ord.ID);
                             Save();
-                            return 1;
+                            return 1;                     // 7
                         }
                         else
-                            return 5;
+                            return 5;                   // 7
                     }
                     else
-                        return 2;
+                        return 2;                       // 7
                 }
                 else
-                    return 4;
+                    return 4;                           // 7
             }
             catch
             {
-                return 0;
+                return 0;                               // 7
             }
         }
 
