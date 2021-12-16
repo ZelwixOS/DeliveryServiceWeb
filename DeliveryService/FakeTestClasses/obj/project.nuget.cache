@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6e4FaaX0LJAJc5HDpj3+AQWnj7NCKx/zMd77qCKrp13ErxjnXNSqlQZ5QwoXhmFZgBTxcxMYtWof1oMb8G4fIw==",
+  "dgSpecHash": "uXcLQ4iDlGagzatkuL6k1NvDyvJ9O6qOEOo/ujJposqOXCw1abhiMCeNDDYmqu56obgtMfukglY1WCmZgwtT2w==",
   "success": true,
-  "projectFilePath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
+  "projectFilePath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\FakeTestClasses\\FakeTestClasses.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zelwix\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Zelwix\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

@@ -6718,24 +6718,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zelwix\\.nuget\\packages\\": {},
-    "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Zelwix\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
+      "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-      "outputPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
+      "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\BLL\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6749,8 +6744,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
-              "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
+            "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj": {
+              "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj"
             }
           }
         }
@@ -6797,7 +6792,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -6615,24 +6615,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zelwix\\.nuget\\packages\\": {},
-    "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Zelwix\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectUniqueName": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
+      "projectPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\Zelwix\\.nuget\\packages\\",
-      "outputPath": "X:\\Proj\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
+      "outputPath": "X:\\Projects\\DeliveryServiceWeb\\DeliveryService\\DAL\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\VisualStudio\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\Zelwix\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6704,7 +6699,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
