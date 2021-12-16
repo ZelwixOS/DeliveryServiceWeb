@@ -176,7 +176,7 @@ namespace ASPNetCoreApp.Controllers
             return Ok(msg);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/Account/isAuthenticated")]
         public async Task<IActionResult> LogisAuthenticatedOff()
         {         
@@ -188,7 +188,7 @@ namespace ASPNetCoreApp.Controllers
             return Ok(msg);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/Account/Role")]
         public async Task<IActionResult> Role()
         {

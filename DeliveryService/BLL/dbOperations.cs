@@ -147,29 +147,29 @@ namespace BLL
 
         public int UpdateOrderStatus(int id, int status, string role, UserModel usr)
         {
-            Order ord = db.Orders.GetItem(id);
-            try
+            Order ord = db.Orders.GetItem(id);                  //1
+            try                                                 //2
             {
-                if (ord != null)
+                if (ord != null)                                //3
                 {
-                    if (role == "courier")
-                        ord.Courier_ID_FK = usr.ID;
-                    if (role == "customer" && usr.ID == ord.Customer_ID_FK || role == "courier")
+                    if (role == "courier")                      //4
+                        ord.Courier_ID_FK = usr.ID;             //5
+                    if (usr.ID == ord.Customer_ID_FK || role == "courier")    //6
                     {
-                        ord.Status_ID_FK = status;
+                        ord.Status_ID_FK = status;         //7
                         db.Orders.Update(ord);
                         Save();
-                        return 1;
+                        return 1;                          //8
                     }
                     else
-                        return 2;
+                        return 2;                         //8
                 }
                 else
-                    return 4;
+                    return 4;                             //8
             }
             catch
             { 
-                return 0; 
+                return 0;                                 //8
             }
 
         }
